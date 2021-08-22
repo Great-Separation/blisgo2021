@@ -1,0 +1,42 @@
+.table-fixed tbody {
+  height: 30vh;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+  display: inline-block;
+  width: 100%;
+}
+
+.table-fixed tbody td, .table-fixed tbody th, .table-fixed thead > tr > th {
+  float: left;
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  position: absolute;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(90, 90, 90, 0.3);
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.leaderboard-icon-first {
+  color: #FFD700;
+}
+
+.leaderboard-icon-second {
+  color: #C0C0C0;
+}
+
+.leaderboard-icon-third {
+  color: #CD7F32;
+}
+

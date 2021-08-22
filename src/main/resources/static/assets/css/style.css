@@ -1,0 +1,126 @@
+#highlight {
+  background-color: rgba(0,0,0,0.4);
+  padding-top: 6vh;
+  padding-bottom: 6vh;
+}
+
+#usericon-mobile-hr-top {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: -20px;
+  margin-left: -20px;
+}
+
+#usericon-mobile-hr-bottom {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: -20px;
+  margin-left: -20px;
+}
+
+.user-points-coin {
+  color: var(--bs-yellow);
+}
+
+#category-search-btn {
+  width: 46px;
+  height: 46px;
+}
+
+#footer {
+  background-color: #172527;
+}
+
+#float-btn-add {
+  bottom: 2vh;
+  right: 4vw;
+  border-style: none;
+  width: 46px;
+  height: 46px;
+}
+
+#float-btn-icon {
+  font-size: 20px;
+}
+
+#highlight-error-row {
+  width: 90vw;
+}
+
+.carousel-control-prev {
+  width: 50px;
+}
+
+.carousel-control-next {
+  width: 50px;
+}
+
+#feature-icon {
+  font-size: 50px;
+  color: var(--bs-teal);
+}
+
+#login-main {
+  padding-top: 8vh;
+  padding-bottom: 2vh;
+  height: 100vh;
+  background-color: darkslategray;
+}
+
+#footer {
+  background: #172527;
+}
+
+#product-icon {
+  font-size: 20px;
+}
+
+#product-star {
+  color: var(--bs-yellow);
+}
+
+#product-badge {
+  font-size: 15px;
+}
+
+#toast-bookmark {
+  z-index: 11;
+}
+
+#qrlogin-main {
+  padding-top: 8vh;
+  padding-bottom: 2vh;
+  height: 100vh;
+}
+
+#register-main {
+  padding-top: 8vh;
+  padding-bottom: 2vh;
+  height: 100vh;
+  background-color: darkslategray;
+}
+
+#verify-main {
+  padding-top: 8vh;
+  padding-bottom: 2vh;
+  height: 100vh;
+  background-color: darkslategray;
+}
+
+#highlight-index {
+  height: 100vh;
+  background-color: rgba(0,0,0,0.4);
+}
+
+#header {
+  background: url(https://source.unsplash.com/2048x1536/daily?waste,garbage,trash)center / cover no-repeat;
+}
+
+#nav-white-space {
+  height: 56px!important;
+}
+
+#error-icon {
+  font-size: 250px;
+}
+
