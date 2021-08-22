@@ -1,4 +1,4 @@
-package com.example.demo.config;
+package com.blisgo.client.config;
 
 import javax.sql.DataSource;
 
@@ -9,7 +9,6 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 
 @Configuration
 @MapperScan(basePackages="com.example.demo.mapper")

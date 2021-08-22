@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.blisgo.client.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.demo.dto.UserDTO;
-import com.example.demo.service.UserService;
+import com.blisgo.client.dto.UserDTO;
+import com.blisgo.client.service.UserService;
 
 @Controller
 public class HomeController {
@@ -57,7 +57,7 @@ public class HomeController {
 			model.addAttribute("msg","회원가입이 완료되었습니다.");
 		else
 		{model.addAttribute("msg","중복된 아이디가 존재합니다");}
-			return "redirect:index";
+			return "redirect:/";
 	}
 
 	@RequestMapping("/product")

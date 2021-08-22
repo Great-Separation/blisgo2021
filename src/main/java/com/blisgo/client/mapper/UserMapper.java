@@ -1,6 +1,6 @@
-package com.example.demo.mapper;
+package com.blisgo.client.mapper;
 
-import com.example.demo.dto.UserDTO;
+import com.blisgo.client.dto.UserDTO;
 
 public interface UserMapper {
 

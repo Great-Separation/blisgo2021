@@ -1,6 +1,6 @@
-package com.example.demo.service;
+package com.blisgo.client.service;
 
-import com.example.demo.dto.UserDTO;
+import com.blisgo.client.dto.UserDTO;
 
 public interface UserService {
 	public boolean insert(UserDTO user);

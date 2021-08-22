@@ -1,10 +1,10 @@
-package com.example.demo.service;
+package com.blisgo.client.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dto.UserDTO;
-import com.example.demo.mapper.UserMapper;
+import com.blisgo.client.dto.UserDTO;
+import com.blisgo.client.mapper.UserMapper;
 
 @Service
 public class UserServiceImpl implements UserService{

@@ -1,4 +1,4 @@
-package com.example.demo.dto;
+package com.blisgo.client.dto;
 
 public class UserDTO {
 	int mem_no;
