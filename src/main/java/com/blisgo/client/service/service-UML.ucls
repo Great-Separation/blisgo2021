@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="com.blisgo.client.service.DictionaryServiceImpl" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/service/DictionaryServiceImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="116" width="279" x="12" y="28"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.blisgo.client.service.CommunityServiceImpl" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/service/CommunityServiceImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="116" width="294" x="331" y="28"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="3" language="java" name="com.blisgo.client.service.DictionaryService" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/service/DictionaryService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="76" width="180" x="910" y="28"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="4" language="java" name="com.blisgo.client.service.UserServiceImpl" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/service/UserServiceImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="136" width="205" x="665" y="28"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="5" language="java" name="com.blisgo.client.service.HomeService" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/service/HomeService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="76" width="163" x="1130" y="28"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <package id="6" language="java" name="com.blisgo.client.service" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/service" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="62" width="243" x="1333" y="28"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <interface id="7" language="java" name="com.blisgo.client.service.CommunityService" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/service/CommunityService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="76" width="193" x="1616" y="28"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="8" language="java" name="com.blisgo.client.service.HomeServiceImpl" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/service/HomeServiceImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="116" width="223" x="1849" y="28"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="9" language="java" name="com.blisgo.client.service.UserService" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/service/UserService.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="96" width="200" x="665" y="204"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <realization id="10">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

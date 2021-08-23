@@ -9,11 +9,11 @@ import com.blisgo.client.mapper.UserMapper;
 @Service
 public class UserServiceImpl implements UserService{
 	@Autowired
-	private UserMapper uMapper;
+	private UserMapper userMapper;
 	
 	@Override
 	public boolean insert(UserDTO user) {
-		uMapper.insertUser(user);
+		userMapper.insertUser(user);
 		return true;
 	}
 	

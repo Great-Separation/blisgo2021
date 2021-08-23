@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="com.blisgo.client.controller.HomeController" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/controller/HomeController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="256" width="211" x="618" y="84"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.blisgo.client.controller.DictionaryController" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/controller/DictionaryController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="136" width="200" x="869" y="84"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.blisgo.client.controller.UserController" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/controller/UserController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="316" width="290" x="1109" y="84"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="com.blisgo.client.controller.REST를위한HTTP메서드" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/controller/REST를위한HTTP메서드.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="196" width="276" x="1439" y="84"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="5" language="java" name="com.blisgo.client.controller" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/controller" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="62" width="262" x="1755" y="84"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="6" language="java" name="com.blisgo.client.controller.CommunityController" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/controller/CommunityController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="196" width="217" x="2057" y="84"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

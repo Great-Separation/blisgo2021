@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <interface id="1" language="java" name="com.blisgo.client.mapper.CommunityMapper" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/mapper/CommunityMapper.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="76" width="191" x="18" y="70"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="2" language="java" name="com.blisgo.client.mapper.HomeMapper" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/mapper/HomeMapper.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="76" width="166" x="249" y="70"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="3" language="java" name="com.blisgo.client.mapper.UserMapper" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/mapper/UserMapper.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="96" width="206" x="455" y="70"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <package id="4" language="java" name="com.blisgo.client.mapper" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/mapper" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="62" width="245" x="701" y="70"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <interface id="5" language="java" name="com.blisgo.client.mapper.DictionaryMapper" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/mapper/DictionaryMapper.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="76" width="178" x="986" y="70"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

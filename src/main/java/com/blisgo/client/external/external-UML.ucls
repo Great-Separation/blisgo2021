@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="com.blisgo.client.external.Verify" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/external/Verify.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="96" width="168" x="122" y="135"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.blisgo.client.external.LoginWith" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/external/LoginWith.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="96" width="168" x="330" y="135"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <package id="3" language="java" name="com.blisgo.client.external" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/external" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="62" width="250" x="538" y="135"/>    
+    <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="4" language="java" name="com.blisgo.client.external.ElasticSearch" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/external/ElasticSearch.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="96" width="168" x="828" y="135"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="com.blisgo.client.external.DBConnect" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/external/DBConnect.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="96" width="168" x="1036" y="135"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
