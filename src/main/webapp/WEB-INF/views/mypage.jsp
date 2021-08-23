@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>마이페이지 - BlisGO</title>
     <meta name="theme-color" content="#ffffff">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="twitter:image" content="https://blisgov2.bss.design/assets/img/favicon/favicon512x512.png">
     <meta name="twitter:description" content="분리배출 도우미">
     <meta name="twitter:title" content="BlisGO">
@@ -21,7 +22,7 @@
     <link rel="icon" type="image/png" sizes="180x180" href="assets/img/favicon/favicon180x180.png">
     <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon/favicon192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon/favicon512x512.png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.0.2/dist/united/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.0/dist/united/bootstrap.min.css">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&amp;display=swap">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -56,7 +57,7 @@
                                 <hr id="usericon-mobile-hr-bottom">
                             </div>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="/qrlogin">QR생성</a><a class="dropdown-item" href="/mypage">마이페이지</a><a class="dropdown-item" href="/mypage">로그아웃</a></div>
+                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="/qrlogin">QR생성</a><a class="dropdown-item" href="/mypage">마이페이지</a><a class="dropdown-item" href="/logout">로그아웃</a></div>
                     </div>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown" id="service-list"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">검수목록</a>
@@ -71,12 +72,12 @@
                             </div>
                         </li>
                         <li class="nav-item" id="encyclopedia"><a class="nav-link" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="/dictionary" title="분리배출 사전입니다">사전</a></li>
-                        <li class="nav-item" id="community"><a class="nav-link active" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="/community" title="자유롭게 글을 작성할 수 있습니다">게시판</a></li>
+                        <li class="nav-item" id="community"><a class="nav-link" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="/community" title="자유롭게 글을 작성할 수 있습니다">게시판</a></li>
                         <li class="nav-item" id="login"><a class="nav-link" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="/login" title="회원이용시 다양한 혜택을 이용할 수 있습니다">로그인</a></li>
                     </ul>
                     <div class="dropstart d-none d-lg-block navbar-right" id="usericon-desktop"><a aria-expanded="false" data-bs-toggle="dropdown" class="text-decoration-none text-reset"><img class="img-fluid rounded-circle" id="usericon-desktop-image" src="https://i.pravatar.cc/200" width="40px" height="40px" alt="프로필이미지"></a>
                         <div class="dropdown-menu">
-                            <h6 class="dropdown-header">옥재욱님<span class="float-end user-points"><i class="fas fa-coins user-points-coin"></i>10000</span></h6><a class="dropdown-item" href="/qrlogin">QR생성</a><a class="dropdown-item" href="/mypage">마이페이지조회/수정</a><a class="dropdown-item" href="#">로그아웃</a>
+                            <h6 class="dropdown-header">옥재욱님<span class="float-end user-points"><i class="fas fa-coins user-points-coin"></i>10000</span></h6><a class="dropdown-item" href="/qrlogin">QR생성</a><a class="dropdown-item" href="/mypage">마이페이지조회/수정</a><a class="dropdown-item" href="/logout">로그아웃</a>
                         </div>
                     </div>
                 </div>
@@ -88,24 +89,26 @@
             <article>
                 <div>
                     <ul class="nav nav-tabs mb-2" role="tablist" id="myTab">
-                        <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" id="description-tab" href="#account">회원정보 조회/수정</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" id="description-tab" href="#account">회원정보 조회/수정</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" id="reviews-tab" href="#dogam">도감</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" id="specifications-tabs" href="#leaderboard">리더보드</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" id="specifications-tabs" href="#leaderboard">리더보드</a></li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active description" role="tabpanel" id="account">
+                        <div class="tab-pane fade description" role="tabpanel" id="account">
                             <div class="row mb-3 m-0">
                                 <div class="col-lg-4">
                                     <div class="card shadow-sm mb-3">
                                         <div class="card-body text-center">
-                                            <div class="row">
-                                                <div class="col"><img class="rounded-circle mb-3 mt-4" src="https://i.pravatar.cc/200" width="160px" height="160px" loading="lazy" alt="프로필이미지">
-                                                    <p class="lead">옥재욱</p>
+                                            <form>
+                                                <div class="row">
+                                                    <div class="col"><img class="rounded-circle mb-3 mt-4" src="https://i.pravatar.cc/200" width="160px" height="160px" loading="lazy" alt="프로필이미지">
+                                                        <p class="lead">옥재욱</p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col"><button class="btn btn-primary" type="button">이미지 변경</button></div>
-                                            </div>
+                                                <div class="row">
+                                                    <div class="col"><button class="btn btn-primary" type="submit">이미지 변경</button></div>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                     <div class="card shadow-sm mb-4">
@@ -113,7 +116,7 @@
                                             <p class="lead text-primary m-0 fw-bold">활동통계</p>
                                         </div>
                                         <div class="card-body">
-                                            <div id="activity-chart"><canvas data-bss-chart="{&quot;type&quot;:&quot;bar&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;일&quot;,&quot;월&quot;,&quot;화&quot;,&quot;수&quot;,&quot;목&quot;,&quot;금&quot;,&quot;토&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;searchCount&quot;,&quot;backgroundColor&quot;:&quot;#47d6c1&quot;,&quot;borderColor&quot;:&quot;#47d6c1&quot;,&quot;borderWidth&quot;:&quot;&quot;,&quot;data&quot;:[&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;3&quot;,&quot;0&quot;,&quot;0&quot;,&quot;1&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:true,&quot;legend&quot;:{&quot;display&quot;:false,&quot;labels&quot;:{&quot;bold&quot;:false,&quot;italic&quot;:false,&quot;fontStyle&quot;:&quot;normal&quot;},&quot;position&quot;:&quot;top&quot;},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;,&quot;position&quot;:&quot;top&quot;},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;gridLines&quot;:{&quot;drawBorder&quot;:true,&quot;drawTicks&quot;:true,&quot;borderDash&quot;:[&quot;1&quot;],&quot;zeroLineBorderDash&quot;:[&quot;1&quot;],&quot;drawOnChartArea&quot;:true},&quot;ticks&quot;:{&quot;beginAtZero&quot;:true}}],&quot;yAxes&quot;:[{&quot;gridLines&quot;:{&quot;drawBorder&quot;:true,&quot;drawTicks&quot;:true,&quot;borderDash&quot;:[&quot;1&quot;],&quot;zeroLineBorderDash&quot;:[&quot;1&quot;],&quot;drawOnChartArea&quot;:true},&quot;ticks&quot;:{&quot;beginAtZero&quot;:true}}]}}}"></canvas></div>
+                                            <div id="activity-chart"><canvas data-bss-chart="{&quot;type&quot;:&quot;bar&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;일&quot;,&quot;월&quot;,&quot;화&quot;,&quot;수&quot;,&quot;목&quot;,&quot;금&quot;,&quot;토&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;searchCount&quot;,&quot;backgroundColor&quot;:&quot;#47d6c1&quot;,&quot;borderColor&quot;:&quot;#47d6c1&quot;,&quot;borderWidth&quot;:&quot;&quot;,&quot;data&quot;:[&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;3&quot;,&quot;0&quot;,&quot;0&quot;,&quot;1&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:true,&quot;legend&quot;:{&quot;display&quot;:false,&quot;labels&quot;:{&quot;bold&quot;:false,&quot;italic&quot;:false,&quot;fontStyle&quot;:&quot;normal&quot;},&quot;position&quot;:&quot;top&quot;},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;,&quot;position&quot;:&quot;top&quot;},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;gridLines&quot;:{&quot;drawBorder&quot;:true,&quot;drawTicks&quot;:true,&quot;borderDash&quot;:[&quot;1&quot;],&quot;zeroLineBorderDash&quot;:[&quot;1&quot;],&quot;drawOnChartArea&quot;:true},&quot;ticks&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;,&quot;beginAtZero&quot;:true}}],&quot;yAxes&quot;:[{&quot;gridLines&quot;:{&quot;drawBorder&quot;:true,&quot;drawTicks&quot;:true,&quot;borderDash&quot;:[&quot;1&quot;],&quot;zeroLineBorderDash&quot;:[&quot;1&quot;],&quot;drawOnChartArea&quot;:true},&quot;ticks&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;,&quot;beginAtZero&quot;:true}}]}}}"></canvas></div>
                                         </div>
                                     </div>
                                 </div>
@@ -131,7 +134,7 @@
                                                     <div class="col py-1"><label class="form-label" for="email"><strong>이메일</strong></label><input class="form-control" type="email" id="email" placeholder="okjaeook98@gmail.com" name="email" disabled=""></div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col py-1"><button class="btn btn-primary" type="submit">저장하기</button></div>
+                                                    <div class="col py-1"><button class="btn btn-primary" type="submit">저장하기</button><button class="btn btn-warning float-end" type="button" data-bs-target="#modal-delete-account" data-bs-toggle="modal">탈퇴하기</button></div>
                                                 </div>
                                             </form>
                                         </div>
@@ -167,75 +170,75 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2483836/24838366019.20201114183914.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2483836/24838366019.20201114183914.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
                                                 <figcaption class="figure-caption">그릇</figcaption>
                                             </figure>
                                         </div>
                                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2034702/20347023958.20210517144254.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2034702/20347023958.20210517144254.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
                                                 <figcaption class="figure-caption">런닝머신</figcaption>
                                             </figure>
                                         </div>
                                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_1461653/14616534957.20180623175323.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_1461653/14616534957.20180623175323.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
                                                 <figcaption class="figure-caption">나무 조각, 가지, 줄기</figcaption>
                                             </figure>
                                         </div>
                                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2742909/27429098399.20210604004021.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2742909/27429098399.20210604004021.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
                                                 <figcaption class="figure-caption">냄비뚜껑(강화유리)</figcaption>
                                             </figure>
                                         </div>
                                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2520129/25201298488.20201212225921.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2520129/25201298488.20201212225921.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
                                                 <figcaption class="figure-caption">면도칼</figcaption>
                                             </figure>
                                         </div>
                                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2618534/26185343849.20210228172138.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2618534/26185343849.20210228172138.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
                                                 <figcaption class="figure-caption">바둑판</figcaption>
                                             </figure>
                                         </div>
                                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2569930/25699304522.20210316103708.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2569930/25699304522.20210316103708.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
                                                 <figcaption class="figure-caption">복사기</figcaption>
                                             </figure>
                                         </div>
                                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_1772518/17725189210.20190226150216.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_1772518/17725189210.20190226150216.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
                                                 <figcaption class="figure-caption">볼풋공</figcaption>
                                             </figure>
                                         </div>
                                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2503852/25038525522.20201130085638.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2503852/25038525522.20201130085638.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
                                                 <figcaption class="figure-caption">세탁기</figcaption>
                                             </figure>
                                         </div>
                                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2401360/24013605996.20200902215930.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2401360/24013605996.20200902215930.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
                                                 <figcaption class="figure-caption">유리병뚜껑(철, 알루미늄)</figcaption>
                                             </figure>
                                         </div>
                                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2308499/23084992490.20200609114121.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2308499/23084992490.20200609114121.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
                                                 <figcaption class="figure-caption">정수기</figcaption>
                                             </figure>
                                         </div>
                                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2537221/25372219749.20201225214656.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2537221/25372219749.20201225214656.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
                                                 <figcaption class="figure-caption">콘텍트렌즈</figcaption>
                                             </figure>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-body text-center p-2">
-                                    <div class="bg-light bg-gradient shadow-sm"><button class="btn btn-link w-100 text-decoration-none text-secondary" type="button"><span>더보기</span><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-chevron-down">
+                                <div class="card-body text-center p-0">
+                                    <div class="bg-light bg-gradient shadow-sm"><button class="btn btn-link w-100 text-decoration-none text-secondary" type="button" onclick="location.href=&#39;#&#39;"><span>더보기</span><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-chevron-down">
                                                 <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"></path>
                                             </svg></button></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade specifications" role="tabpanel" id="leaderboard">
+                        <div class="tab-pane fade show active specifications" role="tabpanel" id="leaderboard">
                             <div class="row m-0">
                                 <div class="col-lg-6 p-1">
                                     <div class="card shadow-sm mx-auto bg-white" id="ranking">
@@ -457,10 +460,23 @@
             </article>
         </div>
     </main>
+    <div class="modal fade" role="dialog" tabindex="-1" id="modal-delete-account">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">회원탈퇴</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>탈퇴 후 데이터는 모두 사라지며 복구할 수 없습니다.</p>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">취소</button><button class="btn btn-danger" type="button" onclick="location.href=&#39;#&#39;">확인</button></div>
+            </div>
+        </div>
+    </div>
     <footer class="d-none d-lg-block p-4" id="footer">
         <section>
             <div class="row">
-                <div class="col text-center"><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-facebook-f"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-twitter"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-google"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-instagram"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-github"></i></a></div>
+                <div class="col text-center"><a class="btn btn-outline-light btn-floating m-1" href="https://gitlab.com/hanok" role="button"><i class="fab fa-gitlab"></i></a></div>
             </div>
             <div class="row text-center p-2">
                 <div class="col align-self-center">
@@ -476,7 +492,7 @@
   }
 </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/service-worker.js"></script>

@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>분리수GO!</title>
     <meta name="theme-color" content="#ffffff">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="twitter:image" content="https://blisgov2.bss.design/assets/img/favicon/favicon512x512.png">
     <meta name="twitter:description" content="분리배출 도우미">
     <meta name="twitter:title" content="BlisGO">
@@ -21,7 +22,7 @@
     <link rel="icon" type="image/png" sizes="180x180" href="assets/img/favicon/favicon180x180.png">
     <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon/favicon192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon/favicon512x512.png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.0.2/dist/united/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.0/dist/united/bootstrap.min.css">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&amp;display=swap">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -54,7 +55,7 @@
                                 <hr id="usericon-mobile-hr-bottom">
                             </div>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="/qrlogin">QR생성</a><a class="dropdown-item" href="/mypage">마이페이지</a><a class="dropdown-item" href="/mypage">로그아웃</a></div>
+                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="/qrlogin">QR생성</a><a class="dropdown-item" href="/mypage">마이페이지</a><a class="dropdown-item" href="/logout">로그아웃</a></div>
                     </div>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown" id="service-list"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">검수목록</a>
@@ -69,12 +70,12 @@
                             </div>
                         </li>
                         <li class="nav-item" id="encyclopedia"><a class="nav-link" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="/dictionary" title="분리배출 사전입니다">사전</a></li>
-                        <li class="nav-item" id="community"><a class="nav-link active" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="/community" title="자유롭게 글을 작성할 수 있습니다">게시판</a></li>
+                        <li class="nav-item" id="community"><a class="nav-link" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="/community" title="자유롭게 글을 작성할 수 있습니다">게시판</a></li>
                         <li class="nav-item" id="login"><a class="nav-link" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="/login" title="회원이용시 다양한 혜택을 이용할 수 있습니다">로그인</a></li>
                     </ul>
                     <div class="dropstart d-none d-lg-block navbar-right" id="usericon-desktop"><a aria-expanded="false" data-bs-toggle="dropdown" class="text-decoration-none text-reset"><img class="img-fluid rounded-circle" id="usericon-desktop-image" src="https://i.pravatar.cc/200" width="40px" height="40px" alt="프로필이미지"></a>
                         <div class="dropdown-menu">
-                            <h6 class="dropdown-header">옥재욱님<span class="float-end user-points"><i class="fas fa-coins user-points-coin"></i>10000</span></h6><a class="dropdown-item" href="/qrlogin">QR생성</a><a class="dropdown-item" href="/mypage">마이페이지조회/수정</a><a class="dropdown-item" href="#">로그아웃</a>
+                            <h6 class="dropdown-header">옥재욱님<span class="float-end user-points"><i class="fas fa-coins user-points-coin"></i>10000</span></h6><a class="dropdown-item" href="/qrlogin">QR생성</a><a class="dropdown-item" href="/mypage">마이페이지조회/수정</a><a class="dropdown-item" href="/logout">로그아웃</a>
                         </div>
                     </div>
                 </div>
@@ -84,7 +85,7 @@
     <main class="pt-2 pb-2">
         <section>
             <div class="container p-0" id="community-write">
-                <form method="post">
+                <form method="post" action="/write">
                     <div class="card shadow">
                         <div class="card-header">
                             <div class="row">
@@ -93,7 +94,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body p-0"><textarea class="form-control" id="txtTinyMCE"></textarea><script>
+                        <div class="card-body p-0"><textarea class="form-control" id="txtTinyMCE" name="write-content"></textarea><script>
     tinymce.init({
         selector: 'textarea',
         plugins: 'export linkchecker lists checklist autolink media mediaembed pageembed permanentpen powerpaste table advtable autoresize emoticons image imagetools wordcount',
@@ -158,7 +159,7 @@
 
 </script></div>
                         <div class="card-footer p-1">
-                            <div class="btn-group float-end" role="group"><button class="btn btn-success" data-bs-toggle="tooltip" data-bss-tooltip="" type="submit" title="글을 게시판에 올립니다"><i class="fas fa-check"></i></button><a class="btn btn-secondary" role="button" data-bs-toggle="tooltip" data-bss-tooltip="" href="community.html" title="글 목록으로 이동합니다"><i class="fas fa-align-justify"></i></a></div>
+                            <div class="btn-group float-end" role="group"><button class="btn btn-success" data-bs-toggle="tooltip" data-bss-tooltip="" type="submit" title="글을 게시판에 올립니다"><i class="fas fa-check"></i></button><a class="btn btn-secondary" role="button" data-bs-toggle="tooltip" data-bss-tooltip="" href="/community" title="글 목록으로 이동합니다"><i class="fas fa-align-justify"></i></a></div>
                         </div>
                     </div>
                 </form>
@@ -168,7 +169,7 @@
     <footer class="d-none d-lg-block p-4" id="footer">
         <section>
             <div class="row">
-                <div class="col text-center"><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-facebook-f"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-twitter"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-google"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-instagram"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-github"></i></a></div>
+                <div class="col text-center"><a class="btn btn-outline-light btn-floating m-1" href="https://gitlab.com/hanok" role="button"><i class="fab fa-gitlab"></i></a></div>
             </div>
             <div class="row text-center p-2">
                 <div class="col align-self-center">
@@ -184,7 +185,7 @@
   }
 </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/service-worker.js"></script>
 </body>

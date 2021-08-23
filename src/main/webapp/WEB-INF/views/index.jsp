@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>분리수GO!</title>
     <meta name="theme-color" content="#ffffff">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="twitter:image" content="https://blisgov2.bss.design/assets/img/favicon/favicon512x512.png">
     <meta name="twitter:description" content="분리배출 도우미">
     <meta name="twitter:title" content="BlisGO">
@@ -15,13 +16,13 @@
     <meta name="description" content="분리배출 도우미">
     <meta name="twitter:card" content="summary_large_image">
     <meta property="og:image" content="https://blisgov2.bss.design/assets/img/favicon/favicon512x512.png">
-    <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../resource/assets/img/favicon/favicon180x180.png">
+    <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="assets/img/favicon/favicon180x180.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon32x32.png">
     <link rel="icon" type="image/png" sizes="180x180" href="assets/img/favicon/favicon180x180.png">
     <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon/favicon192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon/favicon512x512.png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.0.2/dist/united/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.0/dist/united/bootstrap.min.css">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&amp;display=swap">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -34,25 +35,17 @@
 </head>
 
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
-	<script type="text/javascript"> 
-    	var check=${check};
-		var message = "${msg}";
-		if(check==2)
-		alert(message);
-	</script>
     <header id="header" style="background-image: url(https://source.unsplash.com/1920x1920/daily?nature,water)center / cover no-repeat);background-position: center;background-size: cover;">
         <div class="container-fluid d-flex justify-content-center align-items-center d-flex align-items-center" id="highlight-index">
             <div class="row" style="width: 90vw;">
                 <div class="col text-center text-white">
-                    <h1>분리수GO!</h1>
+                    <h1 th:text="${name}">분리수GO!</h1>
                     <p class="lead">분리배출을 더욱 편리하게!</p>
                     <div class="row">
                         <div class="col">
                             <div class="card m-auto" style="max-width:850px">
-                                <div class="card-body" style="padding: 4px;">
-                                    <form class="d-flex align-items-center ui-filterable" autocomplete="off" action=""><input class="form-control form-control-sm form-control-borderless p-1" type="search" id="autocomplete" placeholder="Search topics or keywords" name="searchWaste" minlength="1" required="" style="padding: 0px;border-style: none;" autocomplete="off"><button class="btn btn-success" type="submit">GO!</button>
-                                        <div></div>
-                                    </form><script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+                                <div class="card-body p-1">
+                                    <form class="d-flex align-items-center ui-filterable" autocomplete="off" action=""><input class="form-control form-control-sm form-control-borderless p-1" type="search" id="autocomplete" placeholder="키워드를 입력하세요" name="searchWaste" minlength="1" required="" style="padding: 0px;border-style: none;" autocomplete="off"><button class="btn btn-success" type="submit">GO!</button></form><script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
                                 </div>
                             </div>
@@ -74,7 +67,7 @@
                                 <hr id="usericon-mobile-hr-bottom">
                             </div>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="/qrlogin">QR생성</a><a class="dropdown-item" href="/mypage">마이페이지</a><a class="dropdown-item" href="/mypage">로그아웃</a></div>
+                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="/qrlogin">QR생성</a><a class="dropdown-item" href="/mypage">마이페이지</a><a class="dropdown-item" href="/logout">로그아웃</a></div>
                     </div>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown" id="service-list"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">검수목록</a>
@@ -94,7 +87,7 @@
                     </ul>
                     <div class="dropstart d-none d-lg-block navbar-right" id="usericon-desktop"><a aria-expanded="false" data-bs-toggle="dropdown" class="text-decoration-none text-reset"><img class="img-fluid rounded-circle" id="usericon-desktop-image" src="https://i.pravatar.cc/200" width="40px" height="40px" alt="프로필이미지"></a>
                         <div class="dropdown-menu">
-                            <h6 class="dropdown-header">옥재욱님<span class="float-end user-points"><i class="fas fa-coins user-points-coin"></i>10000</span></h6><a class="dropdown-item" href="/qrlogin">QR생성</a><a class="dropdown-item" href="/mypage">마이페이지조회/수정</a><a class="dropdown-item" href="#">로그아웃</a>
+                            <h6 class="dropdown-header">옥재욱님<span class="float-end user-points"><i class="fas fa-coins user-points-coin"></i>10000</span></h6><a class="dropdown-item" href="/qrlogin">QR생성</a><a class="dropdown-item" href="/mypage">마이페이지조회/수정</a><a class="dropdown-item" href="/logout">로그아웃</a>
                         </div>
                     </div>
                 </div>
@@ -192,7 +185,7 @@
     <footer class="d-none d-lg-block p-4" id="footer">
         <section>
             <div class="row">
-                <div class="col text-center"><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-facebook-f"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-twitter"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-google"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-instagram"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-github"></i></a></div>
+                <div class="col text-center"><a class="btn btn-outline-light btn-floating m-1" href="https://gitlab.com/hanok" role="button"><i class="fab fa-gitlab"></i></a></div>
             </div>
             <div class="row text-center p-2">
                 <div class="col align-self-center">
@@ -201,14 +194,14 @@
             </div>
         </section>
     </footer><script>
-if('serviceWorker' in navigator) {
-  navigator.serviceWorker
-           .register('/service-worker.js', { scope: '/' })
-           .then(function() { console.log("Service Worker Registered"); });
-}
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/service-worker.js');
+    });
+  }
 </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

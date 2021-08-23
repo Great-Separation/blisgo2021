@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>분리수GO!</title>
     <meta name="theme-color" content="#ffffff">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="twitter:image" content="https://blisgov2.bss.design/assets/img/favicon/favicon512x512.png">
     <meta name="twitter:description" content="분리배출 도우미">
     <meta name="twitter:title" content="BlisGO">
@@ -21,7 +22,7 @@
     <link rel="icon" type="image/png" sizes="180x180" href="assets/img/favicon/favicon180x180.png">
     <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon/favicon192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon/favicon512x512.png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.0.2/dist/united/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.0/dist/united/bootstrap.min.css">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&amp;display=swap">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -35,7 +36,7 @@
     <footer class="d-none d-lg-block p-4" id="footer">
         <section>
             <div class="row">
-                <div class="col text-center"><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-facebook-f"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-twitter"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-google"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-instagram"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-github"></i></a></div>
+                <div class="col text-center"><a class="btn btn-outline-light btn-floating m-1" href="https://gitlab.com/hanok" role="button"><i class="fab fa-gitlab"></i></a></div>
             </div>
             <div class="row text-center p-2">
                 <div class="col align-self-center">
@@ -51,7 +52,7 @@
   }
 </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/service-worker.js"></script>
 </body>

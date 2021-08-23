@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>게시글 - BlisGO</title>
     <meta name="theme-color" content="#ffffff">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="twitter:image" content="https://blisgov2.bss.design/assets/img/favicon/favicon512x512.png">
     <meta name="twitter:description" content="분리배출 도우미">
     <meta name="twitter:title" content="BlisGO">
@@ -21,7 +22,7 @@
     <link rel="icon" type="image/png" sizes="180x180" href="assets/img/favicon/favicon180x180.png">
     <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon/favicon192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon/favicon512x512.png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.0.2/dist/united/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.0/dist/united/bootstrap.min.css">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&amp;display=swap">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -55,7 +56,7 @@
                                 <hr id="usericon-mobile-hr-bottom">
                             </div>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="/qrlogin">QR생성</a><a class="dropdown-item" href="/mypage">마이페이지</a><a class="dropdown-item" href="/mypage">로그아웃</a></div>
+                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="/qrlogin">QR생성</a><a class="dropdown-item" href="/mypage">마이페이지</a><a class="dropdown-item" href="/logout">로그아웃</a></div>
                     </div>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown" id="service-list"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">검수목록</a>
@@ -75,7 +76,7 @@
                     </ul>
                     <div class="dropstart d-none d-lg-block navbar-right" id="usericon-desktop"><a aria-expanded="false" data-bs-toggle="dropdown" class="text-decoration-none text-reset"><img class="img-fluid rounded-circle" id="usericon-desktop-image" src="https://i.pravatar.cc/200" width="40px" height="40px" alt="프로필이미지"></a>
                         <div class="dropdown-menu">
-                            <h6 class="dropdown-header">옥재욱님<span class="float-end user-points"><i class="fas fa-coins user-points-coin"></i>10000</span></h6><a class="dropdown-item" href="/qrlogin">QR생성</a><a class="dropdown-item" href="/mypage">마이페이지조회/수정</a><a class="dropdown-item" href="#">로그아웃</a>
+                            <h6 class="dropdown-header">옥재욱님<span class="float-end user-points"><i class="fas fa-coins user-points-coin"></i>10000</span></h6><a class="dropdown-item" href="/qrlogin">QR생성</a><a class="dropdown-item" href="/mypage">마이페이지조회/수정</a><a class="dropdown-item" href="/logout">로그아웃</a>
                         </div>
                     </div>
                 </div>
@@ -109,7 +110,7 @@
                         </div>
                         <div class="card-footer p-1">
                             <div class="col">
-                                <div class="btn-group float-end" role="group"><button class="btn btn-info" type="button"><i class="fas fa-pencil-alt text-white"></i></button><button class="btn btn-danger" type="button"><i class="fas fa-trash-alt text-white"></i></button></div>
+                                <div class="btn-group float-end" role="group"><button class="btn btn-info" type="button" onclick="location.href=&#39;#&#39;"><i class="fas fa-pencil-alt text-white"></i></button><button class="btn btn-danger" type="button" onclick="location.href=&#39;#&#39;"><i class="fas fa-trash-alt"></i></button></div>
                             </div>
                         </div>
                         <div class="card-body pt-2 p-1">
@@ -121,97 +122,97 @@
                                     <tbody>
                                         <tr>
                                             <td class="p-0">
-                                                <div class="row p-1 m-0">
+                                                <div class="row p-0 m-0">
                                                     <div class="col-auto align-self-center p-0"><img class="img-fluid rounded-circle" id="comment-user-img" width="40px" height="40px" alt="프로필이미지" src="https://i.pravatar.cc/200"></div>
-                                                    <div class="col"><strong>옥재욱</strong><span class="text-secondary" style="margin-left: 10px;">02:05</span>
-                                                        <p style="margin: 0px;">화</p>
+                                                    <div class="col"><strong>옥재욱</strong><span class="text-secondary ms-2">02:05</span>
+                                                        <p class="m-0">화</p>
                                                     </div>
-                                                    <div class="col-auto align-self-center" style="padding-right: 0px;"><button class="btn btn-danger" type="button"><i class="fas fa-trash-alt" style="color: var(--bs-white);"></i></button></div>
+                                                    <div class="col-auto align-self-center me-0 pe-0"><button class="btn btn-danger" type="button" onclick="location.href=&#39;#&#39;"><i class="fas fa-trash-alt"></i></button></div>
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="p-0">
-                                                <div class="row p-1 m-0">
-                                                    <div class="col-auto align-self-center p-0"><img class="img-fluid rounded-circle" id="comment-user-img" src="https://i.pravatar.cc/200?img=2" width="40px" height="40px" alt="프로필이미지"></div>
-                                                    <div class="col"><strong>김민수</strong><span class="text-secondary" style="margin-left: 10px;">02:05</span>
-                                                        <p style="margin: 0px;">이</p>
+                                                <div class="row p-0 m-0">
+                                                    <div class="col-auto align-self-center p-0"><img class="img-fluid rounded-circle" id="comment-user-img-1" width="40px" height="40px" alt="프로필이미지" src="https://i.pravatar.cc/200"></div>
+                                                    <div class="col"><strong>옥재욱</strong><span class="text-secondary ms-2">02:05</span>
+                                                        <p class="m-0">이</p>
                                                     </div>
-                                                    <div class="col-auto align-self-center" style="padding-right: 0px;"><button class="btn btn-danger" type="button"><i class="fas fa-trash-alt" style="color: var(--bs-white);"></i></button></div>
+                                                    <div class="col-auto align-self-center me-0 pe-0"><button class="btn btn-danger" type="button" onclick="location.href=&#39;#&#39;"><i class="fas fa-trash-alt"></i></button></div>
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="p-0">
-                                                <div class="row p-1 m-0">
-                                                    <div class="col-auto align-self-center p-0"><img class="img-fluid rounded-circle" id="comment-user-img" src="https://i.pravatar.cc/200?img=3" width="40px" height="40px" alt="프로필이미지"></div>
-                                                    <div class="col"><strong>김민균</strong><span class="text-secondary" style="margin-left: 10px;">02:05</span>
-                                                        <p style="margin: 0px;">팅</p>
+                                                <div class="row p-0 m-0">
+                                                    <div class="col-auto align-self-center p-0"><img class="img-fluid rounded-circle" id="comment-user-img-2" width="40px" height="40px" alt="프로필이미지" src="https://i.pravatar.cc/200"></div>
+                                                    <div class="col"><strong>옥재욱</strong><span class="text-secondary ms-2">02:05</span>
+                                                        <p class="m-0">자</p>
                                                     </div>
-                                                    <div class="col-auto align-self-center" style="padding-right: 0px;"><button class="btn btn-danger" type="button"><i class="fas fa-trash-alt" style="color: var(--bs-white);"></i></button></div>
+                                                    <div class="col-auto align-self-center me-0 pe-0"><button class="btn btn-danger" type="button" onclick="location.href=&#39;#&#39;"><i class="fas fa-trash-alt"></i></button></div>
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="p-0">
-                                                <div class="row p-1 m-0">
-                                                    <div class="col-auto align-self-center p-0"><img class="img-fluid rounded-circle" id="comment-user-img" src="https://i.pravatar.cc/200?img=4" width="40px" height="40px" alt="프로필이미지"></div>
-                                                    <div class="col"><strong>오민영</strong><span class="text-secondary" style="margin-left: 10px;">02:05</span>
-                                                        <p style="margin: 0px;">~~!</p>
+                                                <div class="row p-0 m-0">
+                                                    <div class="col-auto align-self-center p-0"><img class="img-fluid rounded-circle" id="comment-user-img-3" width="40px" height="40px" alt="프로필이미지" src="https://i.pravatar.cc/200"></div>
+                                                    <div class="col"><strong>옥재욱</strong><span class="text-secondary ms-2">02:05</span>
+                                                        <p class="m-0">말</p>
                                                     </div>
-                                                    <div class="col-auto align-self-center" style="padding-right: 0px;"><button class="btn btn-danger" type="button"><i class="fas fa-trash-alt" style="color: var(--bs-white);"></i></button></div>
+                                                    <div class="col-auto align-self-center me-0 pe-0"><button class="btn btn-danger" type="button" onclick="location.href=&#39;#&#39;"><i class="fas fa-trash-alt"></i></button></div>
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="p-0">
-                                                <div class="row p-1 m-0">
-                                                    <div class="col-auto align-self-center p-0"><img class="img-fluid rounded-circle" id="comment-user-img" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" width="40px" height="40px" alt="프로필이미지"></div>
-                                                    <div class="col"><strong>익명</strong><span class="text-secondary" style="margin-left: 10px;">02:05</span>
-                                                        <p style="margin: 0px;">~</p>
+                                                <div class="row p-0 m-0">
+                                                    <div class="col-auto align-self-center p-0"><img class="img-fluid rounded-circle" id="comment-user-img-4" width="40px" height="40px" alt="프로필이미지" src="https://i.pravatar.cc/200"></div>
+                                                    <div class="col"><strong>옥재욱</strong><span class="text-secondary ms-2">02:05</span>
+                                                        <p class="m-0">고</p>
                                                     </div>
-                                                    <div class="col-auto align-self-center" style="padding-right: 0px;"><button class="btn btn-danger" type="button"><i class="fas fa-trash-alt" style="color: var(--bs-white);"></i></button></div>
+                                                    <div class="col-auto align-self-center me-0 pe-0"><button class="btn btn-danger" type="button" onclick="location.href=&#39;#&#39;"><i class="fas fa-trash-alt"></i></button></div>
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="p-0">
-                                                <div class="row p-1 m-0">
-                                                    <div class="col-auto align-self-center p-0"><img class="img-fluid rounded-circle" id="comment-user-img" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" width="40px" height="40px" alt="프로필이미지"></div>
-                                                    <div class="col"><strong>익명</strong><span class="text-secondary" style="margin-left: 10px;">02:05</span>
-                                                        <p style="margin: 0px;">~</p>
+                                                <div class="row p-0 m-0">
+                                                    <div class="col-auto align-self-center p-0"><img class="img-fluid rounded-circle" id="comment-user-img-5" width="40px" height="40px" alt="프로필이미지" src="https://i.pravatar.cc/200"></div>
+                                                    <div class="col"><strong>옥재욱</strong><span class="text-secondary ms-2">02:05</span>
+                                                        <p class="m-0">모</p>
                                                     </div>
-                                                    <div class="col-auto align-self-center" style="padding-right: 0px;"><button class="btn btn-danger" type="button"><i class="fas fa-trash-alt" style="color: var(--bs-white);"></i></button></div>
+                                                    <div class="col-auto align-self-center me-0 pe-0"><button class="btn btn-danger" type="button" onclick="location.href=&#39;#&#39;"><i class="fas fa-trash-alt"></i></button></div>
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="p-0">
-                                                <div class="row p-1 m-0">
-                                                    <div class="col-auto align-self-center p-0"><img class="img-fluid rounded-circle" id="comment-user-img" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" width="40px" height="40px" alt="프로필이미지"></div>
-                                                    <div class="col"><strong>익명</strong><span class="text-secondary" style="margin-left: 10px;">02:05</span>
-                                                        <p style="margin: 0px;">~</p>
+                                                <div class="row p-0 m-0">
+                                                    <div class="col-auto align-self-center p-0"><img class="img-fluid rounded-circle" id="comment-user-img-6" width="40px" height="40px" alt="프로필이미지" src="https://i.pravatar.cc/200"></div>
+                                                    <div class="col"><strong>옥재욱</strong><span class="text-secondary ms-2">02:05</span>
+                                                        <p class="m-0">더</p>
                                                     </div>
-                                                    <div class="col-auto align-self-center" style="padding-right: 0px;"><button class="btn btn-danger" type="button"><i class="fas fa-trash-alt" style="color: var(--bs-white);"></i></button></div>
+                                                    <div class="col-auto align-self-center me-0 pe-0"><button class="btn btn-danger" type="button" onclick="location.href=&#39;#&#39;"><i class="fas fa-trash-alt"></i></button></div>
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td class="p-0">
-                                                <div class="row p-1 m-0">
-                                                    <div class="col-auto align-self-center p-0"><img class="img-fluid rounded-circle" id="comment-user-img" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_1280.png" width="40px" height="40px" alt="프로필이미지"></div>
-                                                    <div class="col"><strong>익명</strong><span class="text-secondary" style="margin-left: 10px;">02:05</span>
-                                                        <p style="margin: 0px;">~</p>
+                                                <div class="row p-0 m-0">
+                                                    <div class="col-auto align-self-center p-0"><img class="img-fluid rounded-circle" id="comment-user-img-7" width="40px" height="40px" alt="프로필이미지" src="https://i.pravatar.cc/200"></div>
+                                                    <div class="col"><strong>옥재욱</strong><span class="text-secondary ms-2">02:05</span>
+                                                        <p class="m-0">나</p>
                                                     </div>
-                                                    <div class="col-auto align-self-center" style="padding-right: 0px;"><button class="btn btn-danger" type="button"><i class="fas fa-trash-alt" style="color: var(--bs-white);"></i></button></div>
+                                                    <div class="col-auto align-self-center me-0 pe-0"><button class="btn btn-danger" type="button" onclick="location.href=&#39;#&#39;"><i class="fas fa-trash-alt"></i></button></div>
                                                 </div>
                                             </td>
                                         </tr>
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <td>
-                                                <div class="bg-light bg-gradient shadow-sm"><button class="btn btn-link w-100 text-decoration-none text-secondary" type="button"><span>더보기</span><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" class="bi bi-chevron-down">
+                                            <td class="p-0">
+                                                <div class="bg-light bg-gradient shadow-sm"><button class="btn btn-link w-100 text-decoration-none text-secondary" type="button" onclick="location.href=&#39;#&#39;"><span>더보기</span><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-chevron-down">
                                                             <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"></path>
                                                         </svg></button></div>
                                             </td>
@@ -228,7 +229,7 @@
     <footer class="d-none d-lg-block p-4" id="footer">
         <section>
             <div class="row">
-                <div class="col text-center"><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-facebook-f"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-twitter"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-google"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-instagram"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-github"></i></a></div>
+                <div class="col text-center"><a class="btn btn-outline-light btn-floating m-1" href="https://gitlab.com/hanok" role="button"><i class="fab fa-gitlab"></i></a></div>
             </div>
             <div class="row text-center p-2">
                 <div class="col align-self-center">
@@ -239,12 +240,12 @@
     </footer><script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
-      navigator.serviceWorker.register('/pwabuilder-sw.js');
+      navigator.serviceWorker.register('/service-worker.js');
     });
   }
 </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/service-worker.js"></script>
 </body>

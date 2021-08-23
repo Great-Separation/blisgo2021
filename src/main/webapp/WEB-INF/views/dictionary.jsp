@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>사전 - BlisGO</title>
     <meta name="theme-color" content="#ffffff">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="twitter:image" content="https://blisgov2.bss.design/assets/img/favicon/favicon512x512.png">
     <meta name="twitter:description" content="분리배출 도우미">
     <meta name="twitter:title" content="BlisGO">
@@ -21,7 +22,7 @@
     <link rel="icon" type="image/png" sizes="180x180" href="assets/img/favicon/favicon180x180.png">
     <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon/favicon192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/img/favicon/favicon512x512.png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.0.2/dist/united/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.0/dist/united/bootstrap.min.css">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&amp;display=swap">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -55,7 +56,7 @@
                                 <hr id="usericon-mobile-hr-bottom">
                             </div>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="/qrlogin">QR생성</a><a class="dropdown-item" href="/mypage">마이페이지</a><a class="dropdown-item" href="/mypage">로그아웃</a></div>
+                        <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item" href="/qrlogin">QR생성</a><a class="dropdown-item" href="/mypage">마이페이지</a><a class="dropdown-item" href="/logout">로그아웃</a></div>
                     </div>
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown" id="service-list"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">검수목록</a>
@@ -70,12 +71,12 @@
                             </div>
                         </li>
                         <li class="nav-item" id="encyclopedia"><a class="nav-link" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="/dictionary" title="분리배출 사전입니다">사전</a></li>
-                        <li class="nav-item" id="community"><a class="nav-link active" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="/community" title="자유롭게 글을 작성할 수 있습니다">게시판</a></li>
+                        <li class="nav-item" id="community"><a class="nav-link" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="/community" title="자유롭게 글을 작성할 수 있습니다">게시판</a></li>
                         <li class="nav-item" id="login"><a class="nav-link" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="/login" title="회원이용시 다양한 혜택을 이용할 수 있습니다">로그인</a></li>
                     </ul>
                     <div class="dropstart d-none d-lg-block navbar-right" id="usericon-desktop"><a aria-expanded="false" data-bs-toggle="dropdown" class="text-decoration-none text-reset"><img class="img-fluid rounded-circle" id="usericon-desktop-image" src="https://i.pravatar.cc/200" width="40px" height="40px" alt="프로필이미지"></a>
                         <div class="dropdown-menu">
-                            <h6 class="dropdown-header">옥재욱님<span class="float-end user-points"><i class="fas fa-coins user-points-coin"></i>10000</span></h6><a class="dropdown-item" href="/qrlogin">QR생성</a><a class="dropdown-item" href="/mypage">마이페이지조회/수정</a><a class="dropdown-item" href="#">로그아웃</a>
+                            <h6 class="dropdown-header">옥재욱님<span class="float-end user-points"><i class="fas fa-coins user-points-coin"></i>10000</span></h6><a class="dropdown-item" href="/qrlogin">QR생성</a><a class="dropdown-item" href="/mypage">마이페이지조회/수정</a><a class="dropdown-item" href="/logout">로그아웃</a>
                         </div>
                     </div>
                 </div>
@@ -87,10 +88,10 @@
             <div class="card">
                 <div class="card-header">
                     <div class="row">
-                        <div class="col">
+                        <div class="col p-0">
                             <form>
-                                <div class="row">
-                                    <div class="col">
+                                <div class="row m-0">
+                                    <div class="col p-0">
                                         <div class="input-group"><select class="border rounded form-select" name="dic-category-big">
                                                 <option value="">대분류</option>
                                                 <option value="">재활용품</option>
@@ -124,8 +125,8 @@
                                             </select></div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col">
+                                <div class="row m-0">
+                                    <div class="col p-0">
                                         <div class="input-group"><input class="border rounded form-control" type="search" placeholder="내용을 입력하세요" name="dic-category-small"><button class="btn btn-primary col-1" id="category-search-btn" type="submit"><i class="fas fa-search"></i></button></div>
                                     </div>
                                 </div>
@@ -136,12 +137,12 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2483836/24838366019.20201114183914.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2483836/24838366019.20201114183914.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
                                 <figcaption class="figure-caption">그릇</figcaption>
                             </figure>
                         </div>
                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2034702/20347023958.20210517144254.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2034702/20347023958.20210517144254.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
                                 <figcaption class="figure-caption">런닝머신</figcaption>
                             </figure>
                         </div>
@@ -151,54 +152,54 @@
                             </figure>
                         </div>
                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2742909/27429098399.20210604004021.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2742909/27429098399.20210604004021.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
                                 <figcaption class="figure-caption">냄비뚜껑(강화유리)</figcaption>
                             </figure>
                         </div>
                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2520129/25201298488.20201212225921.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2520129/25201298488.20201212225921.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
                                 <figcaption class="figure-caption">면도칼</figcaption>
                             </figure>
                         </div>
                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2618534/26185343849.20210228172138.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2618534/26185343849.20210228172138.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
                                 <figcaption class="figure-caption">바둑판</figcaption>
                             </figure>
                         </div>
                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2569930/25699304522.20210316103708.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2569930/25699304522.20210316103708.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
                                 <figcaption class="figure-caption">복사기</figcaption>
                             </figure>
                         </div>
                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_1772518/17725189210.20190226150216.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_1772518/17725189210.20190226150216.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
                                 <figcaption class="figure-caption">볼풋공</figcaption>
                             </figure>
                         </div>
                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2503852/25038525522.20201130085638.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2503852/25038525522.20201130085638.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
                                 <figcaption class="figure-caption">세탁기</figcaption>
                             </figure>
                         </div>
                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2401360/24013605996.20200902215930.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2401360/24013605996.20200902215930.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
                                 <figcaption class="figure-caption">유리병뚜껑(철, 알루미늄)</figcaption>
                             </figure>
                         </div>
                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2308499/23084992490.20200609114121.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2308499/23084992490.20200609114121.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
                                 <figcaption class="figure-caption">정수기</figcaption>
                             </figure>
                         </div>
                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2537221/25372219749.20201225214656.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2537221/25372219749.20201225214656.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
                                 <figcaption class="figure-caption">콘텍트렌즈</figcaption>
                             </figure>
                         </div>
                     </div>
                 </div>
-                <div class="card-body text-center p-2">
-                    <div class="bg-light bg-gradient shadow-sm"><button class="btn btn-link w-100 text-decoration-none text-secondary" type="button"><span>더보기</span><i class="fas fa-chevron-down"></i></button></div>
+                <div class="card-body text-center p-0">
+                    <div class="bg-light bg-gradient shadow-sm"><button class="btn btn-link w-100 text-decoration-none text-secondary" type="button" onclick="location.href=&#39;#&#39;"><span>더보기</span><i class="fas fa-chevron-down"></i></button></div>
                 </div>
             </div>
         </div>
@@ -206,7 +207,7 @@
     <footer class="d-none d-lg-block p-4" id="footer">
         <section>
             <div class="row">
-                <div class="col text-center"><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-facebook-f"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-twitter"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-google"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-instagram"></i></a><a class="btn btn-outline-light btn-floating m-1" href="#" role="button"><i class="fab fa-github"></i></a></div>
+                <div class="col text-center"><a class="btn btn-outline-light btn-floating m-1" href="https://gitlab.com/hanok" role="button"><i class="fab fa-gitlab"></i></a></div>
             </div>
             <div class="row text-center p-2">
                 <div class="col align-self-center">
@@ -217,12 +218,12 @@
     </footer><script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
-      navigator.serviceWorker.register('/pwabuilder-sw.js');
+      navigator.serviceWorker.register('/service-worker.js');
     });
   }
 </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/service-worker.js"></script>
 </body>
