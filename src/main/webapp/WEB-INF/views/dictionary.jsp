@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 
@@ -89,45 +90,42 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col p-0">
-                            <form>
+                            <form method="get" action="/dictionary">
                                 <div class="row m-0">
                                     <div class="col p-0">
-                                        <div class="input-group"><select class="border rounded form-select" name="dic-category-big">
-                                                <option value="">대분류</option>
-                                                <option value="">재활용품</option>
-                                                <option value="">폐가전제품 및 대형폐기물</option>
-                                                <option value="">음식물류폐기물</option>
-                                                <option value="">유해폐기물</option>
-                                                <option value="">가연성 및 불연성 폐기물</option>
-                                                <option value="">기타 폐기물</option>
-                                            </select><select class="form-select" name="dic-category-middle">
-                                                <option value="">중분류</option>
-                                                <option value="">종이류</option>
-                                                <option value="">종이팩, 종이컵</option>
-                                                <option value="">금속캔</option>
-                                                <option value="">고철류</option>
-                                                <option value="">유리병</option>
-                                                <option value="">페트병</option>
-                                                <option value="">플라스틱 용기류(PE.PP 등)</option>
-                                                <option value="">비닐류(필름류)</option>
-                                                <option value="">발포합성수지(스티로폼)</option>
-                                                <option value="">의류 및 원단류</option>
-                                                <option value="">폐식용유</option>
-                                                <option value="">영농폐기물류</option>
-                                                <option value="">폐형광등</option>
-                                                <option value="">폐건전지</option>
-                                                <option value="">폐가전제품</option>
-                                                <option value="">대형폐기물</option>
-                                                <option value="">음식물류폐기물</option>
-                                                <option value="">유해폐기물</option>
-                                                <option value="">가연성, 불연성 폐기물</option>
-                                                <option value="">기타 폐기물</option>
+                                        <div class="input-group"><select class="border rounded form-select" name="category_big">
+                                                <option value="" selected="">대분류</option>
+                                                <option value="생활폐기물">생활폐기물</option>
+                                                <option value="폐가전제품">폐가전제품</option>
+                                                <option value="대형폐기물">대형폐기물</option>
+                                                <option value="기타폐기물">기타폐기물</option>
+                                            </select><select class="form-select" name="category_mid">
+                                                <option value="" selected="">중분류</option>
+                                                <option value="종이">종이</option>
+                                                <option value="종이팩">종이팩</option>
+                                                <option value="금속캔">금속캔</option>
+                                                <option value="고철">고철</option>
+                                                <option value="유리병">유리병</option>
+                                                <option value="플라스틱">플라스틱</option>
+                                                <option value="비닐">비닐</option>
+                                                <option value="발포합성">발포합성</option>
+                                                <option value="의류">의류</option>
+                                                <option value="가전제품">가전제품</option>
+                                                <option value="대형">대형</option>
+                                                <option value="음식물">음식물</option>
+                                                <option value="유해">유해</option>
+                                                <option value="불연성, 종량제">불연성, 종량제</option>
+                                                <option value="종량제봉투">종량제봉투</option>
+                                                <option value="전용함">전용함</option>
+                                                <option value="전문시설">전문시설</option>
+                                                <option value="주의">주의</option>
+                                                <option value="재질별분리">재질별분리</option>
                                             </select></div>
                                     </div>
                                 </div>
                                 <div class="row m-0">
                                     <div class="col p-0">
-                                        <div class="input-group"><input class="border rounded form-control" type="search" placeholder="내용을 입력하세요" name="dic-category-small"><button class="btn btn-primary col-1" id="category-search-btn" type="submit"><i class="fas fa-search"></i></button></div>
+                                        <div class="input-group"><input class="border rounded form-control" type="search" placeholder="내용을 입력하세요" name="category_small"><button class="btn btn-primary col-1" id="category-search-btn" type="submit"><i class="fas fa-search"></i></button></div>
                                     </div>
                                 </div>
                             </form>
@@ -135,68 +133,14 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2483836/24838366019.20201114183914.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                <figcaption class="figure-caption">그릇</figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2034702/20347023958.20210517144254.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                <figcaption class="figure-caption">런닝머신</figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            <figure class="figure"><a href="product.html"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_1461653/14616534957.20180623175323.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                <figcaption class="figure-caption">나무 조각, 가지, 줄기</figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2742909/27429098399.20210604004021.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                <figcaption class="figure-caption">냄비뚜껑(강화유리)</figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2520129/25201298488.20201212225921.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                <figcaption class="figure-caption">면도칼</figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2618534/26185343849.20210228172138.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                <figcaption class="figure-caption">바둑판</figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2569930/25699304522.20210316103708.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                <figcaption class="figure-caption">복사기</figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_1772518/17725189210.20190226150216.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                <figcaption class="figure-caption">볼풋공</figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2503852/25038525522.20201130085638.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                <figcaption class="figure-caption">세탁기</figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2401360/24013605996.20200902215930.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                <figcaption class="figure-caption">유리병뚜껑(철, 알루미늄)</figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2308499/23084992490.20200609114121.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                <figcaption class="figure-caption">정수기</figcaption>
-                            </figure>
-                        </div>
-                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2537221/25372219749.20201225214656.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                <figcaption class="figure-caption">콘텍트렌즈</figcaption>
-                            </figure>
-                        </div>
-                    </div>
+                    <div class="row"><!--JSP 유효-->
+<c:forEach items="${products}" var="product">
+							<div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
+                            	<figure class="figure"><a href="/product?dic_no=${product.getDic_no()}"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="${product.getThumbnail()}" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                                	<figcaption class="figure-caption">${product.getName()}</figcaption>
+                            	</figure>
+                        	</div>
+						</c:forEach></div>
                 </div>
                 <div class="card-body text-center p-0">
                     <div class="bg-light bg-gradient shadow-sm"><button class="btn btn-link w-100 text-decoration-none text-secondary" type="button" onclick="location.href=&#39;#&#39;"><span>더보기</span><i class="fas fa-chevron-down"></i></button></div>
@@ -221,10 +165,17 @@
       navigator.serviceWorker.register('/service-worker.js');
     });
   }
-</script>
+</script><!--더보기 관련 코드-->
+$(function () { 
+    $('.readmore').readmore({ 
+        blockCSS: 'display: block; width: 250px;',
+        collapsedHeight: 18
+    });
+});
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Readmore.js/2.2.1/readmore.js"></script>
     <script src="assets/js/service-worker.js"></script>
 </body>
 

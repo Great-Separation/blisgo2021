@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 
@@ -88,53 +89,71 @@
             <div class="container" id="category-product">
                 <article id="info" class="pb-2">
                     <div class="row">
-                        <div class="col-md-6 text-center"><img class="img-fluid shadow-sm bounce animated small-preview" src="https://shopping-phinf.pstatic.net/main_2483836/24838366019.20201114183914.jpg?type=f640" alt="사전 이미지" width="640px" height="640px"></div>
+                        <div class="col-md-6 text-center"><img class="img-fluid shadow-sm bounce animated small-preview" src="${product.getThumbnail()}" alt="사전 이미지" width="640px" height="640px"></div>
                         <div class="col-md-6 align-self-center">
                             <div class="row">
                                 <div class="col-12 py-1">
                                     <ol class="breadcrumb mt-1 mb-1">
-                                        <li class="breadcrumb-item"><a><span>가연성, 불연성 폐기물</span></a></li>
-                                        <li class="breadcrumb-item"><a><span>그릇</span></a></li>
+                                        <li class="breadcrumb-item"><a><span>${product.getCategory_mid()}</span></a></li>
+                                        <li class="breadcrumb-item"><a><span>${product.getName()}</span></a></li>
                                     </ol>
                                     <hr class="mt-1 mb-0">
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col align-self-center py-1">
-                                    <h1 class="m-0">그릇</h1>
+                            <div class="row justify-content-end">
+                                <div class="col-9 align-self-center py-1">
+                                    <h1 class="m-0">${product.getName()}</h1>
                                 </div>
-                                <div class="col align-self-center py-1 text-end">
+                                <div class="col-3 align-self-center py-1 text-end">
                                     <div class="btn-group" role="group" id="product-icon"><button class="btn btn-link" id="btn-toast" type="button" data-bs-target="#liveToast" data-bs-toggle="toast"><i class="fas fa-bookmark"></i></button><button class="btn btn-link" id="btn-share" type="button" data-bs-target="#modal-share" data-bs-toggle="modal"><i class="fas fa-share-alt"></i></button></div>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-auto align-self-center py-1"><i class="fas fa-star" id="product-star"></i><span id="product-rating">7.7</span></div>
+                                <div class="col-auto align-self-center py-1"><i class="fas fa-star" id="product-star"></i><span id="product-rating">${product.getPopularity()}</span></div>
                                 <div class="col align-self-center py-1"><i class="fas fa-book"></i><span>도감에 추가됨</span></div>
                             </div>
                             <div class="row">
-                                <div class="col py-1"><span class="badge rounded-pill bg-light" id="product-badge"><i class="fas fa-hashtag"></i>(불연성)종량제</span><span class="badge rounded-pill bg-light" id="product-badge"><i class="fas fa-hashtag"></i>고철</span><span class="badge rounded-pill bg-light" id="product-badge"><i class="fas fa-hashtag"></i>플라스틱</span></div>
+                                <div class="col py-1"><c:forEach var="tag" items="${category_mid_list}">
+    <span class="badge rounded-pill bg-light" id="product-badge"><i class="fas fa-hashtag"></i>${tag}</span>
+</c:forEach></div>
                                 <div class="col-12">
                                     <hr class="mt-1 mb-1">
                                 </div>
-                                <div class="col-12 py-1">
-                                    <h6 class="py-2"><strong>(불연성)종량제</strong>&nbsp;&lt; 도자기·유리그릇<br><strong>고철</strong>&nbsp;&lt; 금속, 비금속그릇<br><strong>플라스틱</strong>&nbsp;&lt; 플라스틱 그릇<br></h6>
-                                </div>
+                                <div class="col-12 py-1"><h6 class="py-2">${product.getGuide()}</h6></div>
                             </div>
                         </div>
                     </div>
                 </article>
                 <article id="describe">
-                    <hr>
-                    <div>
+                    <hr>                    <div>
+                    	<c:set var="flag" value="true" />
                         <ul class="nav nav-tabs mb-2" role="tablist" id="myTab">
-                            <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" id="tag1-tab" href="#tag1">(불연성)종량제</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" id="tag2-tab" href="#tag2">고철</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" id="tag3-tab" href="#tag3">플라스틱</a></li>
+                        	<c:forEach var="guide" items="${guides}">
+                        		<c:choose> 
+                        			<c:when test="${flag}">
+                        				<c:set var="flag" value="false" />
+                        				<li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" href="#${guide.getGuide_name()}">${guide.getGuide_name()}</a></li>
+                        			</c:when> 
+                        			<c:otherwise>
+                        				<li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#${guide.getGuide_name()}">${guide.getGuide_name()}</a></li>
+                        			</c:otherwise>
+                        		</c:choose> 
+                        	</c:forEach>
                         </ul>
+                        <c:set var="flag" value="true" />
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active description" role="tabpanel" id="tag1"><img class="img-fluid copyright" src="assets/img/recycle-guide/recycle불연성-종량제.png" loading="lazy" width="100%" height="100%" alt="설명서"></div>
-                            <div class="tab-pane fade specifications" role="tabpanel" id="tag2"><img class="img-fluid copyright" src="assets/img/recycle-guide/recycle고철류.png" loading="lazy" width="100%" height="100%" alt="설명서"></div>
-                            <div class="tab-pane fade" role="tabpanel" id="tag3"><img class="img-fluid copyright" src="assets/img/recycle-guide/recycle플라스틱.png" loading="lazy" width="100%" height="100%" alt="설명서"></div>
+                        	<!-- 첫번째 탭 active 설정 이후 hide-->
+                        	<c:forEach var="guide" items="${guides}">
+                        		<c:choose> 
+                        			<c:when test="${flag}">
+                        				<c:set var="flag" value="false" />
+                        				<div class="tab-pane fade show active description" role="tabpanel" id="${guide.getGuide_name()}"><img class="img-fluid copyright" src="${guide.getImage_path()}" width="100%" height="100%" alt="설명서"></div>
+                        			</c:when> 
+                        			<c:otherwise>
+                        				<div class="tab-pane fade specifications" role="tabpanel" id="${guide.getGuide_name()}"><img class="img-fluid copyright" src="${guide.getImage_path()}" width="100%" height="100%" alt="설명서"></div>
+                        			</c:otherwise>
+                        		</c:choose> 
+                        	</c:forEach>
                         </div>
                     </div>
                     <hr>
@@ -150,7 +169,7 @@
                                 <div class="btn-group" role="group"><button class="btn btn-link" type="button"><i class="fab fa-google" style="color: var(--bs-red);font-size: 30px;"></i></button><button class="btn btn-link" type="button"><i class="fab fa-facebook-f" style="color: var(--bs-blue);font-size: 30px;"></i></button><button class="btn btn-link" type="button"><i class="fab fa-instagram" style="background: #ffffff;color: var(--bs-pink);font-size: 30px;"></i></button><button class="btn btn-link" type="button"><i class="icon ion-chatbubble" style="color: var(--bs-yellow);font-size: 30px;"></i></button><button class="btn btn-link" type="button"><i class="fab fa-github-alt" style="color: var(--bs-indigo);font-size: 30px;"></i></button></div>
                             </div>
                             <div class="modal-footer">
-                                <div class="input-group"><span class="input-group-text bg-white"><i class="fas fa-link"></i></span><input class="form-control" type="url" placeholder="http://blisgo.com/product?link=here"><button class="btn btn-primary" type="button"><i class="far fa-copy"></i></button></div>
+                                <div class="input-group"><span class="input-group-text bg-white"><i class="fas fa-link"></i></span><input class="form-control" type="url" value="${pageContext.request.requestURL}" readonly=""><button class="btn btn-primary" type="button"><i class="far fa-copy"></i></button></div>
                             </div>
                         </div>
                     </div>
@@ -160,48 +179,6 @@
                         <div class="toast-header"><img class="me-2"><strong class="me-auto">Title</strong><small>10 min ago</small><button class="btn-close ms-2 mb-1 close" data-bs-dismiss="toast"></button></div>
                         <div class="toast-body" role="alert">
                             <p>장치를 통해 도감에 추가할 수 있습니다&nbsp;</p>
-                        </div>
-                    </div>
-                    <div class="toast fade hide" role="alert" id="toast-1">
-                        <div class="toast-header"><img class="me-2"><strong class="me-auto">Title</strong><small>10 min ago</small><button class="btn-close ms-2 mb-1 close" data-bs-dismiss="toast"></button></div>
-                        <div class="toast-body" role="alert">
-                            <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-                        </div>
-                    </div>
-                    <div class="toast fade hide" role="alert" id="toast-2">
-                        <div class="toast-header"><img class="me-2"><strong class="me-auto">Title</strong><small>10 min ago</small><button class="btn-close ms-2 mb-1 close" data-bs-dismiss="toast"></button></div>
-                        <div class="toast-body" role="alert">
-                            <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-                        </div>
-                    </div>
-                    <div class="toast fade hide" role="alert" id="toast-3">
-                        <div class="toast-header"><img class="me-2"><strong class="me-auto">Title</strong><small>10 min ago</small><button class="btn-close ms-2 mb-1 close" data-bs-dismiss="toast"></button></div>
-                        <div class="toast-body" role="alert">
-                            <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-                        </div>
-                    </div>
-                    <div class="toast fade hide" role="alert" id="toast-4">
-                        <div class="toast-header"><img class="me-2"><strong class="me-auto">Title</strong><small>10 min ago</small><button class="btn-close ms-2 mb-1 close" data-bs-dismiss="toast"></button></div>
-                        <div class="toast-body" role="alert">
-                            <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-                        </div>
-                    </div>
-                    <div class="toast fade hide" role="alert" id="toast-5">
-                        <div class="toast-header"><img class="me-2"><strong class="me-auto">Title</strong><small>10 min ago</small><button class="btn-close ms-2 mb-1 close" data-bs-dismiss="toast"></button></div>
-                        <div class="toast-body" role="alert">
-                            <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-                        </div>
-                    </div>
-                    <div class="toast fade hide" role="alert" id="toast-6">
-                        <div class="toast-header"><img class="me-2"><strong class="me-auto">Title</strong><small>10 min ago</small><button class="btn-close ms-2 mb-1 close" data-bs-dismiss="toast"></button></div>
-                        <div class="toast-body" role="alert">
-                            <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-                        </div>
-                    </div>
-                    <div class="toast fade hide" role="alert" id="toast-7">
-                        <div class="toast-header"><img class="me-2"><strong class="me-auto">Title</strong><small>10 min ago</small><button class="btn-close ms-2 mb-1 close" data-bs-dismiss="toast"></button></div>
-                        <div class="toast-body" role="alert">
-                            <p>Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
                         </div>
                     </div>
                 </div>
@@ -214,28 +191,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-6 col-lg-3 spacer-slider">
-                        <figure class="figure"><a href="/product"><img class="img-fluid" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2324808/23248083407.20200623235150.jpg?type=f640" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                            <figcaption class="figure-caption">헬멧</figcaption>
-                        </figure>
-                    </div>
-                    <div class="col-6 col-lg-3 spacer-slider">
-                        <figure class="figure"><a href="/product"><img class="img-fluid" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_1226839/12268397055.20170915173215.jpg?type=f640" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                            <figcaption class="figure-caption">치약용기</figcaption>
-                        </figure>
-                    </div>
-                    <div class="col-6 col-lg-3 spacer-slider">
-                        <figure class="figure"><a href="/product"><img class="img-fluid" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2579926/25799266307.20210130165913.jpg?type=f640" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                            <figcaption class="figure-caption">진열대</figcaption>
-                        </figure>
-                    </div>
-                    <div class="col-6 col-lg-3 spacer-slider">
-                        <figure class="figure"><a href="/product"><img class="img-fluid" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2308499/23084992490.20200609114121.jpg?type=f640" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                            <figcaption class="figure-caption">정수기</figcaption>
-                        </figure>
-                    </div>
-                </div>
+                <div class="row"><c:forEach items="${relatedProducts}" var="relatedProduct">
+						<div class="col-6 col-lg-3 spacer-slider">
+                        	<figure class="figure"><a href="/product?dic_no=${relatedProduct.getDic_no()}"><img class="img-fluid" data-bss-hover-animate="pulse" src="${relatedProduct.getThumbnail()}" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                            	<figcaption class="figure-caption">${relatedProduct.getName()}</figcaption>
+                        	</figure>
+                    	</div>
+					</c:forEach></div>
             </div>
         </section>
     </main>
