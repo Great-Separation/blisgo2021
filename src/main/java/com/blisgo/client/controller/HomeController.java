@@ -1,21 +1,28 @@
 package com.blisgo.client.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.blisgo.client.dto.UserDTO;
-import com.blisgo.client.service.UserService;
+import com.blisgo.client.dto.DictionaryDTO;
+import com.blisgo.client.service.HomeService;
 
 @Controller
 public class HomeController {
 
+	@Autowired
+	private HomeService homeService;
+	
 	@GetMapping("/")
 	public String index(Model model) {
+		// 최근 등록된 product 나열
+		ArrayList<DictionaryDTO> recentProducts = homeService.recentProduct();		
+		model.addAttribute("recentProducts", recentProducts);
+		
 		return "index";
 	}
 

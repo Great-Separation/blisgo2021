@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 
@@ -45,8 +46,7 @@
                         <div class="col">
                             <div class="card m-auto" style="max-width:850px">
                                 <div class="card-body p-1">
-                                    <form class="d-flex align-items-center ui-filterable" autocomplete="off" action=""><input class="form-control form-control-sm form-control-borderless p-1" type="search" id="autocomplete" placeholder="키워드를 입력하세요" name="searchWaste" minlength="1" required="" style="padding: 0px;border-style: none;" autocomplete="off"><button class="btn btn-success" type="submit">GO!</button></form><script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+                                    <form class="d-flex align-items-center ui-filterable" autocomplete="off" action="/dictionary" method="get"><input class="form-control form-control-sm form-control-borderless p-1" type="search" id="autocomplete" placeholder="키워드를 입력하세요" name="category_small" minlength="1" required="" style="padding: 0px;border-style: none;" autocomplete="off"><button class="btn btn-success" type="submit">GO!</button></form>
                                 </div>
                             </div>
                         </div>
@@ -100,84 +100,45 @@
                 <article>
                     <div class="intro">
                         <h2 class="text-center">최근 등록된 폐기물</h2>
-                    </div>
-                    <div class="carousel slide carousel-dark" data-bs-ride="carousel" id="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active p-2">
-                                <div class="row">
-                                    <div class="col-6 col-lg-3 spacer-slider">
-                                        <figure class="figure"><a href="/product"><img class="img-fluid" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2324808/23248083407.20200623235150.jpg?type=f640" loading="lazy" alt="사전 이미지" width="640px" height="640px"></a>
-                                            <figcaption class="figure-caption">헬멧</figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-6 col-lg-3 spacer-slider">
-                                        <figure class="figure"><a href="/product"><img class="img-fluid" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_1226839/12268397055.20170915173215.jpg?type=f640" loading="lazy" alt="사전 이미지" width="640px" height="640px"></a>
-                                            <figcaption class="figure-caption">치약용기</figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-6 col-lg-3 spacer-slider">
-                                        <figure class="figure"><a href="/product"><img class="img-fluid" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2579926/25799266307.20210130165913.jpg?type=f640" loading="lazy" alt="사전 이미지" width="640px" height="640px"></a>
-                                            <figcaption class="figure-caption">진열대</figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-6 col-lg-3 spacer-slider">
-                                        <figure class="figure"><a href="/product"><img class="img-fluid" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2308499/23084992490.20200609114121.jpg?type=f640" loading="lazy" alt="사전 이미지" width="640px" height="640px"></a>
-                                            <figcaption class="figure-caption">정수기</figcaption>
-                                        </figure>
-                                    </div>
+                    </div><div class="carousel slide carousel-dark" data-bs-ride="carousel" id="carousel">
+    <div class="carousel-inner">
+        <c:set var="cnt" value="0"/>
+        <c:set var="recentProducts" value="${recentProducts}"/>
+        <c:forEach var="i" begin="1" end="3" step="1">
+            <c:choose>
+                <c:when test="${i eq 1}">
+                    <div class="carousel-item active p-2">
+                        <div class="row">
+                            <c:forEach var="j" begin="1" end="4" step="1">
+                                <div class="col-6 col-lg-3 spacer-slider">
+                                    <figure class="figure"><a href="/product?dic_no=${recentProducts.get(cnt).getDic_no()}"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="${recentProducts.get(cnt).getThumbnail()}" title="${recentProducts.get(cnt).getEng_name()}" loading="lazy" alt="사전 이미지" width="640px" height="640px"></a>
+                                        <figcaption class="figure-caption">${recentProducts.get(cnt).getName()}</figcaption>
+                                    </figure>
                                 </div>
-                            </div>
-                            <div class="carousel-item p-2">
-                                <div class="row">
-                                    <div class="col-6 col-lg-3 spacer-slider">
-                                        <figure class="figure"><a href="/product"><img class="img-fluid" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_8583382/8583382533.20200709094708.jpg?type=f640" loading="lazy" alt="물품"></a>
-                                            <figcaption class="figure-caption">전지</figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-6 col-lg-3 spacer-slider">
-                                        <figure class="figure"><a href="/product"><img class="img-fluid" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2446543/24465434523.20201016140333.jpg?type=f640" loading="lazy" alt="물품"></a>
-                                            <figcaption class="figure-caption">전기밥솔</figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-6 col-lg-3 spacer-slider">
-                                        <figure class="figure"><a href="/product"><img class="img-fluid" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_1091883/10918830271.20170113170904.jpg?type=f640" loading="lazy" alt="물품"></a>
-                                            <figcaption class="figure-caption">인형류</figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-6 col-lg-3 spacer-slider">
-                                        <figure class="figure"><a href="/product"><img class="img-fluid" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2771374/27713742522.20210625111150.jpg?type=f640" loading="lazy" alt="물품"></a>
-                                            <figcaption class="figure-caption">요가매트</figcaption>
-                                        </figure>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item p-2">
-                                <div class="row">
-                                    <div class="col-6 col-lg-3 spacer-slider">
-                                        <figure class="figure"><a href="/product"><img class="img-fluid" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_1516434/15164349963.20181010233952.jpg?type=f640" loading="lazy"></a>
-                                            <figcaption class="figure-caption">액자</figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-6 col-lg-3 spacer-slider">
-                                        <figure class="figure"><a href="/product"><img class="img-fluid" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_7872712/7872712963.20140925112335.jpg?type=f640" loading="lazy"></a>
-                                            <figcaption class="figure-caption">스피커</figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-6 col-lg-3 spacer-slider">
-                                        <figure class="figure"><a href="/product"><img class="img-fluid" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2703799/27037999040.20210505173823.jpg?type=f640" loading="lazy"></a>
-                                            <figcaption class="figure-caption">숯</figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-6 col-lg-3 spacer-slider">
-                                        <figure class="figure"><a href="/product"><img class="img-fluid" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2794420/27944208728.20210710224045.jpg?type=f640" loading="lazy"></a>
-                                            <figcaption class="figure-caption">성냥</figcaption>
-                                        </figure>
-                                    </div>
-                                </div>
-                            </div>
+                                <c:set var="cnt" value="${cnt+1}"/>
+                            </c:forEach>
                         </div>
-                        <div><a class="carousel-control-prev" href="#carousel" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></a><a class="carousel-control-next" href="#carousel" role="button" data-bs-slide="next"><span class="carousel-control-next-icon"></span></a></div>
                     </div>
+                </c:when> 
+                <c:otherwise>
+                    <div class="carousel-item p-2">
+                        <div class="row">
+                            <c:forEach var="j" begin="1" end="4" step="1">
+                                <div class="col-6 col-lg-3 spacer-slider">
+                                    <figure class="figure"><a href="/product?dic_no=${recentProducts.get(cnt).getDic_no()}"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="${recentProducts.get(cnt).getThumbnail()}" title="${recentProducts.get(cnt).getEng_name()}" loading="lazy" alt="사전 이미지" width="640px" height="640px"></a>
+                                        <figcaption class="figure-caption">${recentProducts.get(cnt).getName()}</figcaption>
+                                    </figure>
+                                </div>
+                                <c:set var="cnt" value="${cnt+1}"/>
+                            </c:forEach>
+                        </div>
+                    </div>
+                </c:otherwise>
+            </c:choose> 
+        </c:forEach>
+    </div>
+    <div><a class="carousel-control-prev" href="#carousel" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></a><a class="carousel-control-next" href="#carousel" role="button" data-bs-slide="next"><span class="carousel-control-next-icon"></span></a></div>
+</div>
                 </article>
             </div>
         </section>
