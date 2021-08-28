@@ -27,7 +27,6 @@
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&amp;display=swap">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="assets/css/image-slider.css">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -133,17 +132,19 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="row"><!--JSP 유효-->
-<c:forEach items="${products}" var="product">
-							<div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                            	<figure class="figure"><a href="/product?dic_no=${product.getDic_no()}"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="${product.getThumbnail()}" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                	<figcaption class="figure-caption">${product.getName()}</figcaption>
-                            	</figure>
-                        	</div>
-						</c:forEach></div>
+                    <div class="row"><c:forEach items="${products}" var="product">
+    <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
+        <figure class="figure">
+            <a href="/product?dic_no=${product.getDic_no()}">
+                <img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="${product.getThumbnail()}" title="${product.getEng_name()}" loading="lazy" width="640px" height="640px" alt="사전 이미지">
+            </a>
+            <figcaption class="figure-caption">${product.getName()}</figcaption>
+        </figure>
+    </div>
+</c:forEach></div>
                 </div>
                 <div class="card-body text-center p-0">
-                    <div class="bg-light bg-gradient shadow-sm"><button class="btn btn-link w-100 text-decoration-none text-secondary" type="button" onclick="location.href=&#39;#&#39;"><span>더보기</span><i class="fas fa-chevron-down"></i></button></div>
+                    <div class="bg-light bg-gradient shadow-sm"><button class="btn btn-link w-100 text-decoration-none text-secondary" id="loadMore" type="button"><span>더보기</span><i class="fas fa-chevron-down"></i></button></div>
                 </div>
             </div>
         </div>
@@ -165,13 +166,7 @@
       navigator.serviceWorker.register('/service-worker.js');
     });
   }
-</script><!--더보기 관련 코드-->
-$(function () { 
-    $('.readmore').readmore({ 
-        blockCSS: 'display: block; width: 250px;',
-        collapsedHeight: 18
-    });
-});
+</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>

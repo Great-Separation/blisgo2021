@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="ko" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
 
@@ -27,7 +28,6 @@
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&amp;display=swap">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="assets/css/image-slider.css">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -125,37 +125,45 @@
                     </div>
                 </article>
                 <article id="describe">
-                    <hr>                    <div>
-                    	<c:set var="flag" value="true" />
-                        <ul class="nav nav-tabs mb-2" role="tablist" id="myTab">
-                        	<c:forEach var="guide" items="${guides}">
-                        		<c:choose> 
-                        			<c:when test="${flag}">
-                        				<c:set var="flag" value="false" />
-                        				<li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" href="#${guide.getGuide_name()}">${guide.getGuide_name()}</a></li>
-                        			</c:when> 
-                        			<c:otherwise>
-                        				<li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" href="#${guide.getGuide_name()}">${guide.getGuide_name()}</a></li>
-                        			</c:otherwise>
-                        		</c:choose> 
-                        	</c:forEach>
-                        </ul>
-                        <c:set var="flag" value="true" />
-                        <div class="tab-content" id="myTabContent">
-                        	<!-- 첫번째 탭 active 설정 이후 hide-->
-                        	<c:forEach var="guide" items="${guides}">
-                        		<c:choose> 
-                        			<c:when test="${flag}">
-                        				<c:set var="flag" value="false" />
-                        				<div class="tab-pane fade show active description" role="tabpanel" id="${guide.getGuide_name()}"><img class="img-fluid copyright" src="${guide.getImage_path()}" width="100%" height="100%" alt="설명서"></div>
-                        			</c:when> 
-                        			<c:otherwise>
-                        				<div class="tab-pane fade specifications" role="tabpanel" id="${guide.getGuide_name()}"><img class="img-fluid copyright" src="${guide.getImage_path()}" width="100%" height="100%" alt="설명서"></div>
-                        			</c:otherwise>
-                        		</c:choose> 
-                        	</c:forEach>
-                        </div>
+                    <hr><div>
+    <c:set var="flag" value="true"/>
+    <ul class="nav nav-tabs mb-2" role="tablist" id="myTab">
+        <c:forEach var="guide" items="${guides}">
+            <c:choose> 
+                <c:when test="${flag}">
+                    <c:set var="flag" value="false"/>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" role="tab" data-bs-toggle="tab" href="#${guide.getGuide_name()}">${guide.getGuide_name()}</a>
+                    </li>
+                </c:when> 
+                <c:otherwise>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" role="tab" data-bs-toggle="tab" href="#${guide.getGuide_name()}">${guide.getGuide_name()}</a>
+                    </li>
+                </c:otherwise>
+            </c:choose> 
+        </c:forEach>
+    </ul>
+    <c:set var="flag" value="true"/>
+    <div class="tab-content" id="myTabContent">
+        <!-- 첫번째 탭 active 설정 이후 hide-->
+        <c:forEach var="guide" items="${guides}">
+            <c:choose> 
+                <c:when test="${flag}">
+                    <c:set var="flag" value="false"/>
+                    <div class="tab-pane fade show active description" role="tabpanel" id="${guide.getGuide_name()}">
+                        <img class="img-fluid copyright" src="${guide.getImage_path()}" width="100%" height="100%" alt="설명서">
                     </div>
+                </c:when> 
+                <c:otherwise>
+                    <div class="tab-pane fade specifications" role="tabpanel" id="${guide.getGuide_name()}">
+                        <img class="img-fluid copyright" src="${guide.getImage_path()}" width="100%" height="100%" alt="설명서">
+                    </div>
+                </c:otherwise>
+            </c:choose> 
+        </c:forEach>
+    </div>
+</div>
                     <hr>
                 </article>
                 <div class="modal fade" role="dialog" tabindex="-1" id="modal-share">
@@ -165,20 +173,30 @@
                                 <h4 class="modal-title">공유하기</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body text-center">
-                                <p>Share this link via</p>
-                                <div class="btn-group" role="group"><button class="btn btn-link" type="button"><i class="fab fa-google" style="color: var(--bs-red);font-size: 30px;"></i></button><button class="btn btn-link" type="button"><i class="fab fa-facebook-f" style="color: var(--bs-blue);font-size: 30px;"></i></button><button class="btn btn-link" type="button"><i class="fab fa-instagram" style="background: #ffffff;color: var(--bs-pink);font-size: 30px;"></i></button><button class="btn btn-link" type="button"><i class="icon ion-chatbubble" style="color: var(--bs-yellow);font-size: 30px;"></i></button><button class="btn btn-link" type="button"><i class="fab fa-github-alt" style="color: var(--bs-indigo);font-size: 30px;"></i></button></div>
+                                <div class="btn-group" role="group"><button class="btn btn-link" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" type="button" title="구글"><i class="fab fa-google" style="color: var(--bs-red);font-size: 30px;" title="구글"></i></button><button class="btn btn-link" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" type="button" title="페이스북"><i class="fab fa-facebook-f" data-bs-toggle="tooltip" data-bss-tooltip="" style="color: var(--bs-blue);font-size: 30px;"></i></button><button class="btn btn-link" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" type="button" title="인스타그램"><i class="fab fa-instagram" style="background: #ffffff;color: var(--bs-pink);font-size: 30px;"></i></button><button class="btn btn-link" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" type="button" title="카카오톡"><i class="fas fa-comment" style="color: var(--bs-yellow);font-size: 30px;"></i></button><button class="btn btn-link" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" type="button" title="깃허브"><i class="fab fa-github-alt" style="color: var(--bs-indigo);font-size: 30px;"></i></button></div>
                             </div>
-                            <div class="modal-footer">
-                                <div class="input-group"><span class="input-group-text bg-white"><i class="fas fa-link"></i></span><input class="form-control" type="url" value="${pageContext.request.requestURL}" readonly=""><button class="btn btn-primary" type="button"><i class="far fa-copy"></i></button></div>
+                            <div class="modal-footer"><script>
+    window.onload=function(){
+	    var obShareUrl = document.getElementById("ShareUrl");
+	    obShareUrl.value = window.document.location.href;
+    };
+    function copyURLToClipboard(){
+	    var obShareUrl = document.getElementById("ShareUrl");
+	    obShareUrl.select();
+	    document.execCommand("copy");
+	    obShareUrl.blur();
+    }
+</script>
+                                <div class="input-group"><span class="input-group-text bg-white"><i class="fas fa-link"></i></span><input class="form-control" type="url" id="ShareUrl" readonly=""><button class="btn btn-primary" type="button" onclick="copyURLToClipboard()"><i class="far fa-copy"></i></button></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="toast-container d-flex position-fixed bottom-0 end-0 p-3" id="toast-bookmark">
                     <div class="toast fade hide" role="alert" id="liveToast" aria-live="assertive" aria-atomic="true">
-                        <div class="toast-header"><img class="me-2"><strong class="me-auto">Title</strong><small>10 min ago</small><button class="btn-close ms-2 mb-1 close" data-bs-dismiss="toast"></button></div>
+                        <div class="toast-header"><img class="me-2" src="${product.getThumbnail()}" width="50px" height="50px"><strong class="me-auto">도감에 추가되었습니다</strong><small>방금</small><button class="btn-close ms-2 mb-1 close" data-bs-dismiss="toast"></button></div>
                         <div class="toast-body" role="alert">
-                            <p>장치를 통해 도감에 추가할 수 있습니다&nbsp;</p>
+                            <p>분리배출 도우미를 통해 도감에 추가할 수 있습니다&nbsp;</p>
                         </div>
                     </div>
                 </div>
@@ -192,12 +210,15 @@
                     </div>
                 </div>
                 <div class="row"><c:forEach items="${relatedProducts}" var="relatedProduct">
-						<div class="col-6 col-lg-3 spacer-slider">
-                        	<figure class="figure"><a href="/product?dic_no=${relatedProduct.getDic_no()}"><img class="img-fluid" data-bss-hover-animate="pulse" src="${relatedProduct.getThumbnail()}" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                            	<figcaption class="figure-caption">${relatedProduct.getName()}</figcaption>
-                        	</figure>
-                    	</div>
-					</c:forEach></div>
+    <div class="col-6 col-lg-3 spacer-slider">
+        <figure class="figure">
+            <a href="/product?dic_no=${relatedProduct.getDic_no()}">
+                <img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="${relatedProduct.getThumbnail()}" title="${relatedProduct.getEng_name()}" loading="lazy" width="640px" height="640px" alt="사전 이미지">
+            </a>
+            <figcaption class="figure-caption">${relatedProduct.getName()}</figcaption>
+        </figure>
+    </div>
+</c:forEach></div>
             </div>
         </section>
     </main>
