@@ -83,4 +83,18 @@ public class UserController {
 		return "mypage";
 	}
 	// -----------------------------------------------------//
+
+	// -----------------------------------------------------//
+	// 구글로그인
+
+	@GetMapping("googleLogin")
+	public String googleLogin(Model model) {
+		return "googleLogin";
+	}
+
+
+
+	// -----------------------------------------------------//
+
+
 }
