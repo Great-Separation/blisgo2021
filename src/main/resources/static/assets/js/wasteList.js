@@ -1,6 +1,5 @@
-$( "#autocomplete" ).autocomplete({
-  source: [
-            { label : "가격표", value : 1001 },
+var searchKeyword = [
+			{ label : "가격표", value : 1001 },
             { label : "가구류", value : 1002 },
             { label : "가발", value : 1003 },
             { label : "가습기", value : 1004 },
@@ -287,11 +286,11 @@ $( "#autocomplete" ).autocomplete({
             { label : "후라이팬", value : 1285 },
             { label : "휴대용 플레이어(MP3등)", value : 1286 },
             { label : "휴대전화", value : 1287 }
-          ],
-    scroll: true,
-    select: function(event, ui) {   
-        var hrefStr = "/product?dic_no=";
-        hrefStr = hrefStr.concat(ui.item.value);
-        location.href = hrefStr;
+];
+
+$( "#autocomplete" ).autocomplete({
+	source: searchKeyword,
+    select: function(event, ui) {
+        window.location.href = "/product?dic_no="+ui.item.value;
     }
 });

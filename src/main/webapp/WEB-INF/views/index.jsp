@@ -27,7 +27,6 @@
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&amp;display=swap">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/flick/jquery-ui.css">
     <link rel="stylesheet" href="assets/css/image-slider.css">
@@ -46,7 +45,8 @@
                         <div class="col">
                             <div class="card m-auto" style="max-width:850px">
                                 <div class="card-body p-1">
-                                    <form class="d-flex align-items-center ui-filterable" autocomplete="off" action="/dictionary" method="get"><input class="form-control form-control-sm form-control-borderless p-1" type="search" id="autocomplete" placeholder="키워드를 입력하세요" name="category_small" minlength="1" required="" style="padding: 0px;border-style: none;" autocomplete="off"><button class="btn btn-success" type="submit">GO!</button></form>
+                                    <form class="d-flex align-items-center ui-filterable" autocomplete="off" action="/dictionary" method="get"><input class="form-control form-control-sm form-control-borderless p-1" type="search" id="autocomplete" placeholder="키워드를 입력하세요" name="category_small" minlength="1" required="" style="padding: 0px;border-style: none;" autocomplete="off"><button class="btn btn-success" type="submit">GO!</button></form><script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
                                 </div>
                             </div>
                         </div>
