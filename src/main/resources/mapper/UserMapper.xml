@@ -3,8 +3,14 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-<mapper namespace="com.example.demo.mapper.UserMapper">
+<mapper namespace="com.blisgo.client.mapper.UserMapper">
     <insert id="insertUser" parameterType="userDTO">
-        INSERT INTO user_db(nickname, email, pass, memPoint, dogamList) VALUES (#{nickname}, #{email}, #{pass}, 0, null)
+        INSERT INTO user_db(nickname, email, pass, memPoint, dogamList) VALUES (#{nickname}, #{email}, HEX(AES_ENCRYPT(#{pass},#{email})), 0, null)
     </insert>
+    <select id="userLogin" parameterType="userDTO" resultType="String">
+    	SELECT CAST(AES_DECRYPT(UNHEX(pass), #{email}) AS CHAR) FROM user_db WHERE email=#{email} 
+    </select>
+    <select id="getUser" parameterType="userDTO" resultType="UserDTO">
+    	SELECT * FROM user_db WHERE email=#{email}
+    </select>
 </mapper>

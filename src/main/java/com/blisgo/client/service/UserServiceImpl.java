@@ -17,5 +17,19 @@ public class UserServiceImpl implements UserService{
 		return true;
 	}
 	
+	@Override
+	public String userLogin(UserDTO user) {
+		// TODO Auto-generated method stub
+		return userMapper.userLogin(user);
+	}
+
+	@Override
+	public UserDTO getUser(UserDTO user) {
+		// TODO Auto-generated method stub
+		return userMapper.getUser(user);
+	}
+	
+	
+	
 
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko" style="height: 100vh;" oncontextmenu="return false" ondragstart="return false"
       onselectstart="return false">
@@ -13,6 +14,12 @@
 </head>
 
 <body>
+<script type="text/javascript">
+	if(${check} == 2){
+		var message = '${msg}';
+		alert(message);
+	}
+</script>
 <header id="header">
     <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white shadow-sm justify-content-between"
          id="transmenu">
@@ -69,9 +76,12 @@
                     <li class="nav-item" id="community"><a class="nav-link" data-bs-toggle="tooltip" data-bss-tooltip=""
                                                            data-bs-placement="bottom" href="/community"
                                                            title="자유롭게 글을 작성할 수 있습니다">게시판</a></li>
-                    <li class="nav-item" id="login-1"><a class="nav-link" data-bs-toggle="tooltip" data-bss-tooltip=""
-                                                         data-bs-placement="bottom" href="/login"
-                                                         title="회원이용시 다양한 혜택을 이용할 수 있습니다">로그인</a></li>
+                    <c:if test = "${mem == null}">
+                    <li class="nav-item" id="login"><a class="nav-link" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="/login" title="회원이용시 다양한 혜택을 이용할 수 있습니다">로그인</a></li>
+					</c:if>
+					<c:if test = "${mem != null}">
+                    <li class="nav-item" id="login"><a class="nav-link" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" href="/login" title="${mem.getNickname()}">${mem.getNickname()}</a></li>
+					</c:if>
                 </ul>
                 <div class="dropstart d-none d-lg-block navbar-right" id="usericon-desktop"><a aria-expanded="false"
                                                                                                data-bs-toggle="dropdown"
@@ -86,23 +96,23 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </nav>
+       	</div>
+  	</nav>
 </header>
 <main class="d-flex justify-content-center align-items-center" id="login-main">
     <section>
         <div class="container text-center" id="login">
             <article>
-                <form>
+                <form action="loginPOST" method="post">
                     <div class="card">
                         <div class="card-header">
                             <h2 class="text-primary m-0 fw-light">로그인</h2>
                         </div>
                         <div class="card-body pb-0"><input class="form-control email-imput form-control mt-2"
                                                            type="email" required="" placeholder="이메일"
-                                                           minlength="6"><input
+                                                           minlength="6" name="email"><input
                                 class="form-control password-input form-control mt-2" type="password" required=""
-                                placeholder="비밀번호" minlength="6">
+                                placeholder="비밀번호" minlength="6" name="pass">
                             <button class="btn btn-success box-shadow w-100 mt-2 mb-2" type="submit">로그인</button>
                             <div class="alert alert-danger pt-2 pb-2 mb-0 text-center" role="alert"><span><i
                                     class="fas fa-exclamation-triangle"></i><strong>로그인 실패.</strong> 비밀번호 불일치</span>
