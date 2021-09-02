@@ -50,7 +50,9 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div><jsp:include page="navbar.jsp">
+    <jsp:param name="name" value="value" />
+</jsp:include>
     </header><jsp:include page="footer.jsp">
     <jsp:param name="name" value="value" />
 </jsp:include>

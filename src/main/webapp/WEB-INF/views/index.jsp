@@ -31,7 +31,12 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/flick/jquery-ui.css">
     <link rel="stylesheet" href="assets/css/image-slider.css">
     <link rel="stylesheet" href="assets/css/style.css">
-<link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="/manifest.json"><script type="text/javascript">
+	if(${check} == 2){
+		var message = '${msg}';
+		alert(message);
+	}
+</script>
 </head>
 
 <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
