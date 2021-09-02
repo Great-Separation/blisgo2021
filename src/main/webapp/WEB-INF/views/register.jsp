@@ -39,7 +39,7 @@
             <article>
                 <div class="row m-0">
                     <div class="col p-0">
-                        <form action="/register">
+                        <form action="/registerPOST" method="post">
                             <div class="card">
                                 <div class="card-header text-center py-2">
                                     <h2 class="text-primary fw-light m-0">회원가입</h2>
