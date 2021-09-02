@@ -24,7 +24,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="com.blisgo.client.dto.NoticeBoardDTO" project="blisgo-client" 
+  <class id="4" language="java" name="com.blisgo.client.dto.BoardDTO" project="blisgo-client"
     file="/blisgo-client/src/main/java/com/blisgo/client/dto/NoticeBoardDTO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="576" width="208" x="1111" y="-21"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

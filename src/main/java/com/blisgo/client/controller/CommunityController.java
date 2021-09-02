@@ -1,16 +1,35 @@
 package com.blisgo.client.controller;
 
+import com.blisgo.client.dto.BoardDTO;
+import com.blisgo.client.dto.DictionaryDTO;
+import com.blisgo.client.service.CommunityService;
+import com.blisgo.client.service.DictionaryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
+
 @Controller
 public class CommunityController {
 
+	@Autowired
+	private CommunityService communityService;
+
+	BoardDTO boardDTO = new BoardDTO();
 	// 커뮤니티 게시판
 	@GetMapping("community")
-	public String community(Model model) {
+	public String community(HttpSession session, HttpServletRequest request, Model model)
+			throws UnsupportedEncodingException {
+		request.setCharacterEncoding("utf-8");
+
+
+
+
 		return "community";
 	}
 	//-----------------------------------------------------//
