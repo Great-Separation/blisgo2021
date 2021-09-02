@@ -31,7 +31,7 @@
 									</div>
 									<div class="col d-flex justify-content-end align-items-center">
 										<span class="user-points"><i
-											class="fas fa-coins user-points-coin"></i>10000</span>
+											class="fas fa-coins user-points-coin"></i>${mem.getMempoint()}</span>
 									</div>
 								</div>
 								<hr id="usericon-mobile-hr-bottom" />

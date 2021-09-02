@@ -42,9 +42,7 @@
                     <h1>커뮤니티<br></h1>
                 </div>
             </div>
-        </div><jsp:include page="navbar.jsp">
-    <jsp:param name="name" value="value" />
-</jsp:include>
+        </div>
     </header>
     <main id="main" class="pt-2 pb-2">
         <section>
