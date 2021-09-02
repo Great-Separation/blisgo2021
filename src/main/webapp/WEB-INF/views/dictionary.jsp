@@ -42,7 +42,9 @@
                     <h1>분리배출 사전<br></h1>
                 </div>
             </div>
-        </div>
+        </div><jsp:include page="navbar.jsp">
+    <jsp:param name="name" value="value" />
+</jsp:include>
     </header>
     <main id="main" class="pt-2 pb-2">
         <div class="container p-0" id="category">
