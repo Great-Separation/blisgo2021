@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 
 @Controller
 public class CommunityController {
@@ -27,7 +28,9 @@ public class CommunityController {
 			throws UnsupportedEncodingException {
 		request.setCharacterEncoding("utf-8");
 
+		ArrayList<BoardDTO> articles = communityService.listBoard();
 
+		model.addAttribute("articles",articles);
 
 
 		return "community";

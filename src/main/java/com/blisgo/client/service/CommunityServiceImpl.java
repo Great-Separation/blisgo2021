@@ -23,15 +23,16 @@ public class CommunityServiceImpl implements CommunityService{
 
 	@Override
 	public ArrayList<BoardDTO> listBoard() {
-		return null;
+
+		return communityMapper.listBoard();
 	}
+
+
 
 	@Override
 	public BoardDTO contentBoard(int bd_no) {
-		return null;
+
+		return communityMapper.contentBoard(bd_no);
 	}
-//	void regist(@Param("bd_title") String title, @Param("bd_writer") String writer, @Param("bd_category") String category,
-//				@Param("bd_content") String content, @Param("bd_date") Timestamp date, @Param("bd_views") int views,
-//				@Param("bd_favorite") int favorite);
 
 }

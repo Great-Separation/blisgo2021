@@ -66,26 +66,13 @@
                             <div class="table-responsive">
                                 <table class="table table-hover">
                                     <tbody>
-                                        <tr>
-                                            <td><a class="d-block text-decoration-none text-reset" href="/content">글내용 샘플입니다아~<span class="text-info">(3)</span><br></a></td>
-                                            <td><a class="text-end d-block text-decoration-none text-reset" href="/content">옥재욱</a></td>
-                                            <td class="d-none d-lg-table-cell"><a class="text-end d-block text-decoration-none text-black-50" href="/content">2008/01/03<br></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td><a class="d-block text-decoration-none text-reset" href="/content">글내용 샘플입니다아~<span class="text-info">(3)</span><br></a></td>
-                                            <td><a class="text-end d-block text-decoration-none text-reset" href="/content">옥재욱</a></td>
-                                            <td class="d-none d-lg-table-cell"><a class="text-end d-block text-decoration-none text-black-50" href="/content">2008/01/03<br></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td><a class="d-block text-decoration-none text-reset" href="/content">글내용 샘플입니다아~<span class="text-info">(3)</span><br></a></td>
-                                            <td><a class="text-end d-block text-decoration-none text-reset" href="/content">옥재욱</a></td>
-                                            <td class="d-none d-lg-table-cell"><a class="text-end d-block text-decoration-none text-black-50" href="/content">2008/01/03<br></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td><a class="d-block text-decoration-none text-reset" href="/content">글내용 샘플입니다아~<span class="text-info">(3)</span><br></a></td>
-                                            <td><a class="text-end d-block text-decoration-none text-reset" href="/content">옥재욱</a></td>
-                                            <td class="d-none d-lg-table-cell"><a class="text-end d-block text-decoration-none text-black-50" href="/content">2008/01/03<br></a></td>
-                                        </tr>
+                                        <c:forEach items="${articles}" var="article">
+                                            <tr>
+                                                <td><a class="d-block text-decoration-none text-reset" href="/content?bd_no=${article.getBd_no()}">${article.getBd_title()}<span class="text-info">(3)</span><br></a></td>
+                                                <td><a class="text-end d-block text-decoration-none text-reset" href="/content?bd_no=${article.getBd_no()}">${article.getBd_writer()}</a></td>
+                                                <td class="d-none d-lg-table-cell"><a class="text-end d-block text-decoration-none text-black-50" href="/content?bd_no=${article.getBd_no()}">${article.getBd_title()}<br></a></td>
+                                            </tr>
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>

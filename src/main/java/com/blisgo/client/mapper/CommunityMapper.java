@@ -14,11 +14,11 @@ public interface CommunityMapper {
                 @Param("bd_content") String content, @Param("bd_date") Timestamp date, @Param("bd_views") int views,
                 @Param("bd_favorite") int favorite);
 
-    // 글 목록을 가지고 오는 메서드
+    // 글 목록을 가지고 오는 메서드(페이징 처리를 안하고 목록전체 보여주기)
     @Select("SELECT * FROM board ORDER BY bd_no DESC")
-    ArrayList<BoardDTO> listBoard(@Param("startRow") int startRow, @Param("pageSize") int pageSize);
+    ArrayList<BoardDTO> listBoard();
 
-    // 글 목록을 가지고 오는 메서드 페이징 처리를 했을때 이런식으로 구현할 예정
+    // 글 목록을 가지고 오는 메서드(페이징 처리를 했을때 이런식으로 구현할 예정)
 //    @Select("SELECT * FROM board ORDER BY bd_no DESC LIMIT ${startRow}, ${pageSize};")
 //    ArrayList<BoardDTO> listBoard(@Param("startRow") int startRow, @Param("pageSize") int pageSize);
 
