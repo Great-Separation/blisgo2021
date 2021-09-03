@@ -18,8 +18,6 @@ public class MyBatisConfig {
 	 SqlSessionFactoryBean sqlSessionFactory=new SqlSessionFactoryBean();
 	 sqlSessionFactory.setDataSource(datasource);
 	 sqlSessionFactory.setTypeAliasesPackage("com.blisgo.client.dto");
-	 PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-	 sqlSessionFactory.setMapperLocations(resolver.getResources("mapper/*.xml"));
 	 return sqlSessionFactory.getObject();
 	}
 	

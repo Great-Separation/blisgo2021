@@ -31,6 +31,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 <link rel="manifest" href="/manifest.json">
+<script type="text/javascript">
+	if(${check} == 2){
+		var message = '${msg}';
+		alert(message);
+	}
+</script>
 </head>
 
 <body>
