@@ -32,13 +32,21 @@ public class CommunityController {
 
 		model.addAttribute("articles",articles);
 
-
 		return "community";
 	}
 	//-----------------------------------------------------//
 	// 게시판 글내용
 	@GetMapping("content")
-	public String content(Model model) {
+	public String content(HttpSession session, HttpServletRequest request, Model model)
+			throws UnsupportedEncodingException {
+		request.setCharacterEncoding("utf-8");
+
+		int bd_no = Integer.parseInt(request.getParameter("bd_no")); //글번호 HTTP요청의 파라미터에서 값을 가져오기
+		BoardDTO articles = communityService.contentBoard(bd_no);
+
+
+		model.addAttribute("articles", articles);
+
 		return "content";
 	}
 	

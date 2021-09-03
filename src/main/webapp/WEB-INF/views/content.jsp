@@ -55,21 +55,25 @@
                             <div class="row">
                                 <div class="col-auto flex-fill p-0">
                                     <ul class="list-group list-group-horizontal flex-fill">
-                                        <li class="list-group-item flex-fill"><span>글내용 샘플입니다아~</span></li>
-                                        <li class="list-group-item"><span>옥재욱</span></li>
+                                        <li class="list-group-item flex-fill"><span>${articles.getBd_title()}</span></li>
+                                        <li class="list-group-item"><span>${articles.getBd_writer()}</span></li>
                                     </ul>
                                 </div>
                                 <div class="col-auto flex-fill p-0">
                                     <ul class="list-group list-group-horizontal">
-                                        <li class="list-group-item flex-fill"><i class="far fa-clock"></i><span>2021/07/31</span></li>
-                                        <li class="list-group-item flex-fill"><i class="far fa-eye"></i><span>123</span></li>
-                                        <li class="list-group-item flex-fill"><i class="fas fa-heart text-danger"></i><span>20</span></li>
+                                        <li class="list-group-item flex-fill"><i class="far fa-clock"></i><span>${articles.getBd_date()}</span></li>
+                                        <li class="list-group-item flex-fill"><i class="far fa-eye"></i><span>${articles.getBd_views()}</span></li>
+                                        <li class="list-group-item flex-fill"><i class="fas fa-heart text-danger"></i><span>${articles.getBd_favorite()}</span></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body">
-                            <p class="card-text">지금 이 태그는 paragraph 입니다. write페이지는 rich text editor중 TinyMCE 에디터 API를 이용한 것입니다. 이점 유의하세요~</p>
+                            <p class="card-text">
+                                ${articles.getBd_content()}
+
+                            </p>
+                            <%--지금 이 태그는 paragraph 입니다. write페이지는 rich text editor중 TinyMCE 에디터 API를 이용한 것입니다. 이점 유의하세요~--%>
                         </div>
                         <div class="card-footer p-1">
                             <div class="col">
