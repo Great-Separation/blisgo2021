@@ -34,20 +34,21 @@
 
 <body>
     <header id="header">
-            <div class="container text-center" id="login">
-                <article>
-                    <div class="card shadow-sm">
-                        <div class="card-header">
-                            <h3 class="text-primary">QR코드 로그인</h3>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">모바일에서 분리수거 도우미 기기로 로그인을 승인하여 포인트를 적립할 수 있습니다</p>
-                        </div>
-                        <div class="card-body"><img src="data:image/png;base64,${imageAsBase64}" alt="QR이미지" width="200px" height="200px"></div>
-                        <div class="card-body">
-                            <h6 class="text-muted card-subtitle mb-2">남은 시간 10:00</h6>
-                        </div>
-                        <div class="card-footer"><a class="text-decoration-none" href="/index">취소</a></div>
+        <div class="container-fluid d-flex justify-content-center align-items-center d-flex align-items-center" id="highlight-index">
+            <article class="text-center">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h3 class="text-primary">QR 로그인</h3>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">이용하는 분리배출 도우미 장치에<br>QR 코드로 체크인하여 포인트를 적립합니다</p>
+                    </div>
+                    <div class="card-body"><img id="qrcode" src="data:image/png;base64,${imageAsBase64}" alt="QR이미지" width="200px" height="200px"></div>
+                    <div class="card-body">
+                        <h6 class="text-muted card-subtitle mb-2">남은 시간&nbsp;<span id="countdown" class="text-primary"></span></h6>
+                    </div>
+                    <div class="card-footer"><a class="text-decoration-none" href="/index">취소</a></div>
+                </div>
             </article>
         </div><jsp:include page="navbar.jsp">
     <jsp:param name="name" value="value" />
@@ -60,6 +61,7 @@
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/load-more.js"></script>
     <script src="assets/js/service-worker.js"></script>
+    <script src="assets/js/timer.js"></script>
 </body>
 
 </html>
