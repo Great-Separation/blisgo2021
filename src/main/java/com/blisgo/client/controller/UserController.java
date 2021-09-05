@@ -17,6 +17,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	HttpSession session;
+
 	// 회원 로그인
 	@GetMapping("login")
 	public String login(Model model) {
@@ -29,23 +30,21 @@ public class UserController {
 		session = req.getSession();
 		UserDTO userInfo = userService.getUser(user);
 		String userPass = userService.userLogin(user);
-		if(userPass != null) {
-			if(user.getPass().equals(userPass)) {
+		if (userPass != null) {
+			if (user.getPass().equals(userPass)) {
 				model.addAttribute("check", 2);
-				model.addAttribute("msg",userInfo.getNickname() + "님, 환영합니다");
+				model.addAttribute("msg", userInfo.getNickname() + "님, 환영합니다");
 				session.setAttribute("mem", userInfo);
-			}
-			else {
+			} else {
 				model.addAttribute("passCheck", 1);
 				return "login";
 			}
-		}
-		else {
+		} else {
 			model.addAttribute("check", 2);
-			model.addAttribute("msg","없는 회원입니다. 회원가입을 해주세요");
+			model.addAttribute("msg", "없는 회원입니다. 회원가입을 해주세요");
 			return "register";
 		}
-		return "index";
+		return "redirect:/";
 	}
 
 	// -----------------------------------------------------//
@@ -62,18 +61,17 @@ public class UserController {
 		if (userService.insert(user)) {
 			model.addAttribute("check", 2);
 			model.addAttribute("msg", "회원가입 성공");
-		}
-		else {
+		} else {
 			model.addAttribute("check", 2);
 			model.addAttribute("msg", "회원가입 실패");
 			return "register";
 		}
-		return "login";
+		return "redirect:login";
 	}
-	
+
 	@GetMapping("qrlogin")
 	public String qrlogin(Model model, HttpServletRequest request) {
-		UserDTO userInfo = (UserDTO)session.getAttribute("mem");
+		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
 		String imageAsBase64 = userService.qrCreate(userInfo);
 		request.setAttribute("imageAsBase64", imageAsBase64);
 		return "qrlogin";
@@ -116,7 +114,7 @@ public class UserController {
 	public String mypageDeleteAccount(Model model) {
 		return "mypage";
 	}
-	
+
 	@GetMapping("logout")
 	public String logout() {
 		session.invalidate();
@@ -132,9 +130,6 @@ public class UserController {
 		return "googleLogin";
 	}
 
-
-
 	// -----------------------------------------------------//
-
 
 }

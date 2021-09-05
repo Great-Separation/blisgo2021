@@ -55,25 +55,21 @@
                             <div class="row">
                                 <div class="col-auto flex-fill p-0">
                                     <ul class="list-group list-group-horizontal flex-fill">
-                                        <li class="list-group-item flex-fill"><span>${articles.getBd_title()}</span></li>
-                                        <li class="list-group-item"><span>${articles.getBd_writer()}</span></li>
+                                        <li class="list-group-item flex-fill"><span>${articles.getBd_title()}<br></span></li>
+                                        <li class="list-group-item"><span>${articles.getBd_writer()}<br></span></li>
                                     </ul>
                                 </div>
                                 <div class="col-auto flex-fill p-0">
                                     <ul class="list-group list-group-horizontal">
-                                        <li class="list-group-item flex-fill"><i class="far fa-clock"></i><span>${articles.getBd_date()}</span></li>
-                                        <li class="list-group-item flex-fill"><i class="far fa-eye"></i><span>${articles.getBd_views()}</span></li>
-                                        <li class="list-group-item flex-fill"><i class="fas fa-heart text-danger"></i><span>${articles.getBd_favorite()}</span></li>
+                                        <li class="list-group-item flex-fill"><i class="far fa-clock"></i><span>${articles.getBd_date()}<br></span></li>
+                                        <li class="list-group-item flex-fill"><i class="far fa-eye"></i><span>${articles.getBd_views()}<br></span></li>
+                                        <li class="list-group-item flex-fill"><i class="fas fa-heart text-danger"></i><span>${articles.getBd_favorite()}<br></span></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body">
-                            <p class="card-text">
-                                ${articles.getBd_content()}
-
-                            </p>
-                            <%--지금 이 태그는 paragraph 입니다. write페이지는 rich text editor중 TinyMCE 에디터 API를 이용한 것입니다. 이점 유의하세요~--%>
+                            <p class="card-text">${articles.getBd_content()}<br></p>
                         </div>
                         <div class="card-footer p-1">
                             <div class="col">
@@ -81,113 +77,72 @@
                             </div>
                         </div>
                         <div class="card-body pt-2 p-1">
-                            <div class="input-group"><input class="form-control" type="text" placeholder="댓글을 입력하세요"><button class="btn btn-success float-end btn-success" type="submit"><i class="fas fa-paper-plane"></i></button></div>
+                            <form method="post" action="/commentPOST"><input class="form-control" type="hidden" name="mem_no" value="${mem.getMem_no()}"><input class="form-control" type="hidden" name="bd_no" value="${articles.getBd_no()}"><c:choose>
+    <c:when test="${mem==null}">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="로그인 후 이용할 수 있습니다" readonly name="content" />
+            <button class="btn btn-success disabled float-end btn-success" type="submit">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </c:when>
+    <c:otherwise>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="댓글을 입력하세요" name="content" />
+            <button class="btn btn-success float-end btn-success" type="submit">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </c:otherwise>
+</c:choose></form>
                         </div>
-                        <div class="card-body pt-2 p-1 pb-0">
-                            <div class="table-responsive">
-                                <table class="table table-fixed">
-                                    <tbody>
-                                        <tr>
-                                            <td class="p-0">
-                                                <div class="row p-0 m-0">
-                                                    <div class="col-auto align-self-center p-0"><img class="img-fluid rounded-circle" id="comment-user-img" width="40px" height="40px" alt="프로필이미지" src="https://i.pravatar.cc/200"></div>
-                                                    <div class="col"><strong>옥재욱</strong><span class="text-secondary ms-2">02:05</span>
-                                                        <p class="m-0">화</p>
-                                                    </div>
-                                                    <div class="col-auto align-self-center me-0 pe-0"><button class="btn btn-danger" type="button" onclick="location.href=&#39;#&#39;"><i class="fas fa-trash-alt"></i></button></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="p-0">
-                                                <div class="row p-0 m-0">
-                                                    <div class="col-auto align-self-center p-0"><img class="img-fluid rounded-circle" id="comment-user-img-1" width="40px" height="40px" alt="프로필이미지" src="https://i.pravatar.cc/200"></div>
-                                                    <div class="col"><strong>옥재욱</strong><span class="text-secondary ms-2">02:05</span>
-                                                        <p class="m-0">이</p>
-                                                    </div>
-                                                    <div class="col-auto align-self-center me-0 pe-0"><button class="btn btn-danger" type="button" onclick="location.href=&#39;#&#39;"><i class="fas fa-trash-alt"></i></button></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="p-0">
-                                                <div class="row p-0 m-0">
-                                                    <div class="col-auto align-self-center p-0"><img class="img-fluid rounded-circle" id="comment-user-img-2" width="40px" height="40px" alt="프로필이미지" src="https://i.pravatar.cc/200"></div>
-                                                    <div class="col"><strong>옥재욱</strong><span class="text-secondary ms-2">02:05</span>
-                                                        <p class="m-0">자</p>
-                                                    </div>
-                                                    <div class="col-auto align-self-center me-0 pe-0"><button class="btn btn-danger" type="button" onclick="location.href=&#39;#&#39;"><i class="fas fa-trash-alt"></i></button></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="p-0">
-                                                <div class="row p-0 m-0">
-                                                    <div class="col-auto align-self-center p-0"><img class="img-fluid rounded-circle" id="comment-user-img-3" width="40px" height="40px" alt="프로필이미지" src="https://i.pravatar.cc/200"></div>
-                                                    <div class="col"><strong>옥재욱</strong><span class="text-secondary ms-2">02:05</span>
-                                                        <p class="m-0">말</p>
-                                                    </div>
-                                                    <div class="col-auto align-self-center me-0 pe-0"><button class="btn btn-danger" type="button" onclick="location.href=&#39;#&#39;"><i class="fas fa-trash-alt"></i></button></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="p-0">
-                                                <div class="row p-0 m-0">
-                                                    <div class="col-auto align-self-center p-0"><img class="img-fluid rounded-circle" id="comment-user-img-4" width="40px" height="40px" alt="프로필이미지" src="https://i.pravatar.cc/200"></div>
-                                                    <div class="col"><strong>옥재욱</strong><span class="text-secondary ms-2">02:05</span>
-                                                        <p class="m-0">고</p>
-                                                    </div>
-                                                    <div class="col-auto align-self-center me-0 pe-0"><button class="btn btn-danger" type="button" onclick="location.href=&#39;#&#39;"><i class="fas fa-trash-alt"></i></button></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="p-0">
-                                                <div class="row p-0 m-0">
-                                                    <div class="col-auto align-self-center p-0"><img class="img-fluid rounded-circle" id="comment-user-img-5" width="40px" height="40px" alt="프로필이미지" src="https://i.pravatar.cc/200"></div>
-                                                    <div class="col"><strong>옥재욱</strong><span class="text-secondary ms-2">02:05</span>
-                                                        <p class="m-0">모</p>
-                                                    </div>
-                                                    <div class="col-auto align-self-center me-0 pe-0"><button class="btn btn-danger" type="button" onclick="location.href=&#39;#&#39;"><i class="fas fa-trash-alt"></i></button></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="p-0">
-                                                <div class="row p-0 m-0">
-                                                    <div class="col-auto align-self-center p-0"><img class="img-fluid rounded-circle" id="comment-user-img-6" width="40px" height="40px" alt="프로필이미지" src="https://i.pravatar.cc/200"></div>
-                                                    <div class="col"><strong>옥재욱</strong><span class="text-secondary ms-2">02:05</span>
-                                                        <p class="m-0">더</p>
-                                                    </div>
-                                                    <div class="col-auto align-self-center me-0 pe-0"><button class="btn btn-danger" type="button" onclick="location.href=&#39;#&#39;"><i class="fas fa-trash-alt"></i></button></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="p-0">
-                                                <div class="row p-0 m-0">
-                                                    <div class="col-auto align-self-center p-0"><img class="img-fluid rounded-circle" id="comment-user-img-7" width="40px" height="40px" alt="프로필이미지" src="https://i.pravatar.cc/200"></div>
-                                                    <div class="col"><strong>옥재욱</strong><span class="text-secondary ms-2">02:05</span>
-                                                        <p class="m-0">나</p>
-                                                    </div>
-                                                    <div class="col-auto align-self-center me-0 pe-0"><button class="btn btn-danger" type="button" onclick="location.href=&#39;#&#39;"><i class="fas fa-trash-alt"></i></button></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <td class="p-0">
-                                                <div class="bg-light bg-gradient shadow-sm"><button class="btn btn-link w-100 text-decoration-none text-secondary" type="button" onclick="location.href=&#39;#&#39;"><span>더보기</span><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-chevron-down">
-                                                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"></path>
-                                                        </svg></button></div>
-                                            </td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
+                        <div class="card-body pt-2 p-1 pb-0"><div class="table-responsive">
+    <table class="table table-fixed">
+        <tbody>
+            <c:forEach items="${comments}" var="comment" varStatus="status">
+                <tr>
+                    <td class="p-0">
+                        <form action="/commentRemove" method="post">
+                            <input type="hidden" class="form-control" name="bd_no" value="${articles.getBd_no()}" />
+                            <div class="row p-0 m-0">
+                                <div class="col-auto align-self-center p-0">
+                                    <img class="img-fluid rounded-circle" id="comment-user-img" width="40px" height="40px" alt="프로필이미지" src="${comments_user[status.index].getProfile_image()}" />
+                                </div>
+                                <div class="col">
+                                    <strong>${comments_user[status.index].getNickname()}</strong>
+                                    <span class="text-secondary ms-2">${comment.getComment_date()}</span>
+                                    <p class="m-0">${comment.getContent()}</p>
+                                </div>
+                                <div class="col-auto align-self-center me-0 pe-0">
+                                    <c:if test="${mem.getMem_no() eq comments_user[status.index].getMem_no()}">
+                                        <button class="btn btn-danger" type="submit">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </c:if>
+                                </div>
                             </div>
-                        </div>
+                            <input type="hidden" class="form-control" name="comment_no" value="${comment.getComment_no()}" />
+                        </form>
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td class="p-0">
+                    <div class="bg-light bg-gradient shadow-sm">
+                        <button class="btn btn-link w-100 text-decoration-none text-secondary" type="button" onclick="location.href=&#39;#&#39;">
+                            <span>더보기</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-chevron-down">
+                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div></div>
                     </div>
                 </article>
             </div>

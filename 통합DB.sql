@@ -3,13 +3,23 @@ drop table GUIDE;
 drop table board;
 drop table user_db;
 
+CREATE TABLE IF NOT EXISTS `comment` (
+  `comment_no` INT NOT NULL AUTO_INCREMENT,
+  `bd_no` INT NOT NULL,
+  `mem_no` INT NOT NULL,
+  `content` VARCHAR(300) NULL,
+  `comment_date` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`comment_no`, `bd_no`, `mem_no`)
+)ENGINE = InnoDB;
+
 CREATE TABLE IF NOT EXISTS `user_db`(
     `mem_no` int unsigned not null primary key AUTO_INCREMENT,
     `nickname` varchar(45),
     `email` varchar(45),
     `pass` varchar(200),
     `memPoint` int,
-    `dogamList` varchar(1000)
+    `dogamList` varchar(1000),
+    `profile_image` VARCHAR(100) NULL DEFAULT 'https://i.pravatar.cc/200'
 )ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `board` (

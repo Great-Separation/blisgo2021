@@ -26,12 +26,12 @@
 									<div
 										class="col d-flex justify-content-start align-items-center p-0">
 										<img class="img-fluid rounded-circle"
-											src="https://i.pravatar.cc/200" width="40px" height="40px"
+											src="${mem.getProfile_image()}" width="40px" height="40px"
 											alt="프로필이미지" /><span>${mem.getNickname()}</span>
 									</div>
 									<div class="col d-flex justify-content-end align-items-center">
 										<span class="user-points"><i
-											class="fas fa-coins user-points-coin"></i>${mem.getMempoint()}</span>
+											class="fas fa-coins user-points-coin"></i>${mem.getMemPoint()}</span>
 									</div>
 								</div>
 								<hr id="usericon-mobile-hr-bottom" />
@@ -97,13 +97,13 @@
 					<a aria-expanded="false" data-bs-toggle="dropdown"
 						class="text-decoration-none text-reset"> <img
 						class="img-fluid rounded-circle" id="usericon-desktop-image"
-						src="https://i.pravatar.cc/200" width="40px" height="40px"
+						src="${mem.getProfile_image()}" width="40px" height="40px"
 						alt="프로필이미지" />
 					</a>
 					<div class="dropdown-menu">
 						<h6 class="dropdown-header">${mem.getNickname()}<span
 								class="float-end user-points"><i
-								class="fas fa-coins user-points-coin"></i>${mem.getMempoint()}</span>
+								class="fas fa-coins user-points-coin"></i>${mem.getMemPoint()}</span>
 						</h6>
 						<a class="dropdown-item" href="/qrlogin">QR생성</a> <a
 							class="dropdown-item" href="/mypage">마이페이지</a> <a
