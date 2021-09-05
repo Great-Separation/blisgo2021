@@ -1,9 +1,12 @@
 package com.blisgo.client.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +20,14 @@ import com.blisgo.client.dto.CommentDTO;
 import com.blisgo.client.dto.UserDTO;
 import com.blisgo.client.service.CommunityService;
 
+import static java.lang.System.out;
+
 @Controller
 public class CommunityController {
 
 	@Autowired
 	private CommunityService communityService;
+	HttpSession session;
 
 	BoardDTO boardDTO = new BoardDTO();
 
@@ -45,6 +51,8 @@ public class CommunityController {
 			throws UnsupportedEncodingException {
 		request.setCharacterEncoding("utf-8");
 
+
+		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
 		int bd_no = Integer.parseInt(request.getParameter("bd_no")); // 글번호 HTTP요청의 파라미터에서 값을 가져오기
 		BoardDTO articles = communityService.contentBoard(bd_no);
 		ArrayList<CommentDTO> comments = communityService.getComment(bd_no);
@@ -55,9 +63,12 @@ public class CommunityController {
 			comments_user.add(communityService.getCommentUser(comment.getMem_no()));
 		}
 
+		model.addAttribute("session_user_email",userInfo);
 		model.addAttribute("articles", articles);
 		model.addAttribute("comments", comments);
 		model.addAttribute("comments_user", comments_user);
+		model.addAttribute("bd_no", bd_no);
+
 
 		return "content";
 	}
@@ -69,19 +80,52 @@ public class CommunityController {
 	}
 	// -----------------------------------------------------//
 
+	// -----------------------------------------------------//
+	//write.jsp
 	// 게시판 글작성
 	@GetMapping("write")
-	public String write(Model model) {
+	public String write(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+						Model model) throws IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=euc-kr");
+		PrintWriter out = response.getWriter();
+
+		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
+
+		if(userInfo == null){
+			out.println("<script>");
+			out.println("alert('로그인해주세요');");
+			out.println("location.href='/login';");
+			out.println("</script>");
+			out.flush();
+			out.close();
+		}else{
+			model.addAttribute("writer_nick",userInfo.getNickname());
+		}
+
 		return "write";
 	}
 
+	// -----------------------------------------------------//
 	// 게시판 글 올리기
-	@PostMapping("writePOST")
-	public String writePOST(Model model) {
-		return "write";
+	// write.jsp -> community
+	@PostMapping("write")
+	public String writePOST(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+							Model model) throws IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=euc-kr");
+		PrintWriter out = response.getWriter();
+
+		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
+
+//		communityService.regist(userInfo.getEmail(), userInfo.getNickname(), boardDTO.getBd_title(), boardDTO.getBd_content());
+
+
+		return "community";
 	}
 	// -----------------------------------------------------//
 
+	// -----------------------------------------------------//
 	// 댓글 작성
 	@PostMapping("commentPOST")
 	public String commentPOST(Model model, HttpServletRequest request) throws UnsupportedEncodingException {
@@ -93,7 +137,9 @@ public class CommunityController {
 		communityService.addComment(bd_no, mem_no, content);
 		return "redirect:/content?bd_no=" + bd_no;
 	}
+	// -----------------------------------------------------//
 
+	// -----------------------------------------------------//
 	// 댓글 삭제
 	@PostMapping("commentRemove")
 	public String commentRemove(Model model, HttpServletRequest request) {
@@ -103,4 +149,48 @@ public class CommunityController {
 		return "redirect:/content?bd_no=" + bd_no;
 	}
 	// -----------------------------------------------------//
+
+	// -----------------------------------------------------//
+	// 게시판 글삭제
+	@GetMapping("/content_delete")
+	public String content_delete(HttpServletRequest request) throws UnsupportedEncodingException {
+		request.setCharacterEncoding("UTF-8");
+
+		int bd_no = Integer.parseInt(request.getParameter("bd_no"));
+
+		communityService.deleteBoard(bd_no);
+
+		return "redirect:/community";
+	}
+	// -----------------------------------------------------//
+
+	// -----------------------------------------------------//
+	// write.jsp
+	// 게시판 글 수정 화면
+	@GetMapping("/content_update")
+	public String content_update(HttpServletRequest request, HttpSession session, Model model)
+			throws UnsupportedEncodingException {
+		request.setCharacterEncoding("utf-8");
+
+		int bd_no = Integer.parseInt(request.getParameter("bd_no"));
+		BoardDTO article = communityService.contentBoard(bd_no);
+
+		model.addAttribute("article", article);
+
+		return "write_update";
+	}
+	// -----------------------------------------------------//
+
+	// -----------------------------------------------------//
+	// write.jsp -> community.jsp
+	// 게시판 글 수정 제어
+	@PostMapping("/content_update_control")
+	public String contentUpdateControl(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+										 Model model) throws IOException {
+		request.setCharacterEncoding("utf-8");
+
+		return "redirect:content";
+	}
+	// -----------------------------------------------------//
+
 }

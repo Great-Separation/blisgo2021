@@ -3,19 +3,15 @@ package com.blisgo.client.mapper;
 import com.blisgo.client.dto.BoardDTO;
 import com.blisgo.client.dto.CommentDTO;
 
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
 public interface CommunityMapper {
 	// 글 등록 메서드
-	@Select("INSERT INTO board VALUES(null, #{bd_title}, #{bd_writer}, #{bd_category},#{bd_content} ,#{bd_date} ,#{bd_views},#{bd_favorite})")
-	void regist(@Param("bd_title") String title, @Param("bd_writer") String writer,
-			@Param("bd_category") String category, @Param("bd_content") String content,
+	@Select("INSERT INTO board VALUES(null, #{bd_title}, #{bd_writer},#{bd_content} ,#{bd_date} ,#{bd_views},#{bd_favorite})")
+	void regist(@Param("bd_title") String title, @Param("bd_writer") String writer, @Param("bd_content") String content,
 			@Param("bd_date") Timestamp date, @Param("bd_views") int views, @Param("bd_favorite") int favorite);
 
 	// 글 목록을 가지고 오는 메서드(페이징 처리를 안하고 목록전체 보여주기)
@@ -50,4 +46,17 @@ public interface CommunityMapper {
 	// 댓글 삭제하는 메서드
 	@Delete("DELETE FROM comment WHERE comment_no=${comment_no} AND bd_no=${bd_no}")
 	void removeComment(@Param("comment_no") int comment_no, @Param("bd_no") int bd_no);
+
+	@Select("DELETE * FROM board WHERE bd_no=#{bd_no}")
+	void deleteBoard(@Param("bd_no") int bd_no);
+
+	@Update("UPDATE board SET bd_views=${bd_views}+1 WHERE bd_no=${bd_no}")
+	void viewIncrease(@Param("bd_no") int bd_no, @Param("bd_views") int bd_views);
+
+	// 글 수정 요청을 처리할 메서드
+	@Update("UPDATE board SET bd_title=#{bd_title}, bd_content=#{bd_content} WHERE bd_no=#{bd_no}")
+	void updateBoard(@Param("bd_title") String bd_title, @Param("bd_content") String bd_content,
+					 @Param("bd_no") int bd_no);
+
+
 }
