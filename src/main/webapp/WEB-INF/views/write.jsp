@@ -53,7 +53,7 @@
                         <div class="card-header">
                             <div class="row">
                                 <div class="col p-0">
-                                    <div class="input-group"><input class="form-control" type="text" placeholder="제목"><span class="input-group-text">${writer_nick}</span></div>
+                                    <div class="input-group"><input class="form-control" type="text" placeholder="제목"><span class="input-group-text">${writer_nick}<br></span></div>
                                 </div>
                             </div>
                         </div>

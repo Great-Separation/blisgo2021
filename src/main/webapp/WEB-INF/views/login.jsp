@@ -81,7 +81,7 @@
 <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer>
 </script></button></div>
                             <div class="row d-xxl-flex align-items-xxl-center">
-                                <div class="col">
+                                <div class="col-auto">
                                     <div class="form-check d-xxl-flex align-items-xxl-center" id="form-check-signs-of-agreement-1"><input class="form-check-input" type="checkbox" id="formCheck-remember-1" for="remember" name="check"><label class="form-check-label" for="formCheck"><span class="label-text">로그인 유지</span></label></div>
                                 </div>
                                 <div class="col"><a class="float-end text-decoration-none" id="forgot-password-link-1" href="/verify">비밀번호 찾기</a></div>

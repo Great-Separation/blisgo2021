@@ -53,13 +53,11 @@
                         <div class="card-header">
                             <div class="row">
                                 <div class="col p-0">
-                                    <div class="input-group"><input class="form-control" type="text" value="${article.getBd_title()}" placeholder="제목">
-                                        <span class="input-group-text">${article.getBd_writer()}</span></div>
+                                    <div class="input-group"><input class="form-control" type="text" placeholder="제목" value="${article.getBd_title()}"><span class="input-group-text">${article.getBd_writer()}<br></span></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body p-0"><textarea class="form-control" id="txtTinyMCE" name="write-content"></textarea>
-                            <script>
+                        <div class="card-body p-0"><textarea class="form-control" id="txtTinyMCE" name="write-content"></textarea><script>
     tinymce.init({
         selector: 'textarea',
         plugins: 'export linkchecker lists checklist autolink media mediaembed pageembed permanentpen powerpaste table advtable autoresize emoticons image imagetools wordcount',

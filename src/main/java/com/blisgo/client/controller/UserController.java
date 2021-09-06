@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.blisgo.client.BlisgoClientApplication;
 import com.blisgo.client.dto.UserDTO;
 import com.blisgo.client.service.UserService;
 
@@ -45,7 +46,7 @@ public class UserController {
 		} else {
 			model.addAttribute("check", 2);
 			model.addAttribute("msg", "없는 회원입니다. 회원가입을 해주세요");
-			return "register";
+			return "redirect:register";
 		}
 		return "redirect:/";
 	}
@@ -55,7 +56,11 @@ public class UserController {
 	@GetMapping("register")
 	public String register(Model model) {
 		model.addAttribute("check", 1);
+
+		model.addAttribute("termsOfAgreement", BlisgoClientApplication.termsOfAgreement);
+
 		return "register";
+
 	}
 
 	// 회원가입 전송
@@ -67,22 +72,22 @@ public class UserController {
 		} else {
 			model.addAttribute("check", 2);
 			model.addAttribute("msg", "회원가입 실패");
-			return "register";
+			return "redirect:register";
 		}
 		return "redirect:login";
 	}
-	
+
 	// 이메일 중복 확인
 	@RequestMapping(value = "/registerCheck", method = RequestMethod.POST)
 	@ResponseBody
 	public String registerCheck(String memEmail) {
 		int result = userService.emailCheck(memEmail);
-		if(result != 0) {
-			return "fail";	// 중복 아이디가 존재
-			
+		if (result != 0) {
+			return "fail"; // 중복 아이디가 존재
+
 		} else {
-			return "success";	// 중복 아이디 x	
-		}	
+			return "success"; // 중복 아이디 x
+		}
 	}
 
 	@GetMapping("qrlogin")
