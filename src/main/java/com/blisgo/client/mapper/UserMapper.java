@@ -15,6 +15,9 @@ public interface UserMapper {
 
 	@Select("SELECT * FROM user_db WHERE email=#{email}")
 	UserDTO getUser(String email);
+	
+	@Select("SELECT COUNT(*) FROM user_db WHERE email=#{email}")
+	int emailCheck(String email);
 
 	// 게시판 댓글 작성 사용자 정보 조회 메서드(프로필 이미지, 닉네임)
 	@Select("SELECT * FROM user_db WHERE mem_no=${mem_no}")

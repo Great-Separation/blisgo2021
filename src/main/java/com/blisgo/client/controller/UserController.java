@@ -8,6 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.blisgo.client.dto.UserDTO;
 import com.blisgo.client.service.UserService;
@@ -67,6 +70,19 @@ public class UserController {
 			return "register";
 		}
 		return "redirect:login";
+	}
+	
+	// 이메일 중복 확인
+	@RequestMapping(value = "/registerCheck", method = RequestMethod.POST)
+	@ResponseBody
+	public String registerCheck(String memEmail) {
+		int result = userService.emailCheck(memEmail);
+		if(result != 0) {
+			return "fail";	// 중복 아이디가 존재
+			
+		} else {
+			return "success";	// 중복 아이디 x	
+		}	
 	}
 
 	@GetMapping("qrlogin")

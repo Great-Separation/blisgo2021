@@ -39,6 +39,12 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userMapper.getUser(user.getEmail());
 	}
+	
+	@Override
+	public int emailCheck(String email) {
+		// TODO Auto-generated method stub
+		return userMapper.emailCheck(email);
+	}
 
 	@Override
 	public String qrCreate(UserDTO user) {
