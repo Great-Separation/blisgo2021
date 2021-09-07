@@ -19,4 +19,7 @@ public interface DictionaryService {
 	
 	// 연관 물품 나열 메서드
 	ArrayList<DictionaryDTO> relatedProduct(ArrayList<String> getCategory_mid);
+	
+	// 물품 더보기 메서드
+	ArrayList<DictionaryDTO> productLoadMore(DictionaryDTO search_dic);
 }

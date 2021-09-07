@@ -11,9 +11,9 @@ import com.blisgo.client.dto.GuideDTO;
 public interface DictionaryMapper {
 
 	// 사전 조회 메서드
-	@Select("SELECT * FROM DICTIONARY WHERE category_big like '%${category_big}%' and category_mid like '%${category_mid}%' and name like '%${category_small}%'")
+	@Select("SELECT * FROM DICTIONARY WHERE category_big like '%${category_big}%' and category_mid like '%${category_mid}%' and name like '%${category_small}%' LIMIT ${index}, ${limit}")
 	ArrayList<DictionaryDTO> searchDictionary(@Param("category_big") String category_big,
-			@Param("category_mid") String category_mid, @Param("category_small") String name);
+			@Param("category_mid") String category_mid, @Param("category_small") String name, int index, int limit);
 
 	// 물품 상세 내용 보는 메서드
 	@Select("SELECT * FROM DICTIONARY WHERE dic_no = ${dic_no}")

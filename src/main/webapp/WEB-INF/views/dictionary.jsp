@@ -107,7 +107,7 @@
 </c:forEach></div>
                 </div>
                 <div class="card-body text-center p-0">
-                    <div class="bg-light bg-gradient shadow-sm"><button class="btn btn-link w-100 text-decoration-none text-secondary" id="loadMore" type="button"><span>더보기</span><i class="fas fa-chevron-down"></i></button></div>
+                    <div class="bg-light bg-gradient shadow-sm"><button class="btn btn-link w-100 text-decoration-none text-secondary" id="loadmore" type="button"><span>더보기</span><i class="fas fa-chevron-down"></i></button></div>
                 </div>
             </div>
         </div>
