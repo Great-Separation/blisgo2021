@@ -57,7 +57,7 @@ public class UserController {
 	public String register(Model model) {
 		model.addAttribute("check", 1);
 
-		model.addAttribute("termsOfAgreement", BlisgoClientApplication.termsOfAgreement);
+//		model.addAttribute("termsOfAgreement", BlisgoClientApplication.termsOfAgreement);
 
 		return "register";
 
