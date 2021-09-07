@@ -9,7 +9,7 @@ import com.blisgo.client.dto.UserDTO;
 public interface CommunityService {
 
 	// 글 등록 메서드
-	void regist(String email, String writer, String title, String content);
+	void regist(String email, String writer,String category, String title, String content);
 
 	// 글 목록을 가지고 오는 메서드(페이징 없을때)
 	ArrayList<BoardDTO> listBoard();

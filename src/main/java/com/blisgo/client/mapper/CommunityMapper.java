@@ -10,9 +10,10 @@ import java.util.ArrayList;
 
 public interface CommunityMapper {
 	// 글 등록 메서드
-	@Select("INSERT INTO board VALUES(null, #{bd_title}, #{bd_writer},#{bd_content} ,#{bd_date} ,#{bd_views},#{bd_favorite})")
+	@Select("INSERT INTO board VALUES(null, #{bd_title}, #{bd_writer},#{bd_content},#{bd_category} ,#{bd_date} ,#{bd_views},#{bd_favorite})")
 	void regist(@Param("bd_title") String title, @Param("bd_writer") String writer, @Param("bd_content") String content,
-			@Param("bd_date") Timestamp date, @Param("bd_views") int views, @Param("bd_favorite") int favorite);
+			@Param("bd_category") String category,@Param("bd_date") Timestamp date, @Param("bd_views") int views,
+			 @Param("bd_favorite") int favorite);
 
 	// 글 목록을 가지고 오는 메서드(페이징 처리를 안하고 목록전체 보여주기)
 	@Select("SELECT * FROM board ORDER BY bd_no DESC")

@@ -74,7 +74,7 @@
                         <div class="card-footer p-1">
                             <div class="col"><div class="btn-group float-end" role="group">
     <c:choose>
-        <c:when test="${session_user_email eq articles.getBd_email()}">
+        <c:when test="${session_user_nick eq articles.getBd_writer()}">
             <button class="btn btn-info" type="button" onclick="location.href='/content_update?bd_no=${bd_no}'">
                 <i class="fas fa-pencil-alt text-white"></i>
             </button>

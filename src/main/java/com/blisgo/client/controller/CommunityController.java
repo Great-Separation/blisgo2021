@@ -63,12 +63,11 @@ public class CommunityController {
 			comments_user.add(communityService.getCommentUser(comment.getMem_no()));
 		}
 
-		model.addAttribute("session_user_email",userInfo);
+		model.addAttribute("session_user_nick",userInfo.getNickname());
 		model.addAttribute("articles", articles);
 		model.addAttribute("comments", comments);
 		model.addAttribute("comments_user", comments_user);
 		model.addAttribute("bd_no", bd_no);
-
 
 		return "content";
 	}
@@ -109,19 +108,24 @@ public class CommunityController {
 	// -----------------------------------------------------//
 	// 게시판 글 올리기
 	// write.jsp -> community
-	@PostMapping("write")
+	@PostMapping("write_post")
 	public String writePOST(HttpServletRequest request, HttpServletResponse response, HttpSession session,
 							Model model) throws IOException {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=euc-kr");
 		PrintWriter out = response.getWriter();
 
+		String title=request.getParameter("write-title");
+		String content=request.getParameter("write-content");
+
 		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
 
-//		communityService.regist(userInfo.getEmail(), userInfo.getNickname(), boardDTO.getBd_title(), boardDTO.getBd_content());
+		System.out.println("title="+title+"content=" + content);
+		System.out.println(userInfo);
 
+		communityService.regist(userInfo.getEmail(), userInfo.getNickname(),"category", title, content);
 
-		return "community";
+		return "redirect:/community";
 	}
 	// -----------------------------------------------------//
 
@@ -152,7 +156,7 @@ public class CommunityController {
 
 	// -----------------------------------------------------//
 	// 게시판 글삭제
-	@GetMapping("/content_delete")
+	@GetMapping("content_delete")
 	public String content_delete(HttpServletRequest request) throws UnsupportedEncodingException {
 		request.setCharacterEncoding("UTF-8");
 
@@ -165,9 +169,9 @@ public class CommunityController {
 	// -----------------------------------------------------//
 
 	// -----------------------------------------------------//
-	// write.jsp
+	// write_update.jsp
 	// 게시판 글 수정 화면
-	@GetMapping("/content_update")
+	@GetMapping("content_update")
 	public String content_update(HttpServletRequest request, HttpSession session, Model model)
 			throws UnsupportedEncodingException {
 		request.setCharacterEncoding("utf-8");
@@ -182,14 +186,14 @@ public class CommunityController {
 	// -----------------------------------------------------//
 
 	// -----------------------------------------------------//
-	// write.jsp -> community.jsp
+	// write_update.jsp -> community.jsp
 	// 게시판 글 수정 제어
-	@PostMapping("/content_update_control")
-	public String contentUpdateControl(HttpServletRequest request, HttpServletResponse response, HttpSession session,
+	@PostMapping("content_update_post")
+	public String contentUpdatepost(HttpServletRequest request, HttpServletResponse response, HttpSession session,
 										 Model model) throws IOException {
 		request.setCharacterEncoding("utf-8");
 
-		return "redirect:content";
+		return "redirect:/content";
 	}
 	// -----------------------------------------------------//
 

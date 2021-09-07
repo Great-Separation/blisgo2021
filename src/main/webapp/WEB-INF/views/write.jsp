@@ -48,12 +48,16 @@
     <main class="pt-2 pb-2">
         <section>
             <div class="container p-0" id="community-write">
-                <form method="post" action="/write">
+                <form method="post" action="/write_post">
                     <div class="card shadow">
                         <div class="card-header">
                             <div class="row">
                                 <div class="col p-0">
-                                    <div class="input-group"><input class="form-control" type="text" placeholder="제목"><span class="input-group-text">${writer_nick}<br></span></div>
+                                    <div class="input-group">
+                                        <input class="form-control" type="text" placeholder="제목" name="write-title">
+                                        <span class="input-group-text">${writer_nick}<br>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -22,9 +22,9 @@ public class CommunityServiceImpl implements CommunityService {
 	private UserMapper userMapper;
 
 	@Override
-	public void regist(String email, String writer, String title, String content) {
+	public void regist(String email, String writer,String category, String title, String content) {
 		Timestamp date = new Timestamp(System.currentTimeMillis());
-		communityMapper.regist(title, writer, content, date, 1, 0);
+		communityMapper.regist(title, writer,category ,content, date, 1, 0);
 	}
 
 	@Override
