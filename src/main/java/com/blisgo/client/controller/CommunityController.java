@@ -63,7 +63,9 @@ public class CommunityController {
 			comments_user.add(communityService.getCommentUser(comment.getMem_no()));
 		}
 
-		model.addAttribute("session_user_nick",userInfo.getNickname());
+		if(userInfo!=null) {
+			model.addAttribute("session_user_nick", userInfo.getNickname());
+		}
 		model.addAttribute("articles", articles);
 		model.addAttribute("comments", comments);
 		model.addAttribute("comments_user", comments_user);
