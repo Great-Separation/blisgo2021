@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.blisgo.client.dto.BoardDTO;
 import com.blisgo.client.dto.CommentDTO;
 import com.blisgo.client.dto.UserDTO;
+import org.apache.ibatis.annotations.Param;
 
 public interface CommunityService {
 
@@ -39,5 +40,7 @@ public interface CommunityService {
 	void viewIncrease(int bd_no, int bd_views);
 
 	void updateBoard(String bd_title, String bd_content, int bd_no);
+
+	int getCountContentComment(int bd_no);
 
 }

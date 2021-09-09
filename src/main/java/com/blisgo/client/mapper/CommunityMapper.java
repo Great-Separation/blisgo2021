@@ -30,6 +30,18 @@ public interface CommunityMapper {
 	// 글갯수를 받아온다.
 	@Select("SELECT COUNT(*) FROM board")
 	int getCountBoard();
+	//게시글 삭제
+	@Select("DELETE * FROM board WHERE bd_no=#{bd_no}")
+	void deleteBoard(@Param("bd_no") int bd_no);
+
+	//조회수 +1
+	@Update("UPDATE board SET bd_views=${bd_views}+1 WHERE bd_no=${bd_no}")
+	void viewIncrease(@Param("bd_no") int bd_no, @Param("bd_views") int bd_views);
+
+	// 글 수정 요청을 처리할 메서드
+	@Update("UPDATE board SET bd_title=#{bd_title}, bd_content=#{bd_content} WHERE bd_no=#{bd_no}")
+	void updateBoard(@Param("bd_title") String bd_title, @Param("bd_content") String bd_content,
+					 @Param("bd_no") int bd_no);
 
 	// 댓글 개수를 받아오는 메서드
 	@Select("SELECT * FROM ")
@@ -48,16 +60,8 @@ public interface CommunityMapper {
 	@Delete("DELETE FROM comment WHERE comment_no=${comment_no} AND bd_no=${bd_no}")
 	void removeComment(@Param("comment_no") int comment_no, @Param("bd_no") int bd_no);
 
-	@Select("DELETE * FROM board WHERE bd_no=#{bd_no}")
-	void deleteBoard(@Param("bd_no") int bd_no);
-
-	@Update("UPDATE board SET bd_views=${bd_views}+1 WHERE bd_no=${bd_no}")
-	void viewIncrease(@Param("bd_no") int bd_no, @Param("bd_views") int bd_views);
-
-	// 글 수정 요청을 처리할 메서드
-	@Update("UPDATE board SET bd_title=#{bd_title}, bd_content=#{bd_content} WHERE bd_no=#{bd_no}")
-	void updateBoard(@Param("bd_title") String bd_title, @Param("bd_content") String bd_content,
-					 @Param("bd_no") int bd_no);
-
+	// 해당글의 댓글 개수를 받아오는 메서드
+	@Select("SELECT * COUNT(*) FROM comment WHERE bd_no=${bd_no}")
+	int getCountContentComment(@Param("bd_no") int bd_no);
 
 }

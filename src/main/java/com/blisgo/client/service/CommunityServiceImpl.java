@@ -74,6 +74,9 @@ public class CommunityServiceImpl implements CommunityService {
 	public void updateBoard(String bd_title, String bd_content, int bd_no) {
 		communityMapper.updateBoard(bd_title,bd_content,bd_no);
 	}
-
+	@Override
+	public int getCountContentComment(int bd_no) {
+		return communityMapper.getCountContentComment(bd_no);
+	}
 
 }
