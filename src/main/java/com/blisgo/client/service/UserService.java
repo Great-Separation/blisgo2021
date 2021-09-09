@@ -19,5 +19,5 @@ public interface UserService {
 	// 회원 QR 생성 메서드
 	public String qrCreate(UserDTO user);
 	
-
+	public boolean modifyAccount(UserDTO user);
 }

@@ -32,6 +32,12 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/table-scrollable-layout.css">
 <link rel="manifest" href="/manifest.json">
+<script type="text/javascript">
+	if(${check} == 2){
+		var message = '${msg}';
+		alert(message);
+	}
+</script>
 </head>
 
 <body>
@@ -65,7 +71,7 @@
                                             <form>
                                                 <div class="row">
                                                     <div class="col"><img class="rounded-circle mb-3 mt-4" src="https://i.pravatar.cc/200" width="160px" height="160px" loading="lazy" alt="프로필이미지">
-                                                        <p class="lead">옥재욱</p>
+                                                        <p class="lead">${mem.getNickname()}</p>
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -89,17 +95,17 @@
                                             <p class="lead text-primary m-0 fw-bold">사용자 설정</p>
                                         </div>
                                         <div class="card-body">
-                                            <form>
+                                            <form method="post">
                                                 <div class="row">
-                                                    <div class="col py-1"><label class="form-label" for="username"><strong>사용자 이름</strong></label><input class="form-control" type="text" id="username" placeholder="옥재욱" name="nick" required="" minlength="2" maxlength="8"></div>
+                                                    <div class="col py-1"><label class="form-label" for="username"><strong>사용자 이름</strong></label><input class="form-control" type="text" id="username" placeholder="" name="nickname" required="" minlength="2" maxlength="8" value="${mem.getNickname()}"></div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col py-1"><label class="form-label" for="email"><strong>이메일</strong></label><input class="form-control" type="email" id="email" placeholder="okjaeook98@gmail.com" name="email" disabled=""></div>
+                                                    <div class="col py-1"><label class="form-label" for="email"><strong>이메일</strong></label><input class="form-control" type="email" id="email" placeholder="" name="email" readonly="readonly" value="${mem.getEmail()}"></div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col py-1"><button class="btn btn-primary" type="submit">저장하기</button><button class="btn btn-warning float-end" type="button" data-bs-target="#modal-delete-account" data-bs-toggle="modal">탈퇴하기</button></div>
+                                                    <div class="col py-1"><button class="btn btn-primary" type="submit" formaction="/mypageModifyAccount">변경하기</button><button class="btn btn-warning float-end" type="submit" data-bs-target="#modal-delete-account" data-bs-toggle="modal" formaction="/mypageDeleteAccount">탈퇴하기</button></div>
                                                 </div>
-                                            </form>
+                                            </form>                  
                                         </div>
                                     </div>
                                     <div class="card shadow-sm mb-4">

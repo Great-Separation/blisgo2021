@@ -48,7 +48,7 @@ public class UserController {
 			model.addAttribute("msg", "없는 회원입니다. 회원가입을 해주세요");
 			return "redirect:register";
 		}
-		return "redirect:/";
+		return "index";
 	}
 
 	// -----------------------------------------------------//
@@ -72,7 +72,7 @@ public class UserController {
 		} else {
 			model.addAttribute("check", 2);
 			model.addAttribute("msg", "회원가입 실패");
-			return "redirect:register";
+			return "register";
 		}
 		return "redirect:login";
 	}
@@ -121,12 +121,28 @@ public class UserController {
 	// 마이페이지
 	@GetMapping("mypage")
 	public String mypage(Model model) {
+		model.addAttribute("check", 1);
 		return "mypage";
 	}
 
 	// 마이페이지 계정 수정
 	@PostMapping("mypageModifyAccount")
-	public String mypageModifyAccount(Model model) {
+	public String mypageModifyAccount(Model model, UserDTO user) {
+		System.out.println(user);
+		UserDTO user_no = (UserDTO)session.getAttribute("mem");
+		user.setMem_no(user_no.getMem_no());
+		if(userService.modifyAccount(user)) {
+			System.out.println("변경 성공");
+			model.addAttribute("check", 2);
+			model.addAttribute("msg", "회원 정보가 변경되었습니다.");
+		} else {
+			model.addAttribute("check", 2);
+			model.addAttribute("msg", "회원 정보 변경이 실패했습니다.");
+			return "mypage";
+		}
+		UserDTO userInfo = (UserDTO)userService.getUser(user);
+		session.setAttribute("mem", userInfo);
+		System.out.println(userInfo);
 		return "mypage";
 	}
 

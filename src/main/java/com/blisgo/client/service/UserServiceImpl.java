@@ -45,6 +45,13 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userMapper.emailCheck(email);
 	}
+	
+	@Override
+	public boolean modifyAccount(UserDTO user) {
+		// TODO Auto-generated method stub0
+		userMapper.modifyAccount(user.getNickname(), user.getMem_no());
+		return true;
+	}
 
 	@Override
 	public String qrCreate(UserDTO user) {
