@@ -200,13 +200,14 @@ public class CommunityController {
 
 		String title=request.getParameter("write-title");
 		String content=request.getParameter("write-content");
+		int bd_no=Integer.parseInt(request.getParameter("write-bd_no"));
 
 		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
 
 		System.out.println("title="+title+"content=" + content);
 		System.out.println(userInfo);
 
-		communityService.regist(userInfo.getEmail(), userInfo.getNickname(),"category", title, content);
+		communityService.updateBoard(title, content,bd_no);
 
 		return "redirect:/community";
 	}

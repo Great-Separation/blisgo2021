@@ -48,7 +48,7 @@
     <main class="pt-2 pb-2">
         <section>
             <div class="container p-0" id="community-write">
-                <form method="post" action="/write_post">
+                <form method="post" action="/content_update_post">
                     <div class="card shadow">
                         <div class="card-header">
                             <div class="row">
@@ -56,11 +56,7 @@
                                     <div class="input-group">
                                         <input class="form-control" type="text" placeholder="제목" name="write-title" value="${article.getBd_title()}">
                                         <span class="input-group-text">${article.getBd_writer()}<br>
-
-                                        <input class="form-control" type="text" placeholder="제목" name="write-title" value="${article.getBd_title()}">
-
-                                        <input class="form-control" type="text" placeholder="제목" name="write-title" value="${article.getBd_title()}">
-                                        <input class="form-control" type="text" placeholder="제목" name="write-title" value="${article.getBd_title()}">
+                                        <input class="form-control" type="hidden" placeholder="제목" name="write-bd_no" value="${article.getBd_no()}">
                                         </span>
                                     </div>
                                 </div>
