@@ -19,5 +19,9 @@ public interface UserService {
 	// 회원 QR 생성 메서드
 	public String qrCreate(UserDTO user);
 	
+	// 회원 닉네임 변경 메서드
 	public boolean modifyAccount(UserDTO user);
+	
+	//회원 탈퇴 메서드
+	public boolean deleteAccount(UserDTO user);
 }

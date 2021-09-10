@@ -34,6 +34,11 @@ public class UserController {
 		session = req.getSession();
 		UserDTO userInfo = userService.getUser(user);
 		String userPass = userService.userLogin(user);
+		if(userInfo == null) {
+			model.addAttribute("check", 2);
+			model.addAttribute("msg", "없는 회원입니다. 회원가입을 해주세요");
+			return "register";
+		}
 		if (userPass != null) {
 			if (user.getPass().equals(userPass)) {
 				model.addAttribute("check", 2);
@@ -43,10 +48,6 @@ public class UserController {
 				model.addAttribute("passCheck", 1);
 				return "login";
 			}
-		} else {
-			model.addAttribute("check", 2);
-			model.addAttribute("msg", "없는 회원입니다. 회원가입을 해주세요");
-			return "redirect:register";
 		}
 		return "index";
 	}
@@ -74,7 +75,7 @@ public class UserController {
 			model.addAttribute("msg", "회원가입 실패");
 			return "register";
 		}
-		return "redirect:login";
+		return "login";
 	}
 
 	// 이메일 중복 확인
@@ -149,7 +150,15 @@ public class UserController {
 	// 마이페이지 계정 삭제
 	@PostMapping("mypageDeleteAccount")
 	public String mypageDeleteAccount(Model model) {
-		return "mypage";
+		UserDTO userInfo = (UserDTO)session.getAttribute("mem");
+		if(userService.deleteAccount(userInfo)) {
+			return "redirect:logout";
+		}
+		else {
+			model.addAttribute("check", 2);
+			model.addAttribute("msg", "회원 탈퇴 실패했습니다. 다시 시도해주시기바랍니다.");
+			return "mypage";
+		}
 	}
 
 	@GetMapping("logout")

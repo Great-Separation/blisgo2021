@@ -1,5 +1,6 @@
 package com.blisgo.client.mapper;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -28,7 +29,10 @@ public interface UserMapper {
 	UserDTO getCommentUser(int mem_no);
 	
 	// 회원 정보 수정 메서드
-	@Update("UPDATE user_db SET nickname=#{nickname} where mem_no=#{mem_no}")
+	@Update("UPDATE user_db SET nickname=#{nickname} WHERE mem_no=#{mem_no}")
 	void modifyAccount(String nickname, int mem_no);
+	
+	@Delete("DELETE FROM user_db WHERE mem_no=#{mem_no}")
+	void deleteAccount(int mem_no);
 
 }

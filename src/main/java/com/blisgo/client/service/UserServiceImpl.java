@@ -52,6 +52,15 @@ public class UserServiceImpl implements UserService {
 		userMapper.modifyAccount(user.getNickname(), user.getMem_no());
 		return true;
 	}
+	
+	
+
+	@Override
+	public boolean deleteAccount(UserDTO user) {
+		// TODO Auto-generated method stub
+		userMapper.deleteAccount(user.getMem_no());
+		return true;
+	}
 
 	@Override
 	public String qrCreate(UserDTO user) {
