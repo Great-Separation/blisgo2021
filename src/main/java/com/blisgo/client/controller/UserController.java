@@ -160,6 +160,39 @@ public class UserController {
 			return "mypage";
 		}
 	}
+	
+	// 비밀번호 중복 확인
+	@RequestMapping(value = "/newPassCheck", method = RequestMethod.POST)
+	@ResponseBody
+	public String newPassCheck(String newPass, String passCheck) {
+		boolean result = newPass.equals(passCheck);
+		if (result != true) {
+			return "fail"; // 비밀번호가 같지 않음
+
+		} else {
+			return "success"; // 비밀번호 동일
+		}
+	}
+	
+	//회원 비밀번호 변경
+	@PostMapping("modifyPassword")
+	public String modifyPassword(HttpServletRequest request, Model model) {
+		UserDTO userInfo = (UserDTO)session.getAttribute("mem");
+		String beforePass = request.getParameter("beforePass");
+		String newPass = request.getParameter("newPass");
+		
+		if(beforePass.equals(userService.userLogin(userInfo))){
+			userService.modifyPassword(newPass, userInfo.getEmail(), userInfo.getMem_no());
+			session.invalidate();
+			model.addAttribute("check", 2);
+			model.addAttribute("msg", "변경된 비밀번호로 다시 로그인바랍니다.");
+			return "login";
+		}
+		else {
+			model.addAttribute("passCheck", 1);
+			return "mypage";
+		}	
+	}
 
 	@GetMapping("logout")
 	public String logout() {

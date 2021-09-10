@@ -38,6 +38,17 @@
 		alert(message);
 	}
 </script>
+<style>
+.pass_input_re_1{
+		color : green;
+		display : none;
+	}
+
+.pass_input_re_2{
+		color : red;
+		display : none;
+	}
+</style>
 </head>
 
 <body>
@@ -113,18 +124,24 @@
                                             <p class="lead text-primary m-0 fw-bold">비밀번호 설정</p>
                                         </div>
                                         <div class="card-body">
-                                            <form>
+                                            <form action="modifyPassword" method="post">
                                                 <div class="row">
-                                                    <div class="col-auto flex-fill py-1"><label class="form-label"><strong>이전 비밀번호</strong></label><input class="form-control" type="password"></div>
+                                                    <div class="col-auto flex-fill py-1"><label class="form-label"><strong>이전 비밀번호</strong></label><input class="form-control" type="password" name="beforePass"></div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-auto flex-fill py-1"><label class="form-label"><strong>새 비밀번호</strong></label><input class="form-control" type="password"></div>
-                                                    <div class="col-auto flex-fill py-1"><label class="form-label"><strong>새 비밀번호 확인</strong><br></label><input class="form-control" type="password"></div>
+                                                    <div class="col-auto flex-fill py-1"><label class="form-label"><strong>새 비밀번호</strong></label><input class="form-control" type="password" id="input-new-pass" name="newPass"></div>
+                                                    <div class="col-auto flex-fill py-1"><label class="form-label"><strong>새 비밀번호 확인</strong><br></label><input class="form-control" type="password" id="input-pass-Check"><span class="pass_input_re_1">비밀번호가 일치 합니다.<br></span><span class="pass_input_re_2">비밀번호가 불일치합니다.<br></span></div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col py-1">
                                                         <div class="input-group"><button class="btn btn-primary" type="submit">저장하기</button>
-                                                            <div class="alert alert-warning flex-fill input-group-text m-0 p-1" role="alert"><span style="font-size: 14px;"><i class="fas fa-exclamation-triangle"></i>비밀번호가 틀립니다</span></div>
+                                                        <c:choose>
+                                                        	<c:when test="${passCheck==null}">
+    														</c:when>
+    														<c:otherwise>
+                                                            	<div class="alert alert-warning flex-fill input-group-text m-0 p-1" role="alert"><span style="font-size: 14px;"><i class="fas fa-exclamation-triangle"></i>비밀번호가 틀립니다</span></div>
+                                                        	</c:otherwise>
+                                                        </c:choose>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -450,6 +467,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/pass-check.js"></script>
     <script src="assets/js/load-more.js"></script>
     <script src="assets/js/service-worker.js"></script>
 </body>

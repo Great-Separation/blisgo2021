@@ -22,6 +22,9 @@ public interface UserService {
 	// 회원 닉네임 변경 메서드
 	public boolean modifyAccount(UserDTO user);
 	
-	//회원 탈퇴 메서드
+	// 회원 탈퇴 메서드
 	public boolean deleteAccount(UserDTO user);
+	
+	// 회원 비밀번호 변경 메서드
+	public boolean modifyPassword(String pass, String email, int mem_no);
 }

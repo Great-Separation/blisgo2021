@@ -32,7 +32,12 @@ public interface UserMapper {
 	@Update("UPDATE user_db SET nickname=#{nickname} WHERE mem_no=#{mem_no}")
 	void modifyAccount(String nickname, int mem_no);
 	
+	// 회원 탈퇴 메서드
 	@Delete("DELETE FROM user_db WHERE mem_no=#{mem_no}")
 	void deleteAccount(int mem_no);
+	
+	// 회원 비밀번호 변경 메서드
+	@Update("UPDATE user_db SET pass=HEX(AES_ENCRYPT(#{pass},#{email})) WHERE mem_no=#{mem_no}")
+	void modifyPassword(String pass, String email, int mem_no);
 
 }

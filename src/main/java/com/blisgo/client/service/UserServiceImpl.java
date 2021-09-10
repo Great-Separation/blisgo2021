@@ -53,12 +53,17 @@ public class UserServiceImpl implements UserService {
 		return true;
 	}
 	
-	
-
 	@Override
 	public boolean deleteAccount(UserDTO user) {
 		// TODO Auto-generated method stub
 		userMapper.deleteAccount(user.getMem_no());
+		return true;
+	}
+	
+	@Override
+	public boolean modifyPassword(String pass, String email, int mem_no) {
+		// TODO Auto-generated method stub
+		userMapper.modifyPassword(pass, email, mem_no);
 		return true;
 	}
 

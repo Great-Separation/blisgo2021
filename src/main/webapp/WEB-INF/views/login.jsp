@@ -47,7 +47,8 @@
                         <div class="card-header">
                             <h2 class="text-center text-primary m-0 fw-light">로그인</h2>
                         </div>
-                        <div class="card-body pb-0"><input class="form-control email-imput form-control mt-2" type="email" required="" placeholder="이메일" minlength="6" name="email"><input class="form-control password-input form-control mt-2" type="password" required="" placeholder="비밀번호" minlength="6" name="pass"><button class="btn btn-success box-shadow w-100 mt-2 mb-2" type="submit">로그인</button><c:choose>
+                        <div class="card-body pb-0"><input class="form-control email-imput form-control mt-2" type="email" required="" placeholder="이메일" minlength="6" name="email"><input class="form-control password-input form-control mt-2" type="password" required="" placeholder="비밀번호" minlength="6" name="pass"><button class="btn btn-success box-shadow w-100 mt-2 mb-2" type="submit">로그인</button>
+<c:choose>
     <c:when test="${passCheck==null}">
     </c:when>
     <c:otherwise>
