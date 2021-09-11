@@ -29,10 +29,10 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-<link rel="manifest" href="/manifest.json">
+<link rel="manifest" href="/manifest.json"><script src="https://cdn.tiny.cloud/1/0mwjfs8tijzbt7jipwitlhmj1l6rg57ggo1uh82ty5ccpwnw/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 
-<body><script src="https://cdn.tiny.cloud/1/0mwjfs8tijzbt7jipwitlhmj1l6rg57ggo1uh82ty5ccpwnw/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<body>
     <header id="header">
         <div id="nav-white-space"></div>
         <div class="container-fluid text-white d-none d-lg-block" id="highlight">
@@ -48,84 +48,16 @@
     <main class="pt-2 pb-2">
         <section>
             <div class="container p-0" id="community-write">
-                <form method="post" action="/content_update_post">
+                <form method="post" action="/write">
                     <div class="card shadow">
                         <div class="card-header">
                             <div class="row">
                                 <div class="col p-0">
-                                    <div class="input-group">
-                                        <input class="form-control" type="text" placeholder="제목" name="write-title" value="${article.getBd_title()}">
-                                        <span class="input-group-text">${article.getBd_writer()}<br>
-                                        <input class="form-control" type="hidden" placeholder="제목" name="write-bd_no" value="${article.getBd_no()}">
-                                        </span>
-                                    </div>
+                                    <div class="input-group"><input class="form-control" type="text" placeholder="제목" value="${article.getBd_title()}" name="write-title"><span class="input-group-text"><input class="form-control" type="hidden" name="write-bd_no" value="${article.getBd_no()}">${article.getBd_writer()}<br></span></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body p-0"><textarea class="form-control" id="txtTinyMCE" name="write-content">${article.getBd_content()}</textarea><script>
-    tinymce.init({
-        selector: 'textarea',
-        plugins: 'export linkchecker lists checklist autolink media mediaembed pageembed permanentpen powerpaste table advtable autoresize emoticons image imagetools wordcount',
-        browser_spellcheck: true,
-        contextmenu: false,
-        language: 'ko_KR',
-        mobile: {
-            menubar: true
-        },
-        init_instance_callback: function (editor) {
-            $(editor.getContainer()).find('button.tox-statusbar__wordcount').click();  // if you use jQuery
-        },
-        /* enable automatic uploads of images represented by blob or data URIs*/
-        automatic_uploads: true,
-        /*
-          URL of our upload handler (for more details check: https://www.tiny.cloud/docs/configure/file-image-upload/#images_upload_url)
-          images_upload_url: 'postAcceptor.php',
-          here we add custom filepicker only to Image dialog
-        */
-        file_picker_types: 'image',
-        /* and here's our custom image picker*/
-        file_picker_callback: function (cb, value, meta) {
-            var input = document.createElement('input');
-            input.setAttribute('type', 'file');
-            input.setAttribute('accept', 'image/*');
-
-            /*
-              Note: In modern browsers input[type="file"] is functional without
-              even adding it to the DOM, but that might not be the case in some older
-              or quirky browsers like IE, so you might want to add it to the DOM
-              just in case, and visually hide it. And do not forget do remove it
-              once you do not need it anymore.
-            */
-
-            input.onchange = function () {
-                var file = this.files[0];
-
-                var reader = new FileReader();
-                reader.onload = function () {
-                    /*
-                      Note: Now we need to register the blob in TinyMCEs image blob
-                      registry. In the next release this part hopefully won't be
-                      necessary, as we are looking to handle it internally.
-                    */
-                    var id = 'blobid' + (new Date()).getTime();
-                    var blobCache = tinymce.activeEditor.editorUpload.blobCache;
-                    var base64 = reader.result.split(',')[1];
-                    var blobInfo = blobCache.create(id, file, base64);
-                    blobCache.add(blobInfo);
-
-                    /* call the callback and populate the Title field with the file name */
-                    cb(blobInfo.blobUri(), {title: file.name});
-                };
-                reader.readAsDataURL(file);
-            };
-
-            input.click();
-        }
-
-    });
-
-
-</script></div>
+                        <div class="card-body p-0"><textarea class="form-control" id="txtTinyMCE" name="write-content">${article.getBd_content()}</textarea></div>
                         <div class="card-footer p-1">
                             <div class="btn-group float-end" role="group"><button class="btn btn-success" data-bs-toggle="tooltip" data-bss-tooltip="" type="submit" title="글을 게시판에 올립니다"><i class="fas fa-check"></i></button><a class="btn btn-secondary" role="button" data-bs-toggle="tooltip" data-bss-tooltip="" href="/community" title="글 목록으로 이동합니다"><i class="fas fa-align-justify"></i></a></div>
                         </div>
@@ -139,8 +71,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/load-more.js"></script>
-    <script src="assets/js/service-worker.js"></script>
+    <script src="assets/js/tinymce.js"></script>
 </body>
 
 </html>

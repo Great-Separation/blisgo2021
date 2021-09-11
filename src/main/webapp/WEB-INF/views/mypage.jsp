@@ -31,14 +31,7 @@
     <link rel="stylesheet" href="assets/css/image-slider.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/table-scrollable-layout.css">
-<link rel="manifest" href="/manifest.json">
-<script type="text/javascript">
-	if(${check} == 2){
-		var message = '${msg}';
-		alert(message);
-	}
-</script>
-<style>
+<link rel="manifest" href="/manifest.json"><style>
 .pass_input_re_1{
 		color : green;
 		display : none;
@@ -81,7 +74,7 @@
                                         <div class="card-body text-center">
                                             <form>
                                                 <div class="row">
-                                                    <div class="col"><img class="rounded-circle mb-3 mt-4" src="https://i.pravatar.cc/200" width="160px" height="160px" loading="lazy" alt="프로필이미지">
+                                                    <div class="col"><img class="rounded-circle mb-3 mt-4" src="${mem.getProfile_image()}" width="160px" height="160px" loading="lazy" alt="프로필이미지">
                                                         <p class="lead">${mem.getNickname()}</p>
                                                     </div>
                                                 </div>
@@ -108,15 +101,15 @@
                                         <div class="card-body">
                                             <form method="post">
                                                 <div class="row">
-                                                    <div class="col py-1"><label class="form-label" for="username"><strong>사용자 이름</strong></label><input class="form-control" type="text" id="username" placeholder="" name="nickname" required="" minlength="2" maxlength="8" value="${mem.getNickname()}"></div>
+                                                    <div class="col py-1"><label class="form-label" for="username"><strong>사용자 이름</strong></label><input class="form-control" type="text" id="username" placeholder="옥재욱" name="nickname" required="" minlength="2" maxlength="8" value="${mem.getNickname()}"></div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col py-1"><label class="form-label" for="email"><strong>이메일</strong></label><input class="form-control" type="email" id="email" placeholder="" name="email" readonly="readonly" value="${mem.getEmail()}"></div>
+                                                    <div class="col py-1"><label class="form-label" for="email"><strong>이메일</strong></label><input class="form-control" type="email" id="email" name="email" disabled="" value="${mem.getEmail()}"></div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col py-1"><button class="btn btn-primary" type="submit" formaction="/mypageModifyAccount">변경하기</button><button class="btn btn-warning float-end" type="button" data-bs-target="#modal-delete-account" data-bs-toggle="modal">탈퇴하기</button></div>
+                                                    <div class="col py-1"><button class="btn btn-primary" type="submit" formaction="/mypageModifyAccount">변경</button><button class="btn btn-warning float-end" type="button" data-bs-target="#modal-delete-account" data-bs-toggle="modal" formaction="/mypageDeleteAccount">탈퇴</button></div>
                                                 </div>
-                                            </form>                  
+                                            </form>
                                         </div>
                                     </div>
                                     <div class="card shadow-sm mb-4">
@@ -124,7 +117,7 @@
                                             <p class="lead text-primary m-0 fw-bold">비밀번호 설정</p>
                                         </div>
                                         <div class="card-body">
-                                            <form action="modifyPassword" method="post">
+                                            <form method="post" action="modifyPassword">
                                                 <div class="row">
                                                     <div class="col-auto flex-fill py-1"><label class="form-label"><strong>이전 비밀번호</strong></label><input class="form-control" type="password" name="beforePass"></div>
                                                 </div>
@@ -134,14 +127,15 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="col py-1">
-                                                        <div class="input-group"><button class="btn btn-primary" type="submit">저장하기</button>
-                                                        <c:choose>
+                                                        <div class="input-group"><button class="btn btn-primary" type="submit">변경</button>
+                                                            <div class="input-group-text p-0 m-0 alert-warning"><c:choose>
                                                         	<c:when test="${passCheck==null}">
     														</c:when>
     														<c:otherwise>
                                                             	<div class="alert alert-warning flex-fill input-group-text m-0 p-1" role="alert"><span style="font-size: 14px;"><i class="fas fa-exclamation-triangle"></i>비밀번호가 틀립니다</span></div>
                                                         	</c:otherwise>
                                                         </c:choose>
+</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -448,7 +442,6 @@
     </main>
     <div class="modal fade" role="dialog" tabindex="-1" id="modal-delete-account">
         <div class="modal-dialog modal-dialog-centered" role="document">
-        <form method="post">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">회원탈퇴</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -456,9 +449,8 @@
                 <div class="modal-body">
                     <p>탈퇴 후 데이터는 모두 사라지며 복구할 수 없습니다.</p>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">취소</button><button class="btn btn-danger" type="submit" formaction="/mypageDeleteAccount">확인</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">취소</button><button class="btn btn-danger" type="button" onclick="location.href=&#39;#&#39;">확인</button></div>
             </div>
-        </form>
         </div>
     </div><jsp:include page="footer.jsp">
     <jsp:param name="name" value="value" />
@@ -468,8 +460,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/pass-check.js"></script>
-    <script src="assets/js/load-more.js"></script>
-    <script src="assets/js/service-worker.js"></script>
 </body>
 
 </html>

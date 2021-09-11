@@ -36,6 +36,8 @@
 		alert(message);
 	}
 </script>
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer>
+</script>
 </head>
 
 <body>
@@ -47,8 +49,7 @@
                         <div class="card-header">
                             <h2 class="text-center text-primary m-0 fw-light">로그인</h2>
                         </div>
-                        <div class="card-body pb-0"><input class="form-control email-imput form-control mt-2" type="email" required="" placeholder="이메일" minlength="6" name="email"><input class="form-control password-input form-control mt-2" type="password" required="" placeholder="비밀번호" minlength="6" name="pass"><button class="btn btn-success box-shadow w-100 mt-2 mb-2" type="submit">로그인</button>
-<c:choose>
+                        <div class="card-body pb-0"><input class="form-control email-imput form-control mt-2" type="email" required="" placeholder="이메일" minlength="6" name="email"><input class="form-control password-input form-control mt-2" type="password" required="" placeholder="비밀번호" minlength="6" name="pass"><button class="btn btn-success box-shadow w-100 mt-2 mb-2" type="submit">로그인</button><c:choose>
     <c:when test="${passCheck==null}">
     </c:when>
     <c:otherwise>
@@ -59,28 +60,7 @@
 </c:choose>
 </div>
                         <div class="card-body">
-                            <div class="btn-group-vertical d-flex flex-fill" role="group"><button class="btn w-100 mb-2 p-0" type="button"><div id="my-signin2"></div>
-<script>
-    function onSuccess(googleUser) {
-      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-    }
-    function onFailure(error) {
-      console.log(error);
-    }
-    function renderButton() {
-      gapi.signin2.render('my-signin2', {
-        'scope': 'profile email',
-        'width': 'fill',
-        'longtitle': true,
-        'theme': 'light',
-        'text': "구글로 로그인",
-        'onsuccess': onSuccess,
-        'onfailure': onFailure
-      });
-    }
-</script>
-<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer>
-</script></button></div>
+                            <div class="btn-group-vertical d-flex flex-fill" role="group"><button class="btn w-100 mb-2 p-0" type="button"><div id="my-signin2"></div></button></div>
                             <div class="row d-xxl-flex align-items-xxl-center">
                                 <div class="col-auto">
                                     <div class="form-check d-xxl-flex align-items-xxl-center" id="form-check-signs-of-agreement-1"><input class="form-check-input" type="checkbox" id="formCheck-remember-1" for="remember" name="check"><label class="form-check-label" for="formCheck"><span class="label-text">로그인 유지</span></label></div>
@@ -103,8 +83,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/load-more.js"></script>
-    <script src="assets/js/service-worker.js"></script>
+    <script src="assets/js/oauth-google.js"></script>
 </body>
 
 </html>
