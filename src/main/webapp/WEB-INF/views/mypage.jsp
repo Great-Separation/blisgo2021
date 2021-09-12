@@ -104,10 +104,10 @@
                                                     <div class="col py-1"><label class="form-label" for="username"><strong>사용자 이름</strong></label><input class="form-control" type="text" id="username" placeholder="옥재욱" name="nickname" required="" minlength="2" maxlength="8" value="${mem.getNickname()}"></div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col py-1"><label class="form-label" for="email"><strong>이메일</strong></label><input class="form-control" type="email" id="email" name="email" disabled="" value="${mem.getEmail()}"></div>
+                                                    <div class="col py-1"><label class="form-label" for="email"><strong>이메일</strong></label><input class="form-control" type="email" id="email" name="email" readonly="readonly" value="${mem.getEmail()}"></div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col py-1"><button class="btn btn-primary" type="submit" formaction="/mypageModifyAccount">변경</button><button class="btn btn-warning float-end" type="button" data-bs-target="#modal-delete-account" data-bs-toggle="modal" formaction="/mypageDeleteAccount">탈퇴</button></div>
+                                                    <div class="col py-1"><button class="btn btn-primary" type="submit" formaction="/mypageModifyAccount">변경</button><button class="btn btn-warning float-end" type="button" data-bs-target="#modal-delete-account" data-bs-toggle="modal">탈퇴</button></div>
                                                 </div>
                                             </form>
                                         </div>
@@ -442,6 +442,7 @@
     </main>
     <div class="modal fade" role="dialog" tabindex="-1" id="modal-delete-account">
         <div class="modal-dialog modal-dialog-centered" role="document">
+        <form method="post">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">회원탈퇴</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -449,8 +450,9 @@
                 <div class="modal-body">
                     <p>탈퇴 후 데이터는 모두 사라지며 복구할 수 없습니다.</p>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">취소</button><button class="btn btn-danger" type="button" onclick="location.href=&#39;#&#39;">확인</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">취소</button><button class="btn btn-danger" type="submit" formaction="/mypageDeleteAccount">확인</button></div>
             </div>
+        </form>
         </div>
     </div><jsp:include page="footer.jsp">
     <jsp:param name="name" value="value" />

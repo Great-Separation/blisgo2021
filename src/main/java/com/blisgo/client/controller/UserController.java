@@ -91,6 +91,7 @@ public class UserController {
 		}
 	}
 
+	// QR 코드 출력
 	@GetMapping("qrlogin")
 	public String qrlogin(Model model, HttpServletRequest request) {
 		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
