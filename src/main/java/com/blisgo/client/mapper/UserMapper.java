@@ -1,10 +1,14 @@
 package com.blisgo.client.mapper;
 
+import java.util.ArrayList;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import com.blisgo.client.dto.DictionaryDTO;
 import com.blisgo.client.dto.UserDTO;
 
 public interface UserMapper {
@@ -40,4 +44,7 @@ public interface UserMapper {
 	@Update("UPDATE user_db SET pass=HEX(AES_ENCRYPT(#{pass},#{email})) WHERE mem_no=#{mem_no}")
 	void modifyPassword(String pass, String email, int mem_no);
 
+	// 도감 목록 조회 메서드
+	@Select("SELECT * FROM dictionary WHERE dic_no IN (${dogamList}) LIMIT ${index}, ${limit}")
+	ArrayList<DictionaryDTO> mydogamList(@Param("dogamList")String dogamList, int index, int limit);
 }

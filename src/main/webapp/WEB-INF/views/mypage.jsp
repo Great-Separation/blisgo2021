@@ -148,71 +148,18 @@
                         <div class="tab-pane fade" role="tabpanel" id="dogam">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="row">
+                                    <div class="row" id="dogamList">
+                                    <c:forEach items="${dogamList}" var="dogam">
                                         <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2483836/24838366019.20201114183914.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                                <figcaption class="figure-caption">그릇</figcaption>
+                                            <figure class="figure"><a href="/product?dic_no=${dogam.getDic_no()}"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="${dogam.getThumbnail()}" title="${dogam.getEng_name()}" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
+                                                <figcaption class="figure-caption">${dogam.getName()}</figcaption>
                                             </figure>
                                         </div>
-                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2034702/20347023958.20210517144254.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                                <figcaption class="figure-caption">런닝머신</figcaption>
-                                            </figure>
-                                        </div>
-                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_1461653/14616534957.20180623175323.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                                <figcaption class="figure-caption">나무 조각, 가지, 줄기</figcaption>
-                                            </figure>
-                                        </div>
-                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2742909/27429098399.20210604004021.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                                <figcaption class="figure-caption">냄비뚜껑(강화유리)</figcaption>
-                                            </figure>
-                                        </div>
-                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2520129/25201298488.20201212225921.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                                <figcaption class="figure-caption">면도칼</figcaption>
-                                            </figure>
-                                        </div>
-                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2618534/26185343849.20210228172138.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                                <figcaption class="figure-caption">바둑판</figcaption>
-                                            </figure>
-                                        </div>
-                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2569930/25699304522.20210316103708.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                                <figcaption class="figure-caption">복사기</figcaption>
-                                            </figure>
-                                        </div>
-                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_1772518/17725189210.20190226150216.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                                <figcaption class="figure-caption">볼풋공</figcaption>
-                                            </figure>
-                                        </div>
-                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2503852/25038525522.20201130085638.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                                <figcaption class="figure-caption">세탁기</figcaption>
-                                            </figure>
-                                        </div>
-                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2401360/24013605996.20200902215930.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                                <figcaption class="figure-caption">유리병뚜껑(철, 알루미늄)</figcaption>
-                                            </figure>
-                                        </div>
-                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2308499/23084992490.20200609114121.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                                <figcaption class="figure-caption">정수기</figcaption>
-                                            </figure>
-                                        </div>
-                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="/product"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="https://shopping-phinf.pstatic.net/main_2537221/25372219749.20201225214656.jpg?type=f640" title="이미지 이름 혹은 설명" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                                <figcaption class="figure-caption">콘텍트렌즈</figcaption>
-                                            </figure>
-                                        </div>
+                                    </c:forEach> 
                                     </div>
                                 </div>
                                 <div class="card-body text-center p-0">
-                                    <div class="bg-light bg-gradient shadow-sm"><button class="btn btn-link w-100 text-decoration-none text-secondary" type="button" onclick="location.href=&#39;#&#39;"><span>더보기</span><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-chevron-down">
+                                    <div class="bg-light bg-gradient shadow-sm"><button class="btn btn-link w-100 text-decoration-none text-secondary" type="button" id="loadmore"><span>더보기</span><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-chevron-down">
                                                 <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"></path>
                                             </svg></button></div>
                                 </div>
@@ -462,6 +409,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/pass-check.js"></script>
+    <script src="assets/js/dogam-more.js"></script>
 </body>
 
 </html>

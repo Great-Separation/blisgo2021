@@ -2,6 +2,7 @@ package com.blisgo.client.service;
 
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.Base64;
 
 import javax.imageio.ImageIO;
@@ -9,6 +10,7 @@ import javax.imageio.ImageIO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.blisgo.client.dto.DictionaryDTO;
 import com.blisgo.client.dto.UserDTO;
 import com.blisgo.client.mapper.UserMapper;
 import com.google.zxing.BarcodeFormat;
@@ -21,6 +23,8 @@ import com.google.zxing.qrcode.QRCodeWriter;
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserMapper userMapper;
+	
+	private static int index = 0;
 
 	@Override
 	public boolean insert(UserDTO user) {
@@ -65,6 +69,32 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		userMapper.modifyPassword(pass, email, mem_no);
 		return true;
+	}
+	
+	@Override
+	public ArrayList<DictionaryDTO> mydogamList(String dogamList) {
+		// TODO Auto-generated method stub
+		index = 0;
+		return userMapper.mydogamList(dogamList, 0, 12);
+	}
+	
+
+	@Override
+	public ArrayList<DictionaryDTO> dogamLoadMore(String dogamList) {
+		// TODO Auto-generated method stub
+		index += 12;
+
+		ArrayList<DictionaryDTO> result = null;
+
+		// 더이상 조회되는 내용이 없을때의 오류 방지
+		try {
+			result = userMapper.mydogamList(dogamList, index, 12);
+		} catch (Exception e) {
+			// TODO 조회를 마침
+			System.out.println("도감 목록 > 더이상 조회할 것이 없습니다");
+			return null;
+		}
+		return result;
 	}
 
 	@Override

@@ -1,5 +1,8 @@
 package com.blisgo.client.service;
 
+import java.util.ArrayList;
+
+import com.blisgo.client.dto.DictionaryDTO;
 import com.blisgo.client.dto.UserDTO;
 
 public interface UserService {
@@ -27,4 +30,10 @@ public interface UserService {
 	
 	// 회원 비밀번호 변경 메서드
 	public boolean modifyPassword(String pass, String email, int mem_no);
+	
+	// 도감 목록 조회 메서드
+	public ArrayList<DictionaryDTO> mydogamList(String dogamList);
+	
+	// 도감 더보기 메서드
+	public ArrayList<DictionaryDTO> dogamLoadMore(String dogamList);
 }

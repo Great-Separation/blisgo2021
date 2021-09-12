@@ -1,5 +1,7 @@
 package com.blisgo.client.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.blisgo.client.BlisgoClientApplication;
+import com.blisgo.client.dto.DictionaryDTO;
 import com.blisgo.client.dto.UserDTO;
 import com.blisgo.client.service.UserService;
 
@@ -124,6 +126,11 @@ public class UserController {
 	@GetMapping("mypage")
 	public String mypage(Model model) {
 		model.addAttribute("check", 1);
+		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
+		String dogamNo = userInfo.getDogamList();
+		ArrayList<DictionaryDTO> dogamList = userService.mydogamList(dogamNo);
+		System.out.println(dogamList);
+		model.addAttribute("dogamList", dogamList);
 		return "mypage";
 	}
 
@@ -137,15 +144,15 @@ public class UserController {
 			System.out.println("변경 성공");
 			model.addAttribute("check", 2);
 			model.addAttribute("msg", "회원 정보가 변경되었습니다.");
+			UserDTO userInfo = (UserDTO)userService.getUser(user);
+			session.setAttribute("mem", userInfo);
+			System.out.println(userInfo);
+			return "mypage";
 		} else {
 			model.addAttribute("check", 2);
 			model.addAttribute("msg", "회원 정보 변경이 실패했습니다.");
 			return "mypage";
 		}
-		UserDTO userInfo = (UserDTO)userService.getUser(user);
-		session.setAttribute("mem", userInfo);
-		System.out.println(userInfo);
-		return "mypage";
 	}
 
 	// 마이페이지 계정 삭제
@@ -193,6 +200,16 @@ public class UserController {
 			model.addAttribute("passCheck", 1);
 			return "mypage";
 		}	
+	}
+	
+	// 도감 목록 더보기
+	@ResponseBody
+	@PostMapping("/dogam_more")
+	public ArrayList<DictionaryDTO> dictionaryLoadMore(Model model) {
+		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
+		String dogamNo = userInfo.getDogamList();
+		ArrayList<DictionaryDTO> products_more = userService.dogamLoadMore(dogamNo);
+		return products_more;
 	}
 
 	@GetMapping("logout")
