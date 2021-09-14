@@ -128,9 +128,15 @@ public class UserController {
 		model.addAttribute("check", 1);
 		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
 		String dogamNo = userInfo.getDogamList();
-		ArrayList<DictionaryDTO> dogamList = userService.mydogamList(dogamNo);
-		System.out.println(dogamList);
-		model.addAttribute("dogamList", dogamList);
+		if(dogamNo == null) {
+			
+		}
+		else {
+			ArrayList<DictionaryDTO> dogamList = userService.mydogamList(dogamNo);
+			model.addAttribute("dogamList", dogamList);
+		}
+		ArrayList<UserDTO> rankList = userService.rankList();		
+		model.addAttribute("rankList", rankList);
 		return "mypage";
 	}
 

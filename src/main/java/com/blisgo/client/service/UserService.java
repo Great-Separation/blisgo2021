@@ -36,4 +36,7 @@ public interface UserService {
 	
 	// 도감 더보기 메서드
 	public ArrayList<DictionaryDTO> dogamLoadMore(String dogamList);
+	
+	// 회원 순위 조회 메서드
+	public ArrayList<UserDTO> rankList();
 }

@@ -47,4 +47,9 @@ public interface UserMapper {
 	// 도감 목록 조회 메서드
 	@Select("SELECT * FROM dictionary WHERE dic_no IN (${dogamList}) LIMIT ${index}, ${limit}")
 	ArrayList<DictionaryDTO> mydogamList(@Param("dogamList")String dogamList, int index, int limit);
+	
+	// 회원 순위 조회 메서드
+	@Select("SELECT @rownum:=@rownum+1 AS rankNum, user_db.* FROM (SELECT @rownum:=0) AS R, user_db ORDER BY memPoint DESC")
+	ArrayList<UserDTO> rankList();
+
 }

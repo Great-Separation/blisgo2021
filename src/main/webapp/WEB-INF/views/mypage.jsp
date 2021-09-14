@@ -128,14 +128,15 @@
                                                 <div class="row">
                                                     <div class="col py-1">
                                                         <div class="input-group"><button class="btn btn-primary" type="submit">변경</button>
-                                                            <div class="input-group-text p-0 m-0 alert-warning"><c:choose>
-                                                        	<c:when test="${passCheck==null}">
-    														</c:when>
-    														<c:otherwise>
-                                                            	<div class="alert alert-warning flex-fill input-group-text m-0 p-1" role="alert"><span style="font-size: 14px;"><i class="fas fa-exclamation-triangle"></i>비밀번호가 틀립니다</span></div>
-                                                        	</c:otherwise>
-                                                        </c:choose>
-</div>
+                                                            <div class="input-group-text p-0 m-0 alert-warning">
+                                                            <c:choose>
+                                                        		<c:when test="${passCheck==null}">
+    															</c:when>
+    															<c:otherwise>
+                                                            		<div class="alert alert-warning flex-fill input-group-text m-0 p-1" role="alert"><span style="font-size: 14px;"><i class="fas fa-exclamation-triangle"></i>비밀번호가 틀립니다</span></div>
+                                                        		</c:otherwise>
+                                                        	</c:choose>
+															</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -176,106 +177,47 @@
                                             <div class="row m-0">
                                                 <div class="col-3 text-center align-self-end p-1">
                                                     <h2><i class="fas fa-trophy leaderboard-icon-second"></i></h2><img class="rounded-circle img-fluid leaderboard-user-img" src="https://i.pravatar.cc/200?img=2" width="150px" height="150px" alt="프로필이미지">
-                                                    <p class="lead m-0">텼쟨준탔<br></p><span>100000</span>
+                                                    <p class="lead m-0">${rankList[1].getNickname()}<br></p><span>${rankList[1].getMemPoint()}</span>
                                                 </div>
                                                 <div class="col-6 text-center align-self-center p-1">
                                                     <h1><i class="fas fa-trophy leaderboard-icon-first"></i></h1><img class="rounded-circle img-fluid leaderboard-user-img" src="https://i.pravatar.cc/200?img=1" width="200px" height="200px" alt="프로필이미지">
-                                                    <p class="lead m-0">신걺혐됨<br></p><span>100000</span>
+                                                    <p class="lead m-0">${rankList[0].getNickname()}<br></p><span>${rankList[0].getMemPoint()}</span>
                                                 </div>
                                                 <div class="col-3 text-center align-self-end p-1">
                                                     <h3><i class="fas fa-trophy leaderboard-icon-third"></i></h3><img class="rounded-circle img-fluid" id="leaderboard-user-img" src="https://i.pravatar.cc/200?img=3" width="100px" height="100px" alt="프로필이미지">
-                                                    <p class="lead m-0">펏얜<br></p><span>100000</span>
+                                                    <p class="lead m-0">${rankList[2].getNickname()}<br></p><span>${rankList[2].getMemPoint()}</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="card-body p-0">
                                             <div class="table-responsive scrollable-table">
                                                 <table class="table table-hover table-sm table-fixed">
+                                                	<c:forEach items="${rankList}" var="rank" begin="3" end="49">
                                                     <tbody>
                                                         <tr>
                                                             <td class="col-1" scope="row">
                                                                 <div class="row m-0">
-                                                                    <div class="col-auto text-start align-self-center"><span>4</span></div>
-                                                                    <div class="col-auto flex-fill align-self-center p-0"><img class="rounded-circle img-fluid leaderboard-user-img" src="https://i.pravatar.cc/200?img=4" width="40px" height="40px" alt="프로필이미지"><span>폄쐈퉁<br></span></div>
-                                                                    <div class="col-auto text-end align-self-center ms-auto"><span>1000000</span></div>
+                                                                    <div class="col-auto text-start align-self-center"><span>${rank.getRankNum()}</span></div>
+                                                                    <div class="col-auto flex-fill align-self-center p-0"><img class="rounded-circle img-fluid leaderboard-user-img" src="https://i.pravatar.cc/200?img=4" width="40px" height="40px" alt="프로필이미지"><span>${rank.getNickname()}<br></span></div>
+                                                                    <div class="col-auto text-end align-self-center ms-auto"><span>${rank.getMemPoint()}</span></div>
                                                                 </div>
                                                             </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="col-1" scope="row">
-                                                                <div class="row m-0">
-                                                                    <div class="col-auto text-start align-self-center"><span>5</span></div>
-                                                                    <div class="col-auto flex-fill align-self-center p-0"><img class="rounded-circle img-fluid leaderboard-user-img" src="https://i.pravatar.cc/200?img=5" width="40px" height="40px" alt="프로필이미지"><span>빳겁쟁<br></span></div>
-                                                                    <div class="col-auto text-end align-self-center ms-auto"><span>1000000</span></div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="col-1" scope="row">
-                                                                <div class="row m-0">
-                                                                    <div class="col-auto text-start align-self-center"><span>6</span></div>
-                                                                    <div class="col-auto flex-fill align-self-center p-0"><img class="rounded-circle img-fluid leaderboard-user-img" src="https://i.pravatar.cc/200?img=6" width="40px" height="40px" alt="프로필이미지"><span>턺짖슷<br></span></div>
-                                                                    <div class="col-auto text-end align-self-center ms-auto"><span>1000000</span></div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="col-1" scope="row">
-                                                                <div class="row m-0">
-                                                                    <div class="col-auto text-start align-self-center"><span>7</span></div>
-                                                                    <div class="col-auto flex-fill align-self-center p-0"><img class="rounded-circle img-fluid leaderboard-user-img" src="https://i.pravatar.cc/200?img=7" width="40px" height="40px" alt="프로필이미지"><span>덜슭룽<br></span></div>
-                                                                    <div class="col-auto text-end align-self-center ms-auto"><span>1000000</span></div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="col-1" scope="row">
-                                                                <div class="row m-0">
-                                                                    <div class="col-auto text-start align-self-center"><span>8</span></div>
-                                                                    <div class="col-auto flex-fill align-self-center p-0"><img class="rounded-circle img-fluid leaderboard-user-img" src="https://i.pravatar.cc/200?img=8" width="40px" height="40px" alt="프로필이미지"><span>켠삿딸<br></span></div>
-                                                                    <div class="col-auto text-end align-self-center ms-auto"><span>1000000</span></div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="col-1" scope="row">
-                                                                <div class="row m-0">
-                                                                    <div class="col-auto text-start align-self-center"><span>9</span></div>
-                                                                    <div class="col-auto flex-fill align-self-center p-0"><img class="rounded-circle img-fluid leaderboard-user-img" src="https://i.pravatar.cc/200?img=9" width="40px" height="40px" alt="프로필이미지"><span>쌔뇌닐<br></span></div>
-                                                                    <div class="col-auto text-end align-self-center ms-auto"><span>1000000</span></div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="col-1" scope="row">
-                                                                <div class="row m-0">
-                                                                    <div class="col-auto text-start align-self-center"><span>10</span></div>
-                                                                    <div class="col-auto flex-fill align-self-center p-0"><img class="rounded-circle img-fluid leaderboard-user-img" src="https://i.pravatar.cc/200?img=10" width="40px" height="40px" alt="프로필이미지"><span>들컹쇄<br></span></div>
-                                                                    <div class="col-auto text-end align-self-center ms-auto"><span>1000000</span></div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="col-1" scope="row">
-                                                                <div class="row m-0">
-                                                                    <div class="col-auto text-start align-self-center"><span>11</span></div>
-                                                                    <div class="col-auto flex-fill align-self-center p-0"><img class="rounded-circle img-fluid leaderboard-user-img" src="https://i.pravatar.cc/200?img=11" width="40px" height="40px" alt="프로필이미지"><span>좡텄스<br></span></div>
-                                                                    <div class="col-auto text-end align-self-center ms-auto"><span>1000000</span></div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
+                                                        </tr>              
+                                                    </tbody>                                                	
                                                     <tfoot>
                                                         <tr class="table-light">
                                                             <td class="col-1" scope="row">
-                                                                <div class="row m-0">
-                                                                    <div class="col-auto text-end align-self-center"><span>55</span></div>
-                                                                    <div class="col-auto flex-fill align-self-center p-0"><img class="rounded-circle img-fluid leaderboard-user-img" src="https://i.pravatar.cc/200" width="40px" height="40px" alt="프로필이미지"><span>옥재욱</span></div>
-                                                                    <div class="col-auto text-end align-self-center ms-auto"><span><i class="fas fa-coins user-points-coin"></i>1000000</span></div>
+                                                            <c:if test="${rank.getNickname() == mem.getNickname()}">
+                                                                <div class="row m-0">   
+                                                                    <div class="col-auto text-end align-self-center"><span>${rank.getRankNum()}</span></div>
+                                                                    <div class="col-auto flex-fill align-self-center p-0"><img class="rounded-circle img-fluid leaderboard-user-img" src="https://i.pravatar.cc/200" width="40px" height="40px" alt="프로필이미지"><span>${mem.getNickname()}</span></div>
+                                                                    <div class="col-auto text-end align-self-center ms-auto"><span><i class="fas fa-coins user-points-coin"></i>${mem.getMemPoint()}</span></div>
                                                                 </div>
+                                                            </c:if>  
                                                             </td>
                                                         </tr>
                                                     </tfoot>
+                                                    </c:forEach>
                                                 </table>
                                             </div>
                                         </div>

@@ -96,6 +96,12 @@ public class UserServiceImpl implements UserService {
 		}
 		return result;
 	}
+	
+	@Override
+	public ArrayList<UserDTO> rankList() {
+		// TODO Auto-generated method stub
+		return userMapper.rankList();
+	}
 
 	@Override
 	public String qrCreate(UserDTO user) {
