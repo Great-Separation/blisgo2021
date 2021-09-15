@@ -48,7 +48,7 @@
     <main class="pt-2 pb-2">
         <section>
             <div class="container p-0" id="community-write">
-                <form method="post" action="/write">
+                <form method="post" action="/content_update_post">
                     <div class="card shadow">
                         <div class="card-header">
                             <div class="row">
