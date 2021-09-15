@@ -86,11 +86,9 @@ public class CommunityController {
 	//write.jsp
 	// 게시판 글작성
 	@GetMapping("write")
-	public String write(HttpServletRequest request, HttpServletResponse response, HttpSession session,
-						Model model) throws IOException {
+	public String write(HttpServletRequest request, HttpSession session, Model model)
+			throws UnsupportedEncodingException {
 		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html; charset=euc-kr");
-		PrintWriter out = response.getWriter();
 
 		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
 
@@ -109,6 +107,8 @@ public class CommunityController {
 	}
 
 	// -----------------------------------------------------//
+
+
 	// 게시판 글 올리기
 	// write.jsp -> community
 	@PostMapping("write_post")

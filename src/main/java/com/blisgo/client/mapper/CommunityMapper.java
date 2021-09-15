@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public interface CommunityMapper {
 	// 글 등록 메서드
-	@Select("INSERT INTO board VALUES(null, #{bd_title}, #{bd_writer},#{bd_content},#{bd_category} ,#{bd_date} ,#{bd_views},#{bd_favorite})")
+	@Select("INSERT INTO board VALUES(null,#{bd_title},#{bd_writer},#{bd_content},#{bd_category},#{bd_date},#{bd_views},#{bd_favorite})")
 	void regist(@Param("bd_title") String title, @Param("bd_writer") String writer, @Param("bd_content") String content,
 			@Param("bd_category") String category,@Param("bd_date") Timestamp date, @Param("bd_views") int views,
 			 @Param("bd_favorite") int favorite);
@@ -31,7 +31,7 @@ public interface CommunityMapper {
 	@Select("SELECT COUNT(*) FROM board")
 	int getCountBoard();
 	//게시글 삭제
-	@Select("DELETE * FROM board WHERE bd_no=#{bd_no}")
+	@Select("DELETE FROM board WHERE bd_no=#{bd_no}")
 	void deleteBoard(@Param("bd_no") int bd_no);
 
 	//조회수 +1
