@@ -45,7 +45,7 @@
                         <div class="col py-3 bg-dark">
                             <h1 class="display-2 text-white">맙소사!</h1>
                             <h1 class="text-white">404 Error</h1>
-                            <p class="text-white-50">not founded...</p><a class="btn btn-secondary" role="button" href="/index">Home</a>
+                            <p class="text-white-50">not founded...</p><a class="btn btn-secondary" role="button" href="/">Home</a>
                         </div>
                     </div>
                 </div>

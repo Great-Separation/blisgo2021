@@ -47,7 +47,7 @@
                     <div class="card-body">
                         <h6 class="text-muted card-subtitle mb-2">남은 시간&nbsp;<span id="countdown" class="text-primary"></span></h6>
                     </div>
-                    <div class="card-footer"><a class="text-decoration-none" href="/index">취소</a></div>
+                    <div class="card-footer"><a class="text-decoration-none" href="/">취소</a></div>
                 </div>
             </article>
         </div><jsp:include page="navbar.jsp">
