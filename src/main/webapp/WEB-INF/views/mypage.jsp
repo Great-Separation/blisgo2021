@@ -62,12 +62,12 @@
             <article>
                 <div>
                     <ul class="nav nav-tabs mb-2" role="tablist" id="myTab">
-                        <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" id="description-tab" href="#account">회원정보 조회/수정</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" id="description-tab" href="#account">회원정보 조회/수정</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" id="reviews-tab" href="#dogam">도감</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" id="specifications-tabs" href="#leaderboard">리더보드</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" id="specifications-tabs" href="#leaderboard">리더보드</a></li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active description" role="tabpanel" id="account">
+                        <div class="tab-pane fade description" role="tabpanel" id="account">
                             <div class="row mb-3 m-0">
                                 <div class="col-lg-4">
                                     <div class="card shadow-sm mb-3">
@@ -104,7 +104,7 @@
                                                     <div class="col py-1"><label class="form-label" for="username"><strong>사용자 이름</strong></label><input class="form-control" type="text" id="username" placeholder="옥재욱" name="nickname" required="" minlength="2" maxlength="8" value="${mem.getNickname()}"></div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col py-1"><label class="form-label" for="email"><strong>이메일</strong></label><input class="form-control" type="email" id="email" name="email" readonly="readonly" value="${mem.getEmail()}"></div>
+                                                    <div class="col py-1"><label class="form-label" for="email"><strong>이메일</strong></label><input class="form-control" type="email" id="email" name="email" value="${mem.getEmail()}" readonly=""></div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col py-1"><button class="btn btn-primary" type="submit" formaction="/mypageModifyAccount">변경</button><button class="btn btn-warning float-end" type="button" data-bs-target="#modal-delete-account" data-bs-toggle="modal">탈퇴</button></div>
@@ -128,15 +128,16 @@
                                                 <div class="row">
                                                     <div class="col py-1">
                                                         <div class="input-group"><button class="btn btn-primary" type="submit">변경</button>
-                                                            <div class="input-group-text p-0 m-0 alert-warning">
-                                                            <c:choose>
-                                                        		<c:when test="${passCheck==null}">
-    															</c:when>
-    															<c:otherwise>
-                                                            		<div class="alert alert-warning flex-fill input-group-text m-0 p-1" role="alert"><span style="font-size: 14px;"><i class="fas fa-exclamation-triangle"></i>비밀번호가 틀립니다</span></div>
-                                                        		</c:otherwise>
-                                                        	</c:choose>
-															</div>
+                                                            <div class="input-group-text p-0 m-0 alert-warning"><c:choose>
+    <c:when test="${passCheck==null}">
+    </c:when>
+    <c:otherwise>
+        <div class="alert alert-warning flex-fill input-group-text m-0 p-1" role="alert">
+            <span style="font-size: 14px;"><i class="fas fa-exclamation-triangle"></i>비밀번호가 틀립니다</span>
+        </div>
+    </c:otherwise>
+</c:choose>
+</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -149,24 +150,25 @@
                         <div class="tab-pane fade" role="tabpanel" id="dogam">
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="row" id="dogamList">
-                                    <c:forEach items="${dogamList}" var="dogam">
-                                        <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
-                                            <figure class="figure"><a href="/product?dic_no=${dogam.getDic_no()}"><img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="${dogam.getThumbnail()}" title="${dogam.getEng_name()}" loading="lazy" width="640px" height="640px" alt="사전 이미지"></a>
-                                                <figcaption class="figure-caption">${dogam.getName()}</figcaption>
-                                            </figure>
-                                        </div>
-                                    </c:forEach> 
-                                    </div>
+                                    <div class="row" id="dogamList"><c:forEach items="${dogamList}" var="dogam">
+    <div class="col-6 col-sm-6 col-md-6 col-lg-4 col-xl-3 col-xxl-2 p-2">
+        <figure class="figure">
+            <a href="/product?dic_no=${dogam.getDic_no()}">
+                <img class="img-fluid" data-bs-toggle="tooltip" data-bss-tooltip="" data-bss-hover-animate="pulse" src="${dogam.getThumbnail()}" title="${dogam.getEng_name()}" loading="lazy" width="640px" height="640px" alt="사전 이미지">
+            </a>
+            <figcaption class="figure-caption">${dogam.getName()}</figcaption>
+        </figure>
+    </div>
+</c:forEach> </div>
                                 </div>
                                 <div class="card-body text-center p-0">
-                                    <div class="bg-light bg-gradient shadow-sm"><button class="btn btn-link w-100 text-decoration-none text-secondary" type="button" id="loadmore"><span>더보기</span><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-chevron-down">
+                                    <div class="bg-light bg-gradient shadow-sm"><button class="btn btn-link w-100 text-decoration-none text-secondary" id="loadmore" type="button"><span>더보기</span><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-chevron-down">
                                                 <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"></path>
                                             </svg></button></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade specifications" role="tabpanel" id="leaderboard">
+                        <div class="tab-pane fade show active specifications" role="tabpanel" id="leaderboard">
                             <div class="row m-0">
                                 <div class="col-lg-6 p-1">
                                     <div class="card shadow-sm mx-auto bg-white" id="ranking">
@@ -177,50 +179,53 @@
                                             <div class="row m-0">
                                                 <div class="col-3 text-center align-self-end p-1">
                                                     <h2><i class="fas fa-trophy leaderboard-icon-second"></i></h2><img class="rounded-circle img-fluid leaderboard-user-img" src="https://i.pravatar.cc/200?img=2" width="150px" height="150px" alt="프로필이미지">
-                                                    <p class="lead m-0">${rankList[1].getNickname()}<br></p><span>${rankList[1].getMemPoint()}</span>
+                                                    <p class="lead m-0">${rankList[1].getNickname()}<br></p><span>${rankList[1].getMemPoint()}<br></span>
                                                 </div>
                                                 <div class="col-6 text-center align-self-center p-1">
                                                     <h1><i class="fas fa-trophy leaderboard-icon-first"></i></h1><img class="rounded-circle img-fluid leaderboard-user-img" src="https://i.pravatar.cc/200?img=1" width="200px" height="200px" alt="프로필이미지">
-                                                    <p class="lead m-0">${rankList[0].getNickname()}<br></p><span>${rankList[0].getMemPoint()}</span>
+                                                    <p class="lead m-0">${rankList[0].getNickname()}<br></p><span>${rankList[0].getMemPoint()}<br></span>
                                                 </div>
                                                 <div class="col-3 text-center align-self-end p-1">
                                                     <h3><i class="fas fa-trophy leaderboard-icon-third"></i></h3><img class="rounded-circle img-fluid" id="leaderboard-user-img" src="https://i.pravatar.cc/200?img=3" width="100px" height="100px" alt="프로필이미지">
-                                                    <p class="lead m-0">${rankList[2].getNickname()}<br></p><span>${rankList[2].getMemPoint()}</span>
+                                                    <p class="lead m-0">${rankList[2].getNickname()}<br></p><span>${rankList[2].getMemPoint()}<br></span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card-body p-0">
-                                            <div class="table-responsive scrollable-table">
-                                                <table class="table table-hover table-sm table-fixed">
-                                                	<c:forEach items="${rankList}" var="rank" begin="3" end="49">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="col-1" scope="row">
-                                                                <div class="row m-0">
-                                                                    <div class="col-auto text-start align-self-center"><span>${rank.getRankNum()}</span></div>
-                                                                    <div class="col-auto flex-fill align-self-center p-0"><img class="rounded-circle img-fluid leaderboard-user-img" src="https://i.pravatar.cc/200?img=4" width="40px" height="40px" alt="프로필이미지"><span>${rank.getNickname()}<br></span></div>
-                                                                    <div class="col-auto text-end align-self-center ms-auto"><span>${rank.getMemPoint()}</span></div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>              
-                                                    </tbody>                                                	
-                                                    <tfoot>
-                                                        <tr class="table-light">
-                                                            <td class="col-1" scope="row">
-                                                            <c:if test="${rank.getNickname() == mem.getNickname()}">
-                                                                <div class="row m-0">   
-                                                                    <div class="col-auto text-end align-self-center"><span>${rank.getRankNum()}</span></div>
-                                                                    <div class="col-auto flex-fill align-self-center p-0"><img class="rounded-circle img-fluid leaderboard-user-img" src="https://i.pravatar.cc/200" width="40px" height="40px" alt="프로필이미지"><span>${mem.getNickname()}</span></div>
-                                                                    <div class="col-auto text-end align-self-center ms-auto"><span><i class="fas fa-coins user-points-coin"></i>${mem.getMemPoint()}</span></div>
-                                                                </div>
-                                                            </c:if>  
-                                                            </td>
-                                                        </tr>
-                                                    </tfoot>
-                                                    </c:forEach>
-                                                </table>
-                                            </div>
-                                        </div>
+                                        <div class="card-body p-0"><div class="table-responsive scrollable-table">
+    <table class="table table-hover table-sm table-fixed">
+        <c:forEach items="${rankList}" var="rank" begin="3" end="49">
+            <tbody>
+                <tr>
+                    <td class="col-1" scope="row">
+                        <div class="row m-0">
+                            <div class="col-auto text-start align-self-center"><span>${rank.getRankNum()}<br /></span></div>
+                            <div class="col-auto flex-fill align-self-center p-0"><img class="rounded-circle img-fluid leaderboard-user-img" src="https://i.pravatar.cc/200?img=4" width="40px" height="40px" alt="프로필이미지" /><span>${rank.getNickname()}<br /></span></div>
+                            <div class="col-auto text-end align-self-center ms-auto"><span>${rank.getMemPoint()}<br /></span></div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr class="table-light">
+                    <td class="col-1" scope="row">
+                        <c:if test="${rank.getNickname() == mem.getNickname()}">
+                            <div class="row m-0">   
+                                <div class="col-auto text-end align-self-center"><span>${rank.getRankNum()}</span>
+                                </div>
+                                <div class="col-auto flex-fill align-self-center p-0">
+                                    <img class="rounded-circle img-fluid leaderboard-user-img" src="https://i.pravatar.cc/200" width="40px" height="40px" alt="프로필이미지"><span>${mem.getNickname()}</span>
+                                </div>                       
+                                <div class="col-auto text-end align-self-center ms-auto">
+                                    <span><i class="fas fa-coins user-points-coin"></i>${mem.getMemPoint()}</span>
+                                </div>
+                            </div>
+                        </c:if>  
+                    </td>
+                </tr>
+            </tfoot>
+        </c:forEach>
+    </table>
+</div></div>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 p-1">
@@ -331,7 +336,6 @@
     </main>
     <div class="modal fade" role="dialog" tabindex="-1" id="modal-delete-account">
         <div class="modal-dialog modal-dialog-centered" role="document">
-        <form method="post">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">회원탈퇴</h4><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -339,9 +343,8 @@
                 <div class="modal-body">
                     <p>탈퇴 후 데이터는 모두 사라지며 복구할 수 없습니다.</p>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">취소</button><button class="btn btn-danger" type="submit" formaction="/mypageDeleteAccount">확인</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">취소</button><a class="btn btn-danger" role="button" href="/mypageDeleteAccount">확인</a></div>
             </div>
-        </form>
         </div>
     </div><jsp:include page="footer.jsp">
     <jsp:param name="name" value="value" />
@@ -350,8 +353,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/pass-check.js"></script>
     <script src="assets/js/dogam-more.js"></script>
+    <script src="assets/js/pass-check.js"></script>
 </body>
 
 </html>

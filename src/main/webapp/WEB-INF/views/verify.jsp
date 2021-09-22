@@ -38,19 +38,17 @@
             <article>
                 <div class="row">
                     <div class="col">
-                        <form>
-                            <div class="card d-inline-block">
-                                <div class="card-header">
-                                    <h2 class="text-center text-primary fw-light m-0">인증</h2>
-                                </div>
-                                <div class="card-body"><input class="form-control email-imput form-control mb-2" type="email" required="" placeholder="이메일" minlength="6" name="email"><button class="btn btn-success d-block box-shadow w-100" id="submit-email-verify-1" type="submit">전송</button></div>
-                                <div class="card-body"><input class="form-control mb-2" type="text" placeholder="6자리 숫자를 입력하세요" name="verify" inputmode="numeric" maxlength="6" minlength="6" required="" autofocus=""><button class="btn btn-dark d-block box-shadow w-100" id="submit-code-verify-1" type="submit">인증</button><a class="card-link float-start text-decoration-none" id="forgot-password-1" href="/verify">이메일 다시 보내기</a></div>
-                                <div class="card-body"></div>
-                                <div class="card-footer text-center">
-                                    <p class="mb-0">계정이 없으신가요?<a id="register-link-1" class="text-decoration-none ps-2" href="/register">회원가입</a></p>
-                                </div>
+                        <div class="card d-inline-block">
+                            <div class="card-header">
+                                <h2 class="text-center text-primary fw-light m-0">인증</h2>
                             </div>
-                        </form>
+                            <div class="card-body">
+                                <form method="post" action="verifyEmailPOST"><input class="form-control email-imput form-control mb-2" type="email" required="" placeholder="이메일" minlength="6" name="email"><button class="btn btn-success d-block box-shadow w-100 mb-2" id="submit-email-verify-1" type="submit">전송</button></form>
+                            </div>
+                            <div class="card-footer text-center">
+                                <p class="mb-0">계정이 없으신가요?<a id="register-link-1" class="text-decoration-none ps-2" href="/register">회원가입</a></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </article>
@@ -63,8 +61,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/load-more.js"></script>
-    <script src="assets/js/service-worker.js"></script>
 </body>
 
 </html>
