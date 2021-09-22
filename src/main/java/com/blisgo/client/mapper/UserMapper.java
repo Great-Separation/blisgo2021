@@ -41,8 +41,8 @@ public interface UserMapper {
 	void deleteAccount(int mem_no);
 	
 	// 회원 비밀번호 변경 메서드
-	@Update("UPDATE user_db SET pass=HEX(AES_ENCRYPT(#{pass},#{email})) WHERE mem_no=#{mem_no}")
-	void modifyPassword(String pass, String email, int mem_no);
+	@Update("UPDATE user_db SET pass=HEX(AES_ENCRYPT(#{pass}, #{email})) WHERE email=#{email}")
+	void modifyPassword(String pass, String email);
 
 	// 도감 목록 조회 메서드
 	@Select("SELECT * FROM dictionary WHERE dic_no IN (${dogamList}) LIMIT ${index}, ${limit}")

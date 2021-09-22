@@ -65,9 +65,9 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public boolean modifyPassword(String pass, String email, int mem_no) {
+	public boolean modifyPassword(String pass, String email) {
 		// TODO Auto-generated method stub
-		userMapper.modifyPassword(pass, email, mem_no);
+		userMapper.modifyPassword(pass, email);
 		return true;
 	}
 	

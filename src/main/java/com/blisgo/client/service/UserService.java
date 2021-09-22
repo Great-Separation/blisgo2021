@@ -29,7 +29,7 @@ public interface UserService {
 	public boolean deleteAccount(UserDTO user);
 	
 	// 회원 비밀번호 변경 메서드
-	public boolean modifyPassword(String pass, String email, int mem_no);
+	public boolean modifyPassword(String pass, String email);
 	
 	// 도감 목록 조회 메서드
 	public ArrayList<DictionaryDTO> mydogamList(String dogamList);

@@ -1,8 +1,11 @@
 package com.blisgo.client.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +19,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.blisgo.client.dto.DictionaryDTO;
 import com.blisgo.client.dto.UserDTO;
+import com.blisgo.client.service.MailService;
 import com.blisgo.client.service.UserService;
 
 @Controller
 public class UserController {
 	@Autowired
 	private UserService userService;
+
+	@Autowired
+	MailService mailService;
+
 	HttpSession session;
 
 	// 회원 로그인
@@ -36,10 +44,10 @@ public class UserController {
 		session = req.getSession();
 		UserDTO userInfo = userService.getUser(user);
 		String userPass = userService.userLogin(user);
-		if(userInfo == null) {
+		if (userInfo == null) {
 			model.addAttribute("check", 2);
 			model.addAttribute("msg", "없는 회원입니다. 회원가입을 해주세요");
-			return "register";
+			return "redirect:register";
 		}
 		if (userPass != null) {
 			if (user.getPass().equals(userPass)) {
@@ -48,10 +56,10 @@ public class UserController {
 				session.setAttribute("mem", userInfo);
 			} else {
 				model.addAttribute("passCheck", 1);
-				return "login";
+				return "redirect:login";
 			}
 		}
-		return "index";
+		return "redirect:/";
 	}
 
 	// -----------------------------------------------------//
@@ -75,9 +83,9 @@ public class UserController {
 		} else {
 			model.addAttribute("check", 2);
 			model.addAttribute("msg", "회원가입 실패");
-			return "register";
+			return "redirect:register";
 		}
-		return "login";
+		return "redirect:login";
 	}
 
 	// 이메일 중복 확인
@@ -111,14 +119,86 @@ public class UserController {
 
 	// 회원 비밀번호 분실 인증 이메일, 전화번호 전송
 	@PostMapping("verifyEmailPOST")
-	public String verifyEmailPOST(Model model) {
-		return "verify";
+	public void verifyEmailPOST(Model model, HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
+		session = request.getSession();
+		response.setContentType("text/html; charset=utf-8");
+		PrintWriter out = response.getWriter();
+
+		String inputEmail = request.getParameter("email");
+		UserDTO tempUser = new UserDTO();
+		tempUser.setEmail(inputEmail);
+
+		UserDTO user = userService.getUser(tempUser);
+
+		if (user != null) {
+			String email = user.getEmail();
+			String nickname = user.getNickname();
+
+			try {
+				System.out.println(mailService.sendTemplateEmail(email, nickname));
+			} catch (IOException e) {
+				// TODO 메일 전송 실패
+				e.printStackTrace();
+			}
+			session.setAttribute("verifyEmail", email);
+			out.println("<script>");
+			out.println("alert('메일이 전송되었습니다');");
+			out.println("location.href='/';");
+			out.println("</script>");
+		} else {
+			out.println("<script>");
+			out.println("alert('없는 계정입니다');");
+			out.println("location.href='verify';");
+			out.println("</script>");
+		}
+
 	}
 
-	// 회원 비밀번호 분실 인증 확인
-	@PostMapping("verifyConfigPOST")
-	public String verifyConfigPOST(Model model) {
-		return "verify";
+	@GetMapping("changepwd")
+	public String pwchange(Model model, HttpServletRequest request) {
+		boolean flag = false;
+		session = request.getSession();
+		String verifyEmail = (String) session.getAttribute("verifyEmail");
+		String confirmEmail = request.getParameter("confirmEmail");
+		if (verifyEmail.equals(confirmEmail)) {
+			flag = true;
+		}
+
+		if (flag) {
+			return "changepwd";
+		} else {
+			session.invalidate();
+			return "errorHandler";
+		}
+	}
+
+	// 비밀번호 변경
+	@PostMapping("changepwdConfirm")
+	public void pwchangeConfirm(Model model, HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
+		response.setContentType("text/html; charset=utf-8");
+		session = request.getSession();
+		PrintWriter out = response.getWriter();
+		String pass = request.getParameter("pw-new");
+		String newPwConfirm = request.getParameter("pw-confirm");
+		String email = (String) session.getAttribute("verifyEmail");
+
+		if (pass.equals(newPwConfirm)) {
+
+			userService.modifyPassword(pass, email);
+			session.invalidate();
+			out.println("<script>");
+			out.println("alert('비밀번호가 변경되었습니다');");
+			out.println("location.href='/';");
+			out.println("</script>");
+
+		} else {
+			out.println("<script>");
+			out.println("alert('입력한 비밀번호가 일치하지 않습니다');");
+			out.println("location.href='/changepwd';");
+			out.println("</script>");
+		}
 	}
 
 	// -----------------------------------------------------//
@@ -128,14 +208,13 @@ public class UserController {
 		model.addAttribute("check", 1);
 		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
 		String dogamNo = userInfo.getDogamList();
-		if(dogamNo == null) {
-			
-		}
-		else {
+		if (dogamNo == null) {
+
+		} else {
 			ArrayList<DictionaryDTO> dogamList = userService.mydogamList(dogamNo);
 			model.addAttribute("dogamList", dogamList);
 		}
-		ArrayList<UserDTO> rankList = userService.rankList();		
+		ArrayList<UserDTO> rankList = userService.rankList();
 		model.addAttribute("rankList", rankList);
 		return "mypage";
 	}
@@ -144,13 +223,13 @@ public class UserController {
 	@PostMapping("mypageModifyAccount")
 	public String mypageModifyAccount(Model model, UserDTO user) {
 		System.out.println(user);
-		UserDTO user_no = (UserDTO)session.getAttribute("mem");
+		UserDTO user_no = (UserDTO) session.getAttribute("mem");
 		user.setMem_no(user_no.getMem_no());
-		if(userService.modifyAccount(user)) {
+		if (userService.modifyAccount(user)) {
 			System.out.println("변경 성공");
 			model.addAttribute("check", 2);
 			model.addAttribute("msg", "회원 정보가 변경되었습니다.");
-			UserDTO userInfo = (UserDTO)userService.getUser(user);
+			UserDTO userInfo = (UserDTO) userService.getUser(user);
 			session.setAttribute("mem", userInfo);
 			System.out.println(userInfo);
 			return "mypage";
@@ -164,17 +243,16 @@ public class UserController {
 	// 마이페이지 계정 삭제
 	@PostMapping("mypageDeleteAccount")
 	public String mypageDeleteAccount(Model model) {
-		UserDTO userInfo = (UserDTO)session.getAttribute("mem");
-		if(userService.deleteAccount(userInfo)) {
+		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
+		if (userService.deleteAccount(userInfo)) {
 			return "redirect:logout";
-		}
-		else {
+		} else {
 			model.addAttribute("check", 2);
 			model.addAttribute("msg", "회원 탈퇴 실패했습니다. 다시 시도해주시기바랍니다.");
 			return "mypage";
 		}
 	}
-	
+
 	// 비밀번호 중복 확인
 	@RequestMapping(value = "/newPassCheck", method = RequestMethod.POST)
 	@ResponseBody
@@ -187,27 +265,26 @@ public class UserController {
 			return "success"; // 비밀번호 동일
 		}
 	}
-	
-	//회원 비밀번호 변경
+
+	// 회원 비밀번호 변경
 	@PostMapping("modifyPassword")
 	public String modifyPassword(HttpServletRequest request, Model model) {
-		UserDTO userInfo = (UserDTO)session.getAttribute("mem");
+		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
 		String beforePass = request.getParameter("beforePass");
 		String newPass = request.getParameter("newPass");
-		
-		if(beforePass.equals(userService.userLogin(userInfo))){
-			userService.modifyPassword(newPass, userInfo.getEmail(), userInfo.getMem_no());
+
+		if (beforePass.equals(userService.userLogin(userInfo))) {
+			userService.modifyPassword(newPass, userInfo.getEmail());
 			session.invalidate();
 			model.addAttribute("check", 2);
 			model.addAttribute("msg", "변경된 비밀번호로 다시 로그인바랍니다.");
 			return "login";
-		}
-		else {
+		} else {
 			model.addAttribute("passCheck", 1);
 			return "mypage";
-		}	
+		}
 	}
-	
+
 	// 도감 목록 더보기
 	@ResponseBody
 	@PostMapping("/dogam_more")
