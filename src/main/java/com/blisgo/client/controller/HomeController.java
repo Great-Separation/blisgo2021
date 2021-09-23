@@ -21,7 +21,6 @@ public class HomeController {
 	public String index(Model model) {
 		// 최근 등록된 product 나열
 		ArrayList<DictionaryDTO> recentProducts = homeService.recentProduct();
-		model.addAttribute("check", 1);
 		model.addAttribute("recentProducts", recentProducts);
 		
 		return "index";

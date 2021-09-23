@@ -30,12 +30,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
-<link rel="manifest" href="/manifest.json"><script type="text/javascript">
-	if(${check} == 2){
-		var message = '${msg}';
-		alert(message);
-	}
-</script>
+<link rel="manifest" href="/manifest.json">
 <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer>
 </script>
 </head>
@@ -49,16 +44,11 @@
                         <div class="card-header">
                             <h2 class="text-center text-primary m-0 fw-light">로그인</h2>
                         </div>
-                        <div class="card-body pb-0"><input class="form-control email-imput form-control mt-2" type="email" required="" placeholder="이메일" minlength="6" name="email"><input class="form-control password-input form-control mt-2" type="password" required="" placeholder="비밀번호" minlength="6" name="pass"><button class="btn btn-success box-shadow w-100 mt-2 mb-2" type="submit">로그인</button><c:choose>
-    <c:when test="${passCheck==null}">
-    </c:when>
-    <c:otherwise>
-        <div class="alert alert-danger pt-2 pb-2 mb-0 text-center" role="alert">
-            <span><i class="fas fa-exclamation-triangle"></i><strong>로그인 실패.</strong> 비밀번호 불일치</span>
-        </div>
-    </c:otherwise>
-</c:choose>
-</div>
+                        <div class="card-body pb-0"><input class="form-control email-imput form-control mt-2" type="email" required="" placeholder="이메일" minlength="6" name="email"><input class="form-control password-input form-control mt-2" type="password" required="" placeholder="비밀번호" minlength="6" name="pass"><button class="btn btn-success box-shadow w-100 mt-2 mb-2" type="submit">로그인</button>
+        				<div class="alert alert-danger pt-2 pb-2 mb-0 text-center" role="alert" style="display:none">
+            				<span><i class="fas fa-exclamation-triangle"></i><strong>로그인 실패.</strong> 비밀번호 불일치</span>
+        				</div>
+						</div>
                         <div class="card-body">
                             <div class="btn-group-vertical d-flex flex-fill" role="group"><button class="btn w-100 mb-2 p-0" type="button"><div id="my-signin2"></div></button></div>
                             <div class="row d-xxl-flex align-items-xxl-center">

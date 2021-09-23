@@ -40,33 +40,40 @@ public class UserController {
 
 	// 회원 로그인 전송
 	@PostMapping("loginPOST")
-	public String loginPOST(Model model, HttpServletRequest req, UserDTO user) {
+	public void loginPOST(Model model, HttpServletRequest req, UserDTO user, HttpServletResponse response) throws IOException {
 		session = req.getSession();
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
 		UserDTO userInfo = userService.getUser(user);
 		String userPass = userService.userLogin(user);
 		if (userInfo == null) {
-			model.addAttribute("check", 2);
-			model.addAttribute("msg", "없는 회원입니다. 회원가입을 해주세요");
-			return "redirect:register";
+			out.println("<script>");
+			out.println("alert('없는 회원입니다. 회원가입 후 로그인 진행하시길 바랍니다.');");
+			out.println("location.href='register';");
+			out.println("</script>");
 		}
 		if (userPass != null) {
 			if (user.getPass().equals(userPass)) {
-				model.addAttribute("check", 2);
-				model.addAttribute("msg", userInfo.getNickname() + "님, 환영합니다");
 				session.setAttribute("mem", userInfo);
+				out.println("<script>");
+				out.println("alert('" + userInfo.getNickname() + "님, 환영합니다');");
+				out.println("location.href='/';");
+				out.println("</script>");
 			} else {
-				model.addAttribute("passCheck", 1);
-				return "redirect:login";
+				//model.addAttribute("passCheck", 1);
+				out.println("<script>");
+				out.println("alert('비밀번호가 틀렸습니다. 다시 확인해주세요');");
+				out.println("location.href='login';");
+				out.println("</script>");
 			}
 		}
-		return "redirect:/";
 	}
 
 	// -----------------------------------------------------//
 	// 회원가입
 	@GetMapping("register")
 	public String register(Model model) {
-		model.addAttribute("check", 1);
 
 //		model.addAttribute("termsOfAgreement", BlisgoClientApplication.termsOfAgreement);
 
@@ -76,16 +83,21 @@ public class UserController {
 
 	// 회원가입 전송
 	@PostMapping("registerPOST")
-	public String registerPOST(Model model, UserDTO user) {
+	public void registerPOST(Model model, UserDTO user, HttpServletResponse response) throws IOException {
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
 		if (userService.insert(user)) {
-			model.addAttribute("check", 2);
-			model.addAttribute("msg", "회원가입 성공");
+			out.println("<script>");
+			out.println("alert('회원가입 성공');");
+			out.println("location.href='/';");
+			out.println("</script>");
 		} else {
-			model.addAttribute("check", 2);
-			model.addAttribute("msg", "회원가입 실패");
-			return "redirect:register";
+			out.println("<script>");
+			out.println("alert('회원가입 실패');");
+			out.println("location.href='register';");
+			out.println("</script>");
 		}
-		return "redirect:login";
 	}
 
 	// 이메일 중복 확인
@@ -205,7 +217,6 @@ public class UserController {
 	// 마이페이지
 	@GetMapping("mypage")
 	public String mypage(Model model) {
-		model.addAttribute("check", 1);
 		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
 		String dogamNo = userInfo.getDogamList();
 		if (dogamNo == null) {
@@ -221,35 +232,45 @@ public class UserController {
 
 	// 마이페이지 계정 수정
 	@PostMapping("mypageModifyAccount")
-	public String mypageModifyAccount(Model model, UserDTO user) {
-		System.out.println(user);
+	public void mypageModifyAccount(Model model, UserDTO user, HttpServletResponse response) throws IOException {
 		UserDTO user_no = (UserDTO) session.getAttribute("mem");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
 		user.setMem_no(user_no.getMem_no());
+		
 		if (userService.modifyAccount(user)) {
-			System.out.println("변경 성공");
-			model.addAttribute("check", 2);
-			model.addAttribute("msg", "회원 정보가 변경되었습니다.");
 			UserDTO userInfo = (UserDTO) userService.getUser(user);
 			session.setAttribute("mem", userInfo);
 			System.out.println(userInfo);
-			return "mypage";
+			out.println("<script>");
+			out.println("alert('회원 정보가 변경되었습니다.');");
+			out.println("location.href='mypage';");
+			out.println("</script>");
 		} else {
-			model.addAttribute("check", 2);
-			model.addAttribute("msg", "회원 정보 변경이 실패했습니다.");
-			return "mypage";
+			out.println("<script>");
+			out.println("alert('회원 정보 변경이 실패했습니다.');");
+			out.println("location.href='/changepwd';");
+			out.println("</script>");
 		}
 	}
 
 	// 마이페이지 계정 삭제
-	@PostMapping("mypageDeleteAccount")
-	public String mypageDeleteAccount(Model model) {
+	@GetMapping("mypageDeleteAccount")
+	public void mypageDeleteAccount(Model model, HttpServletResponse response) throws IOException {
 		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		
 		if (userService.deleteAccount(userInfo)) {
-			return "redirect:logout";
+			out.println("<script>");
+			out.println("alert('회원 탈퇴되었습니다.');");
+			out.println("location.href='logout';");
+			out.println("</script>");
 		} else {
-			model.addAttribute("check", 2);
-			model.addAttribute("msg", "회원 탈퇴 실패했습니다. 다시 시도해주시기바랍니다.");
-			return "mypage";
+			out.println("<script>");
+			out.println("alert('회원 탈퇴 실패했습니다. 다시 시도해주시기바랍니다.');");
+			out.println("location.href='mypage';");
+			out.println("</script>");
 		}
 	}
 
@@ -268,20 +289,25 @@ public class UserController {
 
 	// 회원 비밀번호 변경
 	@PostMapping("modifyPassword")
-	public String modifyPassword(HttpServletRequest request, Model model) {
+	public void modifyPassword(HttpServletRequest request, Model model, HttpServletResponse response) throws IOException {
 		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
 		String beforePass = request.getParameter("beforePass");
 		String newPass = request.getParameter("newPass");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
 
 		if (beforePass.equals(userService.userLogin(userInfo))) {
 			userService.modifyPassword(newPass, userInfo.getEmail());
 			session.invalidate();
-			model.addAttribute("check", 2);
-			model.addAttribute("msg", "변경된 비밀번호로 다시 로그인바랍니다.");
-			return "login";
+			out.println("<script>");
+			out.println("alert('변경된 비밀번호로 다시 로그인바랍니다.');");
+			out.println("location.href='login';");
+			out.println("</script>");
 		} else {
-			model.addAttribute("passCheck", 1);
-			return "mypage";
+			out.println("<script>");
+			out.println("alert('이전 비밀번호가 틀렸습니다. 다시 확인바랍니다.');");
+			out.println("location.href='mypage';");
+			out.println("</script>");
 		}
 	}
 
