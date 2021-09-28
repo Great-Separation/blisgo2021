@@ -51,5 +51,8 @@ public interface UserMapper {
 	// 회원 순위 조회 메서드
 	@Select("SELECT @rownum:=@rownum+1 AS rankNum, user_db.* FROM (SELECT @rownum:=0) AS R, user_db ORDER BY memPoint DESC")
 	ArrayList<UserDTO> rankList();
-
+	
+	// 북마크 기능 메서드
+	@Update("UPDATE user_db SET dogamList = CASE WHEN dogamList='null' THEN #{dic_no} ELSE concat(dogamList,',',#{dic_no}) END WHERE mem_no =#{mem_no};")
+	void dogamAddBookmark(int mem_no, String dic_no);
 }

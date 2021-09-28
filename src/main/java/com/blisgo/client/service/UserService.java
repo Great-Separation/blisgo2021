@@ -39,4 +39,7 @@ public interface UserService {
 	
 	// 회원 순위 조회 메서드
 	public ArrayList<UserDTO> rankList();
+	
+	// 북마크 기능 메서드
+	public boolean dogamAddBookmark(UserDTO user, String dic_no);
 }

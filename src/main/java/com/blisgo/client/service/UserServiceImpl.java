@@ -102,6 +102,13 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userMapper.rankList();
 	}
+	
+	@Override
+	public boolean dogamAddBookmark(UserDTO user, String dic_no) {
+		// TODO Auto-generated method stub
+		userMapper.dogamAddBookmark(user.getMem_no(), dic_no);
+		return true;
+	}
 
 	@Override
 	public String qrCreate(UserDTO user) {

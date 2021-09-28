@@ -68,7 +68,7 @@
                                     <h1 class="m-0">${product.getName()}</h1>
                                 </div>
                                 <div class="col-3 align-self-center py-1 text-end">
-                                    <div class="btn-group" role="group" id="product-icon"><button class="btn btn-link" id="btn-toast" type="button" data-bs-target="#liveToast" data-bs-toggle="toast"><i class="fas fa-bookmark"></i></button><button class="btn btn-link" id="btn-share" type="button" data-bs-target="#modal-share" data-bs-toggle="modal"><i class="fas fa-share-alt"></i></button></div>
+                                    <div class="btn-group" role="group" id="product-icon"><button class="btn btn-link" id="btn-toast" type="button" data-bs-target="#liveToast" data-bs-toggle="toast" onclick="location.href='dogamBookmark?dic_no=${product.getDic_no()}'"><i class="fas fa-bookmark"></i></button><button class="btn btn-link" id="btn-share" type="button" data-bs-target="#modal-share" data-bs-toggle="modal"><i class="fas fa-share-alt"></i></button></div>
                                 </div>
                             </div>
                             <div class="row">

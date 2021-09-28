@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.blisgo.client.dto.DictionaryDTO;
 import com.blisgo.client.dto.UserDTO;
@@ -319,6 +320,22 @@ public class UserController {
 		String dogamNo = userInfo.getDogamList();
 		ArrayList<DictionaryDTO> products_more = userService.dogamLoadMore(dogamNo);
 		return products_more;
+	}
+	
+	@GetMapping("dogamBookmark")
+	public String addBookmark(Model model, HttpServletRequest request, RedirectAttributes redirect) {
+		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
+		String dic_no = request.getParameter("dic_no");
+		System.out.println(dic_no);
+		if(userService.dogamAddBookmark(userInfo, dic_no)) {
+			System.out.println(userService.getUser(userInfo));
+			session.setAttribute("mem", userService.getUser(userInfo));
+		}
+		else {
+			
+		}
+		redirect.addAttribute("dic_no", dic_no);
+		return "redirect:product";
 	}
 
 	@GetMapping("logout")

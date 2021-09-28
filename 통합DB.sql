@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `user_db`(
     `email` varchar(45),
     `pass` varchar(200),
     `memPoint` int,
-    `dogamList` varchar(1000),
+    `dogamList` varchar(1000) DEFAULT 'null',
     `profile_image` VARCHAR(100) NULL DEFAULT 'https://i.pravatar.cc/200'
 )ENGINE = InnoDB;
 
