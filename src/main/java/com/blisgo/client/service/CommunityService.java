@@ -43,4 +43,8 @@ public interface CommunityService {
 
 	int getCountContentComment(int bd_no);
 
+	//좋아요 +1
+	void favoriteBoard(int bd_no, int bd_favorite);
+
+
 }

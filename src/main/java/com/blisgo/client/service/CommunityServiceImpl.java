@@ -79,4 +79,9 @@ public class CommunityServiceImpl implements CommunityService {
 		return communityMapper.getCountContentComment(bd_no);
 	}
 
+	@Override
+	public void favoriteBoard(int bd_no, int bd_favorite) {
+		communityMapper.favoriteBoard(bd_favorite,bd_no);
+	}
+
 }

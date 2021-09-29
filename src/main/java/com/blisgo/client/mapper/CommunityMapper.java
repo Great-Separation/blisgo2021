@@ -63,5 +63,10 @@ public interface CommunityMapper {
 	// 해당글의 댓글 개수를 받아오는 메서드
 	@Select("SELECT * COUNT(*) FROM comment WHERE bd_no=${bd_no}")
 	int getCountContentComment(@Param("bd_no") int bd_no);
+	
+	//좋아요 +1 메소드
+	@Update("UPDATE board SET bd_favorite=#{bd_favorite}+1 WHERE bd_no=#{bd_no}")
+	void favoriteBoard(@Param("bd_favorite") int bd_favorite, @Param("bd_no") int bd_no);
+
 
 }
