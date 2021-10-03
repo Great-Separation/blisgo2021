@@ -68,7 +68,7 @@
                                     <h1 class="m-0">${product.getName()}</h1>
                                 </div>
                                 <div class="col-3 align-self-center py-1 text-end">
-                                    <div class="btn-group" role="group" id="product-icon"><button class="btn btn-link" id="btn-toast" type="button" data-bs-target="#liveToast" data-bs-toggle="toast" onclick="location.href='dogamBookmark?dic_no=${product.getDic_no()}'"><i class="fas fa-bookmark"></i></button><button class="btn btn-link" id="btn-share" type="button" data-bs-target="#modal-share" data-bs-toggle="modal"><i class="fas fa-share-alt"></i></button></div>
+                                    <div class="btn-group" role="group" id="product-icon"><button class="btn btn-link" id="btn-toast" type="button" data-bs-target="#liveToast" data-bs-toggle="toast" onclick="location.href=&#39;dogamBookmark?dic_no=${product.getDic_no()}&#39;"><i class="fas fa-bookmark"></i></button><button class="btn btn-link" id="btn-share" type="button" data-bs-target="#modal-share" data-bs-toggle="modal"><i class="fas fa-share-alt"></i></button></div>
                                 </div>
                             </div>
                             <div class="row">
@@ -190,8 +190,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/load-more.js"></script>
-    <script src="assets/js/service-worker.js"></script>
     <script src="assets/js/toast.js"></script>
 </body>
 

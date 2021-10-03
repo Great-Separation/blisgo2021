@@ -119,7 +119,6 @@
     <script src="assets/js/bs-init.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Readmore.js/2.2.1/readmore.js"></script>
     <script src="assets/js/load-more.js"></script>
-    <script src="assets/js/service-worker.js"></script>
 </body>
 
 </html>

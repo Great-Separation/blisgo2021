@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-    <footer class="d-none d-lg-block p-4" id="footer">
+	<footer class="d-none d-lg-block p-4" id="footer">
         <section>
             <div class="row">
                 <div class="col text-center"><a class="btn btn-outline-light btn-floating m-1" href="https://gitlab.com/hanok" role="button"><i class="fab fa-gitlab"></i></a></div>
@@ -13,3 +13,5 @@
             </div>
         </section>
     </footer>
+    
+    

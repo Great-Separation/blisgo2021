@@ -62,12 +62,12 @@
             <article>
                 <div>
                     <ul class="nav nav-tabs mb-2" role="tablist" id="myTab">
-                        <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" id="description-tab" href="#account">회원정보 조회/수정</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" id="description-tab" href="#account">회원정보 조회/수정</a></li>
                         <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" id="reviews-tab" href="#dogam">도감</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link active" role="tab" data-bs-toggle="tab" id="specifications-tabs" href="#leaderboard">리더보드</a></li>
+                        <li class="nav-item" role="presentation"><a class="nav-link" role="tab" data-bs-toggle="tab" id="specifications-tabs" href="#leaderboard">리더보드</a></li>
                     </ul>
                     <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade description" role="tabpanel" id="account">
+                        <div class="tab-pane fade show active description" role="tabpanel" id="account">
                             <div class="row mb-3 m-0">
                                 <div class="col-lg-4">
                                     <div class="card shadow-sm mb-3">
@@ -168,7 +168,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade show active specifications" role="tabpanel" id="leaderboard">
+                        <div class="tab-pane fade specifications" role="tabpanel" id="leaderboard">
                             <div class="row m-0">
                                 <div class="col-lg-6 p-1">
                                     <div class="card shadow-sm mx-auto bg-white" id="ranking">

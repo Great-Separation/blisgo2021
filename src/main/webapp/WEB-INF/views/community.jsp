@@ -62,25 +62,27 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body p-1">
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <tbody>
-                                        <c:forEach items="${articles}" var="article">
-                                            <tr>
-                                                <td><a class="d-block text-decoration-none text-reset" href="/content?bd_no=${article.getBd_no()}">${article.getBd_title()}<span class="text-info">(3)</span><br></a></td>
-                                                <td><a class="text-end d-block text-decoration-none text-reset" href="/content?bd_no=${article.getBd_no()}">${article.getBd_writer()}</a></td>
-                                                <td class="d-none d-lg-table-cell"><a class="text-end d-block text-decoration-none text-black-50" href="/content?bd_no=${article.getBd_no()}">${article.getBd_title()}<br></a></td>
-                                            </tr>
-                                        </c:forEach>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        <div class="card-body p-1"><div class="table-responsive">
+    <table class="table table-hover">
+        <tbody>
+            <c:forEach items="${articles}" var="article">
+                <tr>
+                    <td>
+                        <a class="d-block text-decoration-none text-reset" href="/content?bd_no=${article.getBd_no()}">${article.getBd_title()}<span class="text-info">(3)</span><br></a>
+                    </td>
+                    <td>
+                        <a class="text-end d-block text-decoration-none text-reset" href="/content?bd_no=${article.getBd_no()}">${article.getBd_writer()}</a>
+                    </td>
+                    <td class="d-none d-lg-table-cell">
+                        <a class="text-end d-block text-decoration-none text-black-50" href="/content?bd_no=${article.getBd_no()}">${article.getBd_title()}<br></a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+    </table>
+</div></div>
                         <div class="card-body text-center p-0">
-                            <div class="bg-light bg-gradient shadow-sm"><button class="btn btn-link w-100 text-decoration-none text-secondary" type="button"><span>더보기</span><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-chevron-down">
-                                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"></path>
-                                    </svg></button></div>
+                            <div class="bg-light bg-gradient shadow-sm"><button class="btn btn-link w-100 text-decoration-none text-secondary" type="button"><span>더보기</span><i class="fas fa-chevron-down"></i></button></div>
                         </div>
                     </div>
                 </article>
@@ -92,8 +94,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/load-more.js"></script>
-    <script src="assets/js/service-worker.js"></script>
 </body>
 
 </html>

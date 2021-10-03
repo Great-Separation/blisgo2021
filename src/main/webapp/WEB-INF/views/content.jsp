@@ -73,21 +73,20 @@
                         </div>
                         <div class="card-footer p-1">
                             <div class="col"><div class="btn-group float-end" role="group">
-                                <button class="btn btn-info" type="button" onclick="location.href='/favoriteBoard?bd_no=${bd_no}'">
-                                    <i class="fas fa-award text-white"></i>
-                                </button>
-                            <c:choose>
-                                <c:when test="${session_user_nick eq articles.getBd_writer()}">
-                                    <button class="btn btn-info" type="button" onclick="location.href='/content_update?bd_no=${bd_no}'">
-                                        <i class="fas fa-pencil-alt text-white"></i>
-                                    </button>
-                                    <button class="btn btn-danger" type="button" onclick="alert('글이 삭제되었습니다'); location.href='/content_delete?bd_no=${bd_no}'">
-                                        <i class="fas fa-trash-alt"></i>
-                                    </button>
-                                </c:when>
-                            </c:choose>
-                            </div>
-                            </div>
+    <button class="btn btn-danger" type="button" onclick="location.href='/favoriteBoard?bd_no=${bd_no}'">
+        <i class="fas fa-heart"></i>
+    </button>
+    <c:choose>
+        <c:when test="${session_user_nick eq articles.getBd_writer()}">
+            <button class="btn btn-info" type="button" onclick="location.href='/content_update?bd_no=${bd_no}'">
+                <i class="fas fa-pencil-alt"></i>
+            </button>
+            <button class="btn btn-secondary" type="button" onclick="alert('글이 삭제되었습니다'); location.href='/content_delete?bd_no=${bd_no}'">
+                <i class="fas fa-trash-alt"></i>
+            </button>
+        </c:when>
+    </c:choose>
+</div></div>
                         </div>
                         <div class="card-body pt-2 p-1">
                             <form method="post" action="/commentPOST"><input class="form-control" type="hidden" name="mem_no" value="${mem.getMem_no()}"><input class="form-control" type="hidden" name="bd_no" value="${articles.getBd_no()}"><c:choose>
@@ -146,9 +145,7 @@
                     <div class="bg-light bg-gradient shadow-sm">
                         <button class="btn btn-link w-100 text-decoration-none text-secondary" type="button" onclick="location.href=&#39;#&#39;">
                             <span>더보기</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-chevron-down">
-                                <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"></path>
-                            </svg>
+                            <i class="fas fa-chevron-down"></i>
                         </button>
                     </div>
                 </td>
@@ -166,8 +163,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/load-more.js"></script>
-    <script src="assets/js/service-worker.js"></script>
 </body>
 
 </html>
