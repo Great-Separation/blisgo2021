@@ -324,18 +324,36 @@ public class UserController {
 	
 	@GetMapping("dogamBookmark")
 	public String addBookmark(Model model, HttpServletRequest request, RedirectAttributes redirect) {
-		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
 		String dic_no = request.getParameter("dic_no");
 		System.out.println(dic_no);
-		if(userService.dogamAddBookmark(userInfo, dic_no)) {
-			System.out.println(userService.getUser(userInfo));
-			session.setAttribute("mem", userService.getUser(userInfo));
+		if(session != null) {
+			UserDTO userInfo = (UserDTO) session.getAttribute("mem");
+			String dogam = userInfo.getDogamList();
+			if(dogam.contains(dic_no)) {
+				System.out.println("이미 도감에 추가");
+				redirect.addAttribute("dic_no", dic_no);
+				return "redirect:product";
+			}
+			else {
+				System.out.println("도감에 없음 새로 추가");
+				if(userService.dogamAddBookmark(userInfo, dic_no)) {
+					System.out.println(userService.getUser(userInfo));
+					session.setAttribute("mem", userService.getUser(userInfo));
+					redirect.addAttribute("dic_no", dic_no);
+					return "redirect:product";
+				}
+				else {
+					System.out.println("북마크 실패");
+					redirect.addAttribute("dic_no", dic_no);
+					return "redirect:product";
+				}
+			}
 		}
 		else {
-			
+			System.out.println("로그인 하지 않음");
+			redirect.addAttribute("dic_no", dic_no);
+			return "redirect:product";
 		}
-		redirect.addAttribute("dic_no", dic_no);
-		return "redirect:product";
 	}
 
 	@GetMapping("logout")
