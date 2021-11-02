@@ -13,7 +13,7 @@ import com.blisgo.client.dto.UserDTO;
 
 public interface UserMapper {
 	// 회원 정보 생성 메서드 (비밀번호 암호화)
-	@Insert("INSERT INTO user_db(nickname, email, pass, memPoint, dogamList) VALUES (#{nickname}, #{email}, HEX(AES_ENCRYPT(#{pass},#{email})), 0, null)")
+	@Insert("INSERT INTO user_db(nickname, email, pass, memPoint) VALUES (#{nickname}, #{email}, HEX(AES_ENCRYPT(#{pass},#{email})), 0)")
 	void insertUser(String nickname, String email, String pass);
 
 	// 회원 로그인 메서드
