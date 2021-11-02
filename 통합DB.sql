@@ -22,6 +22,8 @@ CREATE TABLE IF NOT EXISTS `user_db`(
     `profile_image` VARCHAR(100) NULL DEFAULT 'https://i.pravatar.cc/200'
 )ENGINE = InnoDB;
 
+#ALTER TABLE board ADD COLUMN bd_commentCount INT;   # bd_commentCount 컬럼 없고 테이블 지우기 싫을때 추가
+
 CREATE TABLE IF NOT EXISTS `board` (
   `bd_no` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `bd_title` VARCHAR(45) NOT NULL,
@@ -31,8 +33,12 @@ CREATE TABLE IF NOT EXISTS `board` (
   `bd_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `bd_views` INT NULL, 
   `bd_favorite` INT NULL,
+  `bd_commentCount` INT NULL,
   PRIMARY KEY (`bd_no`))
 ENGINE = InnoDB;
+
+#ALTER TABLE board ADD COLUMN bd_commentCount INT;   # bd_commentCount 컬럼 추가
+#UPDATE board SET bd_commentCount=0 WHERE bd_commentCount is NULL; # bd_commentCount 가 NULL인경우 0으로 초기화
 
 CREATE TABLE IF NOT EXISTS `DICTIONARY` (
   `dic_no` INT UNSIGNED NOT NULL AUTO_INCREMENT,

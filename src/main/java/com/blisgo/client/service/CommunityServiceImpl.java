@@ -24,7 +24,7 @@ public class CommunityServiceImpl implements CommunityService {
 	@Override
 	public void regist(String email, String writer,String category, String title, String content) {
 		Timestamp date = new Timestamp(System.currentTimeMillis());
-		communityMapper.regist(title, writer,category ,content, date, 1, 0);
+		communityMapper.regist(title, writer,category ,content, date, 1, 0,0);
 	}
 
 	@Override
@@ -77,6 +77,11 @@ public class CommunityServiceImpl implements CommunityService {
 	@Override
 	public int getCountContentComment(int bd_no) {
 		return communityMapper.getCountContentComment(bd_no);
+	}
+
+	@Override
+	public void updateCommentCount(int bd_commentCount, int bd_no) {
+		communityMapper.updateCommentCount(bd_commentCount, bd_no);
 	}
 
 	@Override

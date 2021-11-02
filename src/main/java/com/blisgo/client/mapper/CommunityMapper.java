@@ -10,10 +10,10 @@ import java.util.ArrayList;
 
 public interface CommunityMapper {
 	// 글 등록 메서드
-	@Select("INSERT INTO board VALUES(null,#{bd_title},#{bd_writer},#{bd_content},#{bd_category},#{bd_date},#{bd_views},#{bd_favorite})")
+	@Select("INSERT INTO board VALUES(null,#{bd_title},#{bd_writer},#{bd_content},#{bd_category},#{bd_date},#{bd_views},#{bd_favorite},#{bd_commentCount}")
 	void regist(@Param("bd_title") String title, @Param("bd_writer") String writer, @Param("bd_content") String content,
 			@Param("bd_category") String category,@Param("bd_date") Timestamp date, @Param("bd_views") int views,
-			 @Param("bd_favorite") int favorite);
+			 @Param("bd_favorite") int favorite, @Param("bd_commentCount") int bd_commentCount);
 
 	// 글 목록을 가지고 오는 메서드(페이징 처리를 안하고 목록전체 보여주기)
 	@Select("SELECT * FROM board ORDER BY bd_no DESC")
@@ -43,10 +43,6 @@ public interface CommunityMapper {
 	void updateBoard(@Param("bd_title") String bd_title, @Param("bd_content") String bd_content,
 					 @Param("bd_no") int bd_no);
 
-	// 댓글 개수를 받아오는 메서드
-	@Select("SELECT * FROM ")
-	CommentDTO countBoardComment(int bd_no);
-
 	// 댓글 불러오는 메서드
 	@Select("SELECT * FROM comment WHERE bd_no=${bd_no}")
 	ArrayList<CommentDTO> getComment(@Param("bd_no") int bd_no);
@@ -61,9 +57,13 @@ public interface CommunityMapper {
 	void removeComment(@Param("comment_no") int comment_no, @Param("bd_no") int bd_no);
 
 	// 해당글의 댓글 개수를 받아오는 메서드
-	@Select("SELECT * COUNT(*) FROM comment WHERE bd_no=${bd_no}")
+	@Select("SELECT COUNT(*) FROM comment WHERE bd_no=${bd_no}")
 	int getCountContentComment(@Param("bd_no") int bd_no);
-	
+
+	//board 테이블에 댓글갯수 컬름을 맞게 수정합니다.
+	@Update("UPDATE board SET bd_commentCount=${bd_commentCount} WHERE bd_no=${bd_no}")
+	void updateCommentCount(@Param("bd_commentCount") int bd_commentCount, @Param("bd_no") int bd_no);
+
 	//좋아요 +1 메소드
 	@Update("UPDATE board SET bd_favorite=#{bd_favorite}+1 WHERE bd_no=#{bd_no}")
 	void favoriteBoard(@Param("bd_favorite") int bd_favorite, @Param("bd_no") int bd_no);

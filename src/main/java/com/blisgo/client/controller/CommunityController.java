@@ -50,14 +50,14 @@ public class CommunityController {
 			throws UnsupportedEncodingException {
 		request.setCharacterEncoding("utf-8");
 
-
 		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
 		int bd_no = Integer.parseInt(request.getParameter("bd_no")); // 글번호 HTTP요청의 파라미터에서 값을 가져오기
 		BoardDTO articles = communityService.contentBoard(bd_no);
 		ArrayList<CommentDTO> comments = communityService.getComment(bd_no);
 		ArrayList<UserDTO> comments_user = new ArrayList<UserDTO>();
 		communityService.viewIncrease(articles.getBd_no(), articles.getBd_views());//조회수 1증가
-		
+		int countComment = communityService.getCountContentComment(bd_no);
+
 		// 게시판 댓글에 올라온 mem_no를 통해 사용자를 조회하고 닉네임과 프로필 이미지를 출력함
 		for (CommentDTO comment : comments) {
 			comments_user.add(communityService.getCommentUser(comment.getMem_no()));
@@ -70,6 +70,7 @@ public class CommunityController {
 		model.addAttribute("comments", comments);
 		model.addAttribute("comments_user", comments_user);
 		model.addAttribute("bd_no", bd_no);
+		model.addAttribute("countComment", countComment);
 
 		return "content";
 	}
@@ -239,6 +240,11 @@ public class CommunityController {
 		int mem_no = Integer.parseInt(request.getParameter("mem_no"));
 		String content = request.getParameter("content");
 		communityService.addComment(bd_no, mem_no, content);
+
+		//댓글 갯수 수정
+		int commentCount=communityService.getCountContentComment(bd_no);
+		communityService.updateCommentCount(commentCount,bd_no);
+
 		return "redirect:/content?bd_no=" + bd_no;
 	}
 	// -----------------------------------------------------//
@@ -250,6 +256,9 @@ public class CommunityController {
 		int comment_no = Integer.parseInt(request.getParameter("comment_no"));
 		int bd_no = Integer.parseInt(request.getParameter("bd_no"));
 		communityService.removeComment(comment_no, bd_no);
+		//댓글 갯수 수정
+		int commentCount=communityService.getCountContentComment(bd_no);
+		communityService.updateCommentCount(commentCount,bd_no);
 		return "redirect:/content?bd_no=" + bd_no;
 	}
 	// -----------------------------------------------------//

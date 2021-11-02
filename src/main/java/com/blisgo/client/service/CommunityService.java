@@ -41,7 +41,11 @@ public interface CommunityService {
 
 	void updateBoard(String bd_title, String bd_content, int bd_no);
 
+	// 해당 글 갯수 세기
 	int getCountContentComment(int bd_no);
+	
+	// 해당 글 테이블에 글 갯수 컬럼 수정
+	void updateCommentCount(int bd_commentCount, int bd_no);
 
 	//좋아요 +1
 	void favoriteBoard(int bd_no, int bd_favorite);

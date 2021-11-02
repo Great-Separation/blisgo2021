@@ -11,6 +11,7 @@ import java.util.Date;
 		`bd_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 		`bd_views` INT NULL,
 		`bd_favorite` INT NULL,
+  		`bd_commentCount` INT NULL,
 		PRIMARY KEY (`bd_no`))
 		ENGINE = InnoDB;*/
 
@@ -24,6 +25,7 @@ public class BoardDTO {
 	private Date bd_date;
 	private int bd_views;
 	private int bd_favorite;
+	private int bd_commentCount;
 
 	public int getBd_no() {
 		return bd_no;
@@ -73,4 +75,6 @@ public class BoardDTO {
 	public void setBd_favorite(int bd_favorite) {
 		this.bd_favorite = bd_favorite;
 	}
+	public int getBd_commentCount() {return bd_commentCount;}
+	public void setBd_commentCount(int bd_commentCount) {this.bd_commentCount = bd_commentCount;}
 }
