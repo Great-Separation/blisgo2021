@@ -72,14 +72,14 @@
                                 <div class="col-lg-4">
                                     <div class="card shadow-sm mb-3">
                                         <div class="card-body text-center">
-                                            <form>
+                                            <form id="profile" method="post" action="mypageUpdateProfileImg" enctype="multipart/form-data">
                                                 <div class="row">
                                                     <div class="col"><img class="rounded-circle mb-3 mt-4" src="${mem.getProfile_image()}" width="160px" height="160px" loading="lazy" alt="프로필이미지">
                                                         <p class="lead">${mem.getNickname()}</p>
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col"><button class="btn btn-primary" type="submit">이미지 변경</button></div>
+                                                    <div class="col"><input class="form-control visually-hidden" type="file" id="upload" name="upload-img"><label class="form-label btn btn-primary m-1" id="upload-img" for="upload" onchange="location.href=&#39;https://www.naver.com&#39;">이미지 변경</label></div>
                                                 </div>
                                             </form>
                                         </div>
@@ -355,6 +355,7 @@
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/dogam-more.js"></script>
     <script src="assets/js/pass-check.js"></script>
+    <script src="assets/js/profile-update.js"></script>
 </body>
 
 </html>

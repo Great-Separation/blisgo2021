@@ -55,4 +55,8 @@ public interface UserMapper {
 	// 북마크 기능 메서드
 	@Update("UPDATE user_db SET dogamList = CASE WHEN dogamList='null' THEN #{dic_no} ELSE concat(dogamList,',',#{dic_no}) END WHERE mem_no =#{mem_no};")
 	void dogamAddBookmark(int mem_no, String dic_no);
+	
+	// 회원 프로필 이미지 변경 메서드
+	@Update("UPDATE user_db SET profile_image=#{img_url} where email=#{email}")
+	void updateProfileImg(String img_url, String email);
 }

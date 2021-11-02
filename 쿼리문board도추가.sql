@@ -34,26 +34,28 @@ CREATE TABLE IF NOT EXISTS `GUIDE` (
   PRIMARY KEY (`guide_name`))
 ENGINE = InnoDB;
 
+
+
 select * from board;
 
 INSERT INTO board VALUES(null, "글제목1","글 작성자1" , "글 카테고리","글 내용" ,default ,1,0);
    
 
-insert into guide values ("고철","https://i.ibb.co/7JQ9s1F/image.png");
-insert into guide values ("금속캔","https://i.ibb.co/3dH1Cfk/image.png");
-insert into guide values ("대형","https://i.ibb.co/HGxsrX1/image.png");
-insert into guide values ("발포합성","https://i.ibb.co/tQQKxtn/image.png");
-insert into guide values ("불연성-종량제","https://i.ibb.co/mzjLJQQ/image.png");
-insert into guide values ("비닐","https://i.ibb.co/q5WfTVQ/image.png");
-insert into guide values ("유리병","https://i.ibb.co/NtFh4pn/image.png");
-insert into guide values ("유해","https://i.ibb.co/RjYHhfz/image.png");
-insert into guide values ("음식물","https://i.ibb.co/4dxPRX0/image.png");
-insert into guide values ("의류","https://i.ibb.co/8X8FnYb/image.png");
-insert into guide values ("전용함","https://i.ibb.co/fDzkfT9/image.png");
-insert into guide values ("종이","https://i.ibb.co/4m96hZt/image.png");
-insert into guide values ("종이팩","https://i.ibb.co/3Y1MdhF/image.png");
-insert into guide values ("가전제품","https://i.ibb.co/WHMBW1c/image.png");
-insert into guide values ("플라스틱","https://i.ibb.co/hDXdNK5/image.png");
+insert into guide values ("고철","https://res.cloudinary.com/datgsovwo/image/upload/v1635747373/guide/rhcjffb.png");
+insert into guide values ("금속캔","https://res.cloudinary.com/datgsovwo/image/upload/v1635747372/guide/rmathrzos.png");
+insert into guide values ("대형","https://res.cloudinary.com/datgsovwo/image/upload/v1635747372/guide/eogudvPrlanf.png");
+insert into guide values ("발포합성","https://res.cloudinary.com/datgsovwo/image/upload/v1635747373/guide/qkfvhgkqtjdtnwl.png");
+insert into guide values ("불연성-종량제","https://res.cloudinary.com/datgsovwo/image/upload/v1635747372/guide/qnfdustjd-whdfidwp.png");
+insert into guide values ("비닐","https://res.cloudinary.com/datgsovwo/image/upload/v1635747373/guide/qlslffb.png");
+insert into guide values ("유리병","https://res.cloudinary.com/datgsovwo/image/upload/v1635747373/guide/dbflqud.png");
+insert into guide values ("유해","https://res.cloudinary.com/datgsovwo/image/upload/v1635747374/guide/dbgo.png");
+insert into guide values ("음식물","https://res.cloudinary.com/datgsovwo/image/upload/v1635747374/guide/dmatlranf.png");
+insert into guide values ("의류","https://res.cloudinary.com/datgsovwo/image/upload/v1635747373/guide/dmlfb.png");
+insert into guide values ("전용함","https://res.cloudinary.com/datgsovwo/image/upload/v1635747374/guide/wjsdydgka.png");
+insert into guide values ("종이","https://res.cloudinary.com/datgsovwo/image/upload/v1635747374/guide/whddl.png");
+insert into guide values ("종이팩","https://res.cloudinary.com/datgsovwo/image/upload/v1635747372/guide/whddlvor-whddlzjq.png");
+insert into guide values ("가전제품","https://res.cloudinary.com/datgsovwo/image/upload/v1635747372/guide/vPrkwjswpvna.png");
+insert into guide values ("플라스틱","https://res.cloudinary.com/datgsovwo/image/upload/v1635747372/guide/vmffktmxlr.png");
 
 
 insert into dictionary values (1001,"가격표","price tag","생활폐기물","종이",0,0,"https://shopping-phinf.pstatic.net/main_2403129/24031298246.20200904012815.jpg?type=f640","<p><strong>종이류</strong>로 배출</p>");

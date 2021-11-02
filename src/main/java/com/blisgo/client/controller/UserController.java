@@ -1,27 +1,37 @@
 package com.blisgo.client.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.blisgo.client.dto.DictionaryDTO;
 import com.blisgo.client.dto.UserDTO;
 import com.blisgo.client.service.MailService;
 import com.blisgo.client.service.UserService;
+import com.cloudinary.Cloudinary;
+import com.cloudinary.Transformation;
+import com.cloudinary.utils.ObjectUtils;
 
 @Controller
 public class UserController {
@@ -41,11 +51,12 @@ public class UserController {
 
 	// 회원 로그인 전송
 	@PostMapping("loginPOST")
-	public void loginPOST(Model model, HttpServletRequest req, UserDTO user, HttpServletResponse response) throws IOException {
+	public void loginPOST(Model model, HttpServletRequest req, UserDTO user, HttpServletResponse response)
+			throws IOException {
 		session = req.getSession();
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		
+
 		UserDTO userInfo = userService.getUser(user);
 		String userPass = userService.userLogin(user);
 		if (userInfo == null) {
@@ -62,7 +73,7 @@ public class UserController {
 				out.println("location.href='/';");
 				out.println("</script>");
 			} else {
-				//model.addAttribute("passCheck", 1);
+				// model.addAttribute("passCheck", 1);
 				out.println("<script>");
 				out.println("alert('비밀번호가 틀렸습니다. 다시 확인해주세요');");
 				out.println("location.href='login';");
@@ -87,7 +98,7 @@ public class UserController {
 	public void registerPOST(Model model, UserDTO user, HttpServletResponse response) throws IOException {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		
+
 		if (userService.insert(user)) {
 			out.println("<script>");
 			out.println("alert('회원가입 성공');");
@@ -231,6 +242,45 @@ public class UserController {
 		return "mypage";
 	}
 
+	// 마이페이지 프로필 업데이트
+	@PostMapping("mypageUpdateProfileImg")
+	public String mypageUpdateProfileImg(Model model, HttpServletResponse response,
+			@RequestParam("upload-img") MultipartFile profile_img) throws IOException {
+		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
+
+		// 파일명 충돌방지
+		UUID uuid = UUID.randomUUID();
+		String uuidFilename = uuid + "_" + profile_img.getOriginalFilename();
+
+		// CDN 연결
+		Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap("cloud_name", "datgsovwo", "api_key",
+				"428898964121829", "api_secret", "pRBsjO-mi6-OFLEp4eTUxKplTyQ"));
+
+		
+		// 최적의 프로필 이미지를 위해 이미지 편집 후 업로드
+		Map result = cloudinary.uploader().upload(convert(profile_img), ObjectUtils.asMap("folder", "userprofile",
+				"transformation", new Transformation().gravity("auto:classic").width(400).height(400).crop("thumb")));
+		String profile_img_url = (String) result.get("secure_url");
+
+		// 세션을 갱신하여 프로필 변경사항을 웹 뷰에서 즉시 적용
+		userService.updateProfileImg(profile_img_url, userInfo.getEmail());
+		userInfo.setProfile_image(profile_img_url);
+		session.removeAttribute("mem");
+		session.setAttribute("mem", userInfo);
+
+		return "redirect:mypage";
+	}
+
+	// multipart -> 파일 변환(stream 사용. heroku에서 파일제어에 제약이 있기 때문)
+	public File convert(MultipartFile file) throws IOException {
+		File convFile = new File(file.getOriginalFilename());
+		convFile.createNewFile();
+		FileOutputStream fos = new FileOutputStream(convFile);
+		fos.write(file.getBytes());
+		fos.close();
+		return convFile;
+	}
+
 	// 마이페이지 계정 수정
 	@PostMapping("mypageModifyAccount")
 	public void mypageModifyAccount(Model model, UserDTO user, HttpServletResponse response) throws IOException {
@@ -238,7 +288,7 @@ public class UserController {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		user.setMem_no(user_no.getMem_no());
-		
+
 		if (userService.modifyAccount(user)) {
 			UserDTO userInfo = (UserDTO) userService.getUser(user);
 			session.setAttribute("mem", userInfo);
@@ -261,7 +311,7 @@ public class UserController {
 		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		
+
 		if (userService.deleteAccount(userInfo)) {
 			out.println("<script>");
 			out.println("alert('회원 탈퇴되었습니다.');");
@@ -290,7 +340,8 @@ public class UserController {
 
 	// 회원 비밀번호 변경
 	@PostMapping("modifyPassword")
-	public void modifyPassword(HttpServletRequest request, Model model, HttpServletResponse response) throws IOException {
+	public void modifyPassword(HttpServletRequest request, Model model, HttpServletResponse response)
+			throws IOException {
 		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
 		String beforePass = request.getParameter("beforePass");
 		String newPass = request.getParameter("newPass");
@@ -321,35 +372,32 @@ public class UserController {
 		ArrayList<DictionaryDTO> products_more = userService.dogamLoadMore(dogamNo);
 		return products_more;
 	}
-	
+
 	@GetMapping("dogamBookmark")
 	public String addBookmark(Model model, HttpServletRequest request, RedirectAttributes redirect) {
 		String dic_no = request.getParameter("dic_no");
 		System.out.println(dic_no);
-		if(session != null) {
+		if (session != null) {
 			UserDTO userInfo = (UserDTO) session.getAttribute("mem");
 			String dogam = userInfo.getDogamList();
-			if(dogam.contains(dic_no)) {
+			if (dogam.contains(dic_no)) {
 				System.out.println("이미 도감에 추가");
 				redirect.addAttribute("dic_no", dic_no);
 				return "redirect:product";
-			}
-			else {
+			} else {
 				System.out.println("도감에 없음 새로 추가");
-				if(userService.dogamAddBookmark(userInfo, dic_no)) {
+				if (userService.dogamAddBookmark(userInfo, dic_no)) {
 					System.out.println(userService.getUser(userInfo));
 					session.setAttribute("mem", userService.getUser(userInfo));
 					redirect.addAttribute("dic_no", dic_no);
 					return "redirect:product";
-				}
-				else {
+				} else {
 					System.out.println("북마크 실패");
 					redirect.addAttribute("dic_no", dic_no);
 					return "redirect:product";
 				}
 			}
-		}
-		else {
+		} else {
 			System.out.println("로그인 하지 않음");
 			redirect.addAttribute("dic_no", dic_no);
 			return "redirect:product";

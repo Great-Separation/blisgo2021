@@ -23,7 +23,7 @@ import com.google.zxing.qrcode.QRCodeWriter;
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserMapper userMapper;
-	
+
 	private static int index = 0;
 
 	@Override
@@ -43,41 +43,40 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userMapper.getUser(user.getEmail());
 	}
-	
+
 	@Override
 	public int emailCheck(String email) {
 		// TODO Auto-generated method stub
 		return userMapper.emailCheck(email);
 	}
-	
+
 	@Override
 	public boolean modifyAccount(UserDTO user) {
 		// TODO Auto-generated method stub0
 		userMapper.modifyAccount(user.getNickname(), user.getMem_no());
 		return true;
 	}
-	
+
 	@Override
 	public boolean deleteAccount(UserDTO user) {
 		// TODO Auto-generated method stub
 		userMapper.deleteAccount(user.getMem_no());
 		return true;
 	}
-	
+
 	@Override
 	public boolean modifyPassword(String pass, String email) {
 		// TODO Auto-generated method stub
 		userMapper.modifyPassword(pass, email);
 		return true;
 	}
-	
+
 	@Override
 	public ArrayList<DictionaryDTO> mydogamList(String dogamList) {
 		// TODO Auto-generated method stub
 		index = 0;
 		return userMapper.mydogamList(dogamList, 0, 12);
 	}
-	
 
 	@Override
 	public ArrayList<DictionaryDTO> dogamLoadMore(String dogamList) {
@@ -96,13 +95,13 @@ public class UserServiceImpl implements UserService {
 		}
 		return result;
 	}
-	
+
 	@Override
 	public ArrayList<UserDTO> rankList() {
 		// TODO Auto-generated method stub
 		return userMapper.rankList();
 	}
-	
+
 	@Override
 	public boolean dogamAddBookmark(UserDTO user, String dic_no) {
 		// TODO Auto-generated method stub
@@ -138,6 +137,12 @@ public class UserServiceImpl implements UserService {
 			e.printStackTrace();
 		}
 		return imageAsBase64;
+	}
+
+	@Override
+	public void updateProfileImg(String img_url, String email) {
+		// TODO cloudinary에 업로드된 이미지 경로를 DB에 저장하여 CDN으로 활용
+		userMapper.updateProfileImg(img_url, email);
 	}
 
 }

@@ -42,4 +42,7 @@ public interface UserService {
 	
 	// 북마크 기능 메서드
 	public boolean dogamAddBookmark(UserDTO user, String dic_no);
+
+	// 회원 프로필 이미지 변경 메서드
+	public void updateProfileImg(String img_url, String email);
 }
