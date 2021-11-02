@@ -39,9 +39,9 @@
 						</c:otherwise>
 					</c:choose></a>
 				<div class="dropdown-menu dropdown-menu-end">
-					<a class="dropdown-item" href="qrlogin.html">QR생성</a><a
-						class="dropdown-item" href="mypage.html">마이페이지</a><a
-						class="dropdown-item" href="mypage.html">로그아웃</a>
+					<a class="dropdown-item" href="/qrlogin">QR생성</a><a
+						class="dropdown-item" href="/mypage">마이페이지</a><a
+						class="dropdown-item" href="/logout">로그아웃</a>
 				</div>
 			</div>
 			<ul class="navbar-nav ms-auto">

@@ -68,7 +68,7 @@
                                     <h1 class="m-0">${product.getName()}</h1>
                                 </div>
                                 <div class="col-3 align-self-center py-1 text-end">
-                                    <div class="btn-group" role="group" id="product-icon"><button class="btn btn-link" id="btn-toast" type="button" data-bs-toggle="toast" onclick="location.href=&#39;dogamBookmark?dic_no=${product.getDic_no()}&#39;" value="${dogamCheck}"><i class="fas fa-bookmark"></i></button><button class="btn btn-link" id="btn-share" type="button" data-bs-target="#modal-share" data-bs-toggle="modal"><i class="fas fa-share-alt"></i></button></div>
+                                    <div class="btn-group" role="group" id="product-icon"><button class="btn btn-link" id="btn-toast" type="button" data-bs-target="#liveToast" data-bs-toggle="toast" onclick="location.href=&#39;dogamBookmark?dic_no=${product.getDic_no()}&#39;" value="${dogamCheck}"><i class="fas fa-bookmark"></i></button><button class="btn btn-link" id="btn-share" type="button" data-bs-target="#modal-share" data-bs-toggle="modal"><i class="fas fa-share-alt"></i></button></div>
                                 </div>
                             </div>
                             <div class="row">
@@ -163,13 +163,13 @@
                         </div>
                     </div>
                     <div class="toast fade hide" role="alert" id="liveToast2" aria-live="assertive" aria-atomic="true">
-                        <div class="toast-header"><img class="me-2" src="${product.getThumbnail()}" width="50px" height="50px"><strong class="me-auto">이미 추가되었습니다</strong><button class="btn-close ms-2 mb-1 close" data-bs-dismiss="toast"></button></div>
+                        <div class="toast-header"><img class="me-2" src="${product.getThumbnail()}" width="50px" height="50px"><strong class="me-auto">이미 추가되었습니다</strong><small>방금</small><button class="btn-close ms-2 mb-1 close" data-bs-dismiss="toast"></button></div>
                         <div class="toast-body" role="alert">
                             <p>분리배출 도우미를 통해 도감에 추가할 수 있습니다&nbsp;</p>
                         </div>
                     </div>
                     <div class="toast fade hide" role="alert" id="liveToast3" aria-live="assertive" aria-atomic="true">
-                        <div class="toast-header"><img class="me-2" src="${product.getThumbnail()}" width="50px" height="50px"><strong class="me-auto">로그인 후 추가 가능합니다</strong><button class="btn-close ms-2 mb-1 close" data-bs-dismiss="toast"></button></div>
+                        <div class="toast-header"><img class="me-2" src="${product.getThumbnail()}" width="50px" height="50px"><strong class="me-auto">로그인 후 추가할 수 있습니다</strong><small>방금</small><button class="btn-close ms-2 mb-1 close" data-bs-dismiss="toast"></button></div>
                         <div class="toast-body" role="alert">
                             <p>분리배출 도우미를 통해 도감에 추가할 수 있습니다&nbsp;</p>
                         </div>
