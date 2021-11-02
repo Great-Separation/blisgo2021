@@ -68,7 +68,10 @@
             <c:forEach items="${articles}" var="article">
                 <tr>
                     <td>
-                        <a class="d-block text-decoration-none text-reset" href="/content?bd_no=${article.getBd_no()}">${article.getBd_title()}<span class="text-info">(3)</span><br></a>
+                        <a class="d-block text-decoration-none text-reset" href="/content?bd_no=${article.getBd_no()}">${article.getBd_title()}
+                            <c:if test="${article.getBd_commentCount() ne 0}">
+                            <span class="text-info">(${article.getBd_commentCount()})</span><br></c:if>
+                        </a>
                     </td>
                     <td>
                         <a class="text-end d-block text-decoration-none text-reset" href="/content?bd_no=${article.getBd_no()}">${article.getBd_writer()}</a>

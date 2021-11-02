@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public interface CommunityMapper {
 	// 글 등록 메서드
-	@Select("INSERT INTO board VALUES(null,#{bd_title},#{bd_writer},#{bd_content},#{bd_category},#{bd_date},#{bd_views},#{bd_favorite},#{bd_commentCount}")
+	@Select("INSERT INTO board VALUES(null,#{bd_title},#{bd_writer},#{bd_content},#{bd_category},#{bd_date},#{bd_views},#{bd_favorite},#{bd_commentCount})")
 	void regist(@Param("bd_title") String title, @Param("bd_writer") String writer, @Param("bd_content") String content,
 			@Param("bd_category") String category,@Param("bd_date") Timestamp date, @Param("bd_views") int views,
 			 @Param("bd_favorite") int favorite, @Param("bd_commentCount") int bd_commentCount);
