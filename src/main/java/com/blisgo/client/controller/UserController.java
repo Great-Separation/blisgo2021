@@ -1,19 +1,23 @@
 package com.blisgo.client.controller;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -86,8 +90,13 @@ public class UserController {
 	// 회원가입
 	@GetMapping("register")
 	public String register(Model model) {
+		ClassLoader classLoader = getClass().getClassLoader();
+		InputStream in = classLoader.getResourceAsStream("static/agreement.txt");
 
-//		model.addAttribute("termsOfAgreement", BlisgoClientApplication.termsOfAgreement);
+		InputStreamReader inputStreamReader = new InputStreamReader(in);
+		Stream<String> streamOfString = new BufferedReader(inputStreamReader).lines();
+		String termsOfAgreement = streamOfString.collect(Collectors.joining());
+		model.addAttribute("termsOfAgreement", termsOfAgreement);
 
 		return "register";
 
@@ -256,7 +265,6 @@ public class UserController {
 		Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap("cloud_name", "datgsovwo", "api_key",
 				"428898964121829", "api_secret", "pRBsjO-mi6-OFLEp4eTUxKplTyQ"));
 
-		
 		// 최적의 프로필 이미지를 위해 이미지 편집 후 업로드
 		Map result = cloudinary.uploader().upload(convert(profile_img), ObjectUtils.asMap("folder", "userprofile",
 				"transformation", new Transformation().gravity("auto:classic").width(400).height(400).crop("thumb")));
