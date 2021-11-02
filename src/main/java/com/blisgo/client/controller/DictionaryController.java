@@ -23,7 +23,7 @@ public class DictionaryController {
 
 	@Autowired
 	private DictionaryService dictionaryService;
-	
+
 	// 분리배출 사전
 	@GetMapping("dictionary")
 	public String dictionary(Model model, HttpServletRequest request) {
@@ -100,21 +100,20 @@ public class DictionaryController {
 		// 중분류 기준 연관된 product 나열
 		ArrayList<DictionaryDTO> relatedProducts = dictionaryService.relatedProduct(category_mid_list);
 		model.addAttribute("relatedProducts", relatedProducts);
-		
+
 		// 로그인한 회원의 도감 리스트를 가져와 도감에 등록된 경우와 등록되지 않은 경우 토스트 메시지 변경 기능
 		HttpSession session = request.getSession();
-		if(session.getAttribute("mem") == null) {
+		if (session.getAttribute("mem") == null) {
 			System.out.println("not login");
-			model.addAttribute("dogamCheck","none");
-		}
-		else {
-			UserDTO userInfo = (UserDTO)session.getAttribute("mem");
+			model.addAttribute("dogamCheck", "none");
+		} else {
+			System.out.println("login");
+			UserDTO userInfo = (UserDTO) session.getAttribute("mem");
 			String dogam = userInfo.getDogamList();
-			if(dogam.contains(request.getParameter("dic_no"))) {
-				model.addAttribute("dogamCheck","true");
-			}
-			else {
-				model.addAttribute("dogamCheck","false");
+			if (dogam.contains(request.getParameter("dic_no"))) {
+				model.addAttribute("dogamCheck", "true");
+			} else {
+				model.addAttribute("dogamCheck", "false");
 			}
 		}
 		return "product";

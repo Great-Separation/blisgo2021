@@ -381,6 +381,7 @@ public class UserController {
 		return products_more;
 	}
 
+	// 북마크 추가 기능
 	@GetMapping("dogamBookmark")
 	public String addBookmark(Model model, HttpServletRequest request, RedirectAttributes redirect) {
 		String dic_no = request.getParameter("dic_no");
