@@ -1,7 +1,6 @@
 package com.blisgo.client.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.blisgo.client.dto.DictionaryDTO;
 

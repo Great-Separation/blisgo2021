@@ -257,15 +257,12 @@ public class UserController {
 			@RequestParam("upload-img") MultipartFile profile_img) throws IOException {
 		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
 
-		// 파일명 충돌방지
-		UUID uuid = UUID.randomUUID();
-		String uuidFilename = uuid + "_" + profile_img.getOriginalFilename();
-
 		// CDN 연결
 		Cloudinary cloudinary = new Cloudinary(ObjectUtils.asMap("cloud_name", "datgsovwo", "api_key",
 				"428898964121829", "api_secret", "pRBsjO-mi6-OFLEp4eTUxKplTyQ"));
 
 		// 최적의 프로필 이미지를 위해 이미지 편집 후 업로드
+		@SuppressWarnings("rawtypes")
 		Map result = cloudinary.uploader().upload(convert(profile_img), ObjectUtils.asMap("folder", "userprofile",
 				"transformation", new Transformation().gravity("auto:classic").width(400).height(400).crop("thumb")));
 		String profile_img_url = (String) result.get("secure_url");
@@ -281,7 +278,10 @@ public class UserController {
 
 	// multipart -> 파일 변환(stream 사용. heroku에서 파일제어에 제약이 있기 때문)
 	public File convert(MultipartFile file) throws IOException {
-		File convFile = new File(file.getOriginalFilename());
+		// 파일명 충돌방지
+		UUID uuid = UUID.randomUUID();
+		String uuidFilename = uuid + "_" + file.getOriginalFilename();
+		File convFile = new File(uuidFilename);
 		convFile.createNewFile();
 		FileOutputStream fos = new FileOutputStream(convFile);
 		fos.write(file.getBytes());

@@ -4,7 +4,7 @@
   <class id="1" language="java" name="com.blisgo.client.controller.HomeController" project="blisgo-client" 
     file="/blisgo-client/src/main/java/com/blisgo/client/controller/HomeController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="256" width="211" x="618" y="84"/>    
+    <position height="-1" width="-1" x="621" y="236"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -24,32 +24,22 @@
   <class id="3" language="java" name="com.blisgo.client.controller.UserController" project="blisgo-client" 
     file="/blisgo-client/src/main/java/com/blisgo/client/controller/UserController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="316" width="290" x="1109" y="84"/>    
+    <position height="-1" width="-1" x="1412" y="258"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="com.blisgo.client.controller.REST를위한HTTP메서드" project="blisgo-client" 
-    file="/blisgo-client/src/main/java/com/blisgo/client/controller/REST를위한HTTP메서드.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="196" width="276" x="1439" y="84"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <package id="5" language="java" name="com.blisgo.client.controller" project="blisgo-client" 
+  <package id="4" language="java" name="com.blisgo.client.controller" project="blisgo-client" 
     file="/blisgo-client/src/main/java/com/blisgo/client/controller" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="62" width="262" x="1755" y="84"/>    
+    <position height="-1" width="-1" x="1773" y="66"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="6" language="java" name="com.blisgo.client.controller.CommunityController" project="blisgo-client" 
+  <class id="5" language="java" name="com.blisgo.client.controller.CommunityController" project="blisgo-client" 
     file="/blisgo-client/src/main/java/com/blisgo/client/controller/CommunityController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="196" width="217" x="2057" y="84"/>    
+    <position height="-1" width="-1" x="2152" y="286"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      

@@ -1,31 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="com.blisgo.client.dto.MemberDTO" project="blisgo-client" 
-    file="/blisgo-client/src/main/java/com/blisgo/client/dto/MemberDTO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="456" width="211" x="366" y="-21"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <package id="2" language="java" name="com.blisgo.client.dto" project="blisgo-client" 
+  <package id="1" language="java" name="com.blisgo.client.dto" project="blisgo-client" 
     file="/blisgo-client/src/main/java/com/blisgo/client/dto" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="62" width="206" x="617" y="-21"/>    
+    <position height="-1" width="-1" x="595" y="62"/>    
     <display autosize="true" stereotype="true" sort-features="false" accessors="true"/>  
   </package>  
-  <class id="3" language="java" name="com.blisgo.client.dto.CommentDTO" project="blisgo-client" 
+  <class id="2" language="java" name="com.blisgo.client.dto.CommentDTO" project="blisgo-client" 
     file="/blisgo-client/src/main/java/com/blisgo/client/dto/CommentDTO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="396" width="208" x="863" y="-21"/>    
+    <position height="-1" width="-1" x="904" y="217"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="com.blisgo.client.dto.BoardDTO" project="blisgo-client"
-    file="/blisgo-client/src/main/java/com/blisgo/client/dto/NoticeBoardDTO.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" language="java" name="com.blisgo.client.dto.BoardDTO" project="blisgo-client" 
+    file="/blisgo-client/src/main/java/com/blisgo/client/dto/BoardDTO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="576" width="208" x="1111" y="-21"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -33,7 +24,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="com.blisgo.client.dto.DictionaryDTO" project="blisgo-client" 
+  <class id="4" language="java" name="com.blisgo.client.dto.DictionaryDTO" project="blisgo-client" 
     file="/blisgo-client/src/main/java/com/blisgo/client/dto/DictionaryDTO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="516" width="207" x="1359" y="-21"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -42,7 +33,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="com.blisgo.client.dto.UserDTO" project="blisgo-client" 
+  <class id="5" language="java" name="com.blisgo.client.dto.UserDTO" project="blisgo-client" 
     file="/blisgo-client/src/main/java/com/blisgo/client/dto/UserDTO.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="476" width="202" x="1606" y="-21"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
