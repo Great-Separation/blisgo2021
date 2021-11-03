@@ -56,7 +56,7 @@
     <jsp:param name="name" value="value" />
 </jsp:include>
     </header>
-    <main class="pt-2 pb-2" style="height: 93.5vh;">
+    <main class="pt-2 pb-2">
         <section class="justify-content-center align-items-center">
             <div class="container container text-center my-3 pt-2 p-0" id="recent-waste">
                 <article>

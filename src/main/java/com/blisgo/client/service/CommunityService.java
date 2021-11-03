@@ -5,12 +5,11 @@ import java.util.ArrayList;
 import com.blisgo.client.dto.BoardDTO;
 import com.blisgo.client.dto.CommentDTO;
 import com.blisgo.client.dto.UserDTO;
-import org.apache.ibatis.annotations.Param;
 
 public interface CommunityService {
 
 	// 글 등록 메서드
-	void regist(String email, String writer,String category, String title, String content);
+	void regist(String email, String writer, String category, String title, String content);
 
 	// 글 목록을 가지고 오는 메서드(페이징 없을때)
 	ArrayList<BoardDTO> listBoard();
@@ -43,12 +42,11 @@ public interface CommunityService {
 
 	// 해당 글 갯수 세기
 	int getCountContentComment(int bd_no);
-	
+
 	// 해당 글 테이블에 글 갯수 컬럼 수정
 	void updateCommentCount(int bd_commentCount, int bd_no);
 
-	//좋아요 +1
+	// 좋아요 +1
 	void favoriteBoard(int bd_no, int bd_favorite);
-
 
 }

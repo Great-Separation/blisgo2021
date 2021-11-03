@@ -11,16 +11,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 
 @Configuration
-@MapperScan(basePackages="com.blisgo.client.mapper")
+@MapperScan(basePackages = "com.blisgo.client.mapper")
 public class MyBatisConfig {
 	@Bean
-	public SqlSessionFactory sqlSessionFactory(DataSource datasource) throws Exception{
-	 SqlSessionFactoryBean sqlSessionFactory=new SqlSessionFactoryBean();
-	 sqlSessionFactory.setDataSource(datasource);
-	 sqlSessionFactory.setTypeAliasesPackage("com.blisgo.client.dto");
-	 return sqlSessionFactory.getObject();
+	public SqlSessionFactory sqlSessionFactory(DataSource datasource) throws Exception {
+		SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
+		sqlSessionFactory.setDataSource(datasource);
+		sqlSessionFactory.setTypeAliasesPackage("com.blisgo.client.dto");
+		return sqlSessionFactory.getObject();
 	}
-	
+
 	@Bean
 	public SqlSessionTemplate sqlSession(SqlSessionFactory sqlSessionFactory) {
 		return new SqlSessionTemplate(sqlSessionFactory);

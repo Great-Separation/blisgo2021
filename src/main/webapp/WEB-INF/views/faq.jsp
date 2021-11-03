@@ -45,7 +45,7 @@
     <jsp:param name="name" value="value" />
 </jsp:include>
     </header>
-    <main class="pt-2 pb-2">
+    <main class="pt-2 pb-2" style="height:61.6vh;">
         <section>
             <div class="container p-1">
                 <div>
@@ -229,17 +229,17 @@
                                 </div>
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" role="tab"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-metal .item-4" aria-expanded="false" aria-controls="accordion-metal .item-4">다 사용한 부탄가스통은 구멍을 뚫어서 배출해야 하나요?<br></button></h2>
-                                    <div class="accordion-collapse collapse item-4" role="tabpanel" data-bs-parent="#accordion-metal">
+                                    <div class="accordion-collapse collapse item-4 text-secondary" role="tabpanel" data-bs-parent="#accordion-metal">
                                         <div class="accordion-body">
-                                            <p class="mb-0">안전사고의 위험으로 가급적 노즐을 누르거나 구멍을 뚫어 가스를 제거한 후 캔류로 배출합니다.<br> * 가급적 통풍이 원활한 장소에서 잔류 가스를 배출 하시면 됩니다.<br></p>
+                                            <p class="mb-0">안전사고의 위험으로 가급적 노즐을 누르거나 구멍을 뚫어 가스를 제거한 후 캔류로 배출합니다.<br>* 가급적 통풍이 원활한 장소에서 잔류 가스를 배출 하시면 됩니다.<br></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" role="tab"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#accordion-metal .item-5" aria-expanded="false" aria-controls="accordion-metal .item-5">가정에서 사용한 페인트통은 어떻게 배출해야 하나요?<br></button></h2>
-                                    <div class="accordion-collapse collapse item-5" role="tabpanel" data-bs-parent="#accordion-metal">
+                                    <div class="accordion-collapse collapse item-5 text-secondary" role="tabpanel" data-bs-parent="#accordion-metal">
                                         <div class="accordion-body">
-                                            <p class="mb-0">페인트통에 남은 내용물이 없는 경우 캔류 수거함으로 배출합니다.<br> 단, 내용물이 있는 경우 지자체와 협의하여 생활계유해폐기물로 배출합니다.<br></p>
+                                            <p class="mb-0">페인트통에 남은 내용물이 없는 경우 캔류 수거함으로 배출합니다.<br>단, 내용물이 있는 경우 지자체와 협의하여 생활계유해폐기물로 배출합니다.<br></p>
                                         </div>
                                     </div>
                                 </div>

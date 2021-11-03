@@ -45,31 +45,6 @@
 				</div>
 			</div>
 			<ul class="navbar-nav ms-auto">
-				<li class="nav-item dropdown" id="service-list"><a
-					class="dropdown-toggle nav-link" aria-expanded="false"
-					data-bs-toggle="dropdown" href="#">검수목록</a>
-					<div class="dropdown-menu">
-						<h6 class="dropdown-header">회원</h6>
-						<a class="dropdown-item" href="/mypage">마이페이지(검수용)</a><a
-							class="dropdown-item" href="/register" title="사용자 계정을 추가합니다">회원가입(검수용)</a><a
-							class="dropdown-item" href="/login">로그인(검수용)</a><a
-							class="dropdown-item" href="/qrlogin">QR로그인(검수용)</a><a
-							class="dropdown-item" href="/verify">인증(검수용)</a>
-						<div class="dropdown-divider"></div>
-						<h6 class="dropdown-header">사전</h6>
-						<a class="dropdown-item" href="/dictionary">사전(검수용)</a><a
-							class="dropdown-item" href="/product">사전내용(검수용)</a>
-						<div class="dropdown-divider"></div>
-						<h6 class="dropdown-header">게시판</h6>
-						<a class="dropdown-item" href="/community">커뮤니티(검수용)</a><a
-							class="dropdown-item" href="/content">글내용(검수용)</a><a
-							class="dropdown-item" href="/write">글쓰기(검수용)</a>
-						<div class="dropdown-divider"></div>
-						<h6 class="dropdown-header">부가</h6>
-						<a class="dropdown-item" href="/faq">FAQ(검수용)</a><a
-							class="dropdown-item" href="/errorHandler">오류페이지(검수용)</a><a
-							class="dropdown-item" href="/introduce">소개(검수용)</a>
-					</div></li>
 				<li class="nav-item" id="encyclopedia"><a class="nav-link"
 					data-bs-toggle="tooltip" data-bss-tooltip=""
 					data-bs-placement="bottom" href="/dictionary" title="분리배출 사전입니다">사전</a></li>

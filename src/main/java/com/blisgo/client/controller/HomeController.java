@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.blisgo.client.dto.DictionaryDTO;
 import com.blisgo.client.service.HomeService;
@@ -16,13 +15,13 @@ public class HomeController {
 
 	@Autowired
 	private HomeService homeService;
-	
+
 	@GetMapping("/")
 	public String index(Model model) {
 		// 최근 등록된 product 나열
 		ArrayList<DictionaryDTO> recentProducts = homeService.recentProduct();
 		model.addAttribute("recentProducts", recentProducts);
-		
+
 		return "index";
 	}
 
@@ -54,11 +53,6 @@ public class HomeController {
 	@GetMapping("offline")
 	public String offline(Model model) {
 		return "offline";
-	}
-
-	@RequestMapping("/faq")
-	public String faq() {
-		return "faq";
 	}
 
 }

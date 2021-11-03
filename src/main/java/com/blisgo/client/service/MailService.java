@@ -63,7 +63,7 @@ public class MailService {
 		// 템플릿 메일에 동적으로 데이터를 삽입할 때 이용함
 		personalization.addDynamicTemplateData("nickname", nickname);
 		personalization.addDynamicTemplateData("email", receiver);
-		
+
 		mail.addPersonalization(personalization);
 		mail.setTemplateId("d-2d054ad4b2b84eb5aa1026eb5a62a7b9");
 		SendGrid sg = new SendGrid("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");

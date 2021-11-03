@@ -75,7 +75,7 @@ public class UserDTO {
 	public void setProfile_image(String profile_image) {
 		this.profile_image = profile_image;
 	}
-	
+
 	public int getRankNum() {
 		return rankNum;
 	}
@@ -90,7 +90,5 @@ public class UserDTO {
 				+ ", memPoint=" + memPoint + ", dogamList=" + dogamList + ", profile_image=" + profile_image
 				+ ", rankNum=" + rankNum + "]";
 	}
-
-	
 
 }

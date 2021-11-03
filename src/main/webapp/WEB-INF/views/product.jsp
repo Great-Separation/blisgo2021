@@ -73,7 +73,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-auto align-self-center py-1"><i class="fas fa-star" id="product-star"></i><span id="product-rating">${product.getPopularity()}</span></div>
-                                <div class="col align-self-center py-1"><i class="fas fa-book"></i><span>도감에 추가됨</span></div>
+                                <div class="col align-self-center py-1"><i class="fas fa-book"></i><span>${product.getDic_no()}</span></div>
                             </div>
                             <div class="row">
                                 <div class="col py-1"><c:forEach var="tag" items="${category_mid_list}">
