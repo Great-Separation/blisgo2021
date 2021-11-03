@@ -71,4 +71,16 @@ public class DictionaryServiceImpl implements DictionaryService {
 		return result;
 	}
 
+	@Override
+	public int getStar(int dic_no) {
+		// TODO Auto-generated method stub
+		return dictionaryMapper.getStar(dic_no);
+	}
+
+	@Override
+	public void countHit(int dic_no) {
+		// TODO Auto-generated method stub
+		dictionaryMapper.countHit(dic_no);
+	}
+
 }

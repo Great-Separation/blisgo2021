@@ -1,6 +1,7 @@
 package com.blisgo.client.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,8 +21,10 @@ public class HomeController {
 	public String index(Model model) {
 		// 최근 등록된 product 나열
 		ArrayList<DictionaryDTO> recentProducts = homeService.recentProduct();
-		model.addAttribute("recentProducts", recentProducts);
+		ArrayList<DictionaryDTO> rankedProducts = homeService.rankedProduct();
 
+		model.addAttribute("recentProducts", recentProducts);
+		model.addAttribute("rankedProducts", rankedProducts);
 		return "index";
 	}
 

@@ -94,8 +94,15 @@ public class DictionaryController {
 			category_mid_list.add(tag_token_str.nextToken());
 		}
 
+		// 조회수(hit) 증가, 이는 곧 전체 제품의 별점 순위를 매기는데 사용됨
+		dictionaryService.countHit(dic_no);
+
+		// 별점 평가(전체를 두고 NTILE(10) 분위로 나누어 별점 제시)
+		int star = dictionaryService.getStar(dic_no);
+		System.out.println("star>" + star);
 		model.addAttribute("category_mid_list", category_mid_list);
 		model.addAttribute("guides", guides);
+		model.addAttribute("star", star);
 
 		// 중분류 기준 연관된 product 나열
 		ArrayList<DictionaryDTO> relatedProducts = dictionaryService.relatedProduct(category_mid_list);

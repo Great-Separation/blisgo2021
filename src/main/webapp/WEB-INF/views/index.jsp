@@ -59,6 +59,12 @@
     <main class="pt-2 pb-2">
         <section class="justify-content-center align-items-center">
             <div class="container container text-center my-3 pt-2 p-0" id="recent-waste">
+                <article class="p-2 mb-4 mt-4">
+                    <div class="intro">
+                        <h2 class="text-center">TOP 3</h2>
+                        <div class="btn-group" role="group"><a class="btn" role="button" href="/product?dic_no=${rankedProducts[0].getDic_no()}">1. ${rankedProducts[0].getName()}</a><a class="btn" role="button" href="/product?dic_no=${rankedProducts[1].getDic_no()}">2. ${rankedProducts[1].getName()}<br></a><a class="btn" role="button" href="/product?dic_no=${rankedProducts[2].getDic_no()}">3. ${rankedProducts[2].getName()}<br></a></div>
+                    </div>
+                </article>
                 <article>
                     <div class="intro">
                         <h2 class="text-center">최근 등록된 폐기물</h2>

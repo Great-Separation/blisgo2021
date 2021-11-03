@@ -21,4 +21,11 @@ public interface DictionaryService {
 
 	// 물품 더보기 메서드
 	ArrayList<DictionaryDTO> productLoadMore(DictionaryDTO search_dic);
+	
+	// 별점 매기는 메서드
+	int getStar(int dic_no);
+		
+	// 조회수 추가 메서드
+	void countHit(int dic_no);
+	
 }
