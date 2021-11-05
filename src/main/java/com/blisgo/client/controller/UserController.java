@@ -111,7 +111,7 @@ public class UserController {
 		if (userService.insert(user)) {
 			out.println("<script>");
 			out.println("alert('회원가입 성공');");
-			out.println("location.href='/';");
+			out.println("location.href='login';");
 			out.println("</script>");
 		} else {
 			out.println("<script>");
@@ -239,6 +239,7 @@ public class UserController {
 	@GetMapping("mypage")
 	public String mypage(Model model) {
 		UserDTO userInfo = (UserDTO) session.getAttribute("mem");
+		System.out.println(userInfo);
 		String dogamNo = userInfo.getDogamList();
 		if (dogamNo == null) {
 
@@ -246,8 +247,11 @@ public class UserController {
 			ArrayList<DictionaryDTO> dogamList = userService.mydogamList(dogamNo);
 			model.addAttribute("dogamList", dogamList);
 		}
+		
 		ArrayList<UserDTO> rankList = userService.rankList();
 		model.addAttribute("rankList", rankList);
+		ArrayList<Integer> achievementList = userService.getAchievementList(userInfo);
+		model.addAttribute("achievementList", achievementList);
 		return "mypage";
 	}
 

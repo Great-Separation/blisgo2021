@@ -19,7 +19,8 @@ CREATE TABLE IF NOT EXISTS `user_db`(
     `pass` varchar(200),
     `memPoint` int,
     `dogamList` varchar(1000) DEFAULT 'null',
-    `profile_image` VARCHAR(100) NULL DEFAULT 'https://i.pravatar.cc/200'
+    `profile_image` VARCHAR(100) NULL DEFAULT 'https://i.pravatar.cc/200',
+    `achievement` varchar(1000) DEFAULT 'null'
 )ENGINE = InnoDB;
 
 #ALTER TABLE board ADD COLUMN bd_commentCount INT;   # bd_commentCount 컬럼 없고 테이블 지우기 싫을때 추가

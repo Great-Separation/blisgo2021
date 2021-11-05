@@ -140,6 +140,23 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public ArrayList<Integer> getAchievementList(UserDTO user) {
+		// TODO Auto-generated method stub
+		String achieveList = user.getAchievement();
+		ArrayList<Integer> achievementList = new ArrayList<Integer>();
+		for(int find=0; find<6; find++) {
+			int count = 0;
+			for(int i=0; i<achieveList.length(); i++) {
+				if(Character.getNumericValue(achieveList.charAt(i)) == find) {			
+					count = count + 1;
+				}
+			}
+			achievementList.add(find,count);
+		}
+		return achievementList;
+	}
+
+	@Override
 	public void updateProfileImg(String img_url, String email) {
 		// TODO cloudinary에 업로드된 이미지 경로를 DB에 저장하여 CDN으로 활용
 		userMapper.updateProfileImg(img_url, email);

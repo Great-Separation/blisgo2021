@@ -18,6 +18,7 @@ public class UserDTO {
 	int memPoint; // 적립 포인트
 	String dogamList; // 북마크로 추가된 도감
 	String profile_image; // 사용자 프로필 이미지
+	String achievement; // 업적
 	int rankNum;
 
 	public int getMem_no() {
@@ -83,12 +84,19 @@ public class UserDTO {
 	public void setRankNum(int rankNum) {
 		this.rankNum = rankNum;
 	}
+	
+	public String getAchievement() {
+		return achievement;
+	}
+
+	public void setAchievement(String achievement) {
+		this.achievement = achievement;
+	}
 
 	@Override
 	public String toString() {
 		return "UserDTO [mem_no=" + mem_no + ", nickname=" + nickname + ", email=" + email + ", pass=" + pass
 				+ ", memPoint=" + memPoint + ", dogamList=" + dogamList + ", profile_image=" + profile_image
-				+ ", rankNum=" + rankNum + "]";
+				+ ", achievement=" + achievement + ", rankNum=" + rankNum + "]";
 	}
-
 }

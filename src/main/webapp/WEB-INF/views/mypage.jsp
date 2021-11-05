@@ -31,7 +31,8 @@
     <link rel="stylesheet" href="assets/css/image-slider.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/table-scrollable-layout.css">
-<link rel="manifest" href="/manifest.json"><style>
+<link rel="manifest" href="/manifest.json">
+<style>
 .pass_input_re_1{
 		color : green;
 		display : none;
@@ -41,6 +42,26 @@
 		color : red;
 		display : none;
 	}
+#paperAchievementWidth{
+		width : ${(achievementList[0]+achievementList[1])*10}%;
+}
+
+#glassAchievementWidth{
+		width : ${achievementList[2]*10}%;
+}
+
+#metalAchievementWidth{
+		width : ${achievementList[3]*10}%;
+}
+
+#plasticAchievementWidth{
+		width : ${achievementList[4]*10}%;
+}
+
+#trashAchievementWidth{
+		width : ${achievementList[5]*10}%;
+}
+
 </style>
 </head>
 
@@ -242,10 +263,10 @@
                                                                 <div class="row m-0">
                                                                     <div class="col-3 text-center align-self-center"><img class="img-fluid" src="assets/img/achievements/001-medal-47.png"></div>
                                                                     <div class="col-9 align-self-center">
-                                                                        <h2>Heading</h2>
-                                                                        <p>Paragraph</p>
+                                                                        <h2>종이 수집가</h2>
+                                                                        <p>종이 제품을 기기에 인식하여 업적을 채워보세요!</p>
                                                                         <div class="progress">
-                                                                            <div class="progress-bar bg-success" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">80%</div>
+                                                                            <div class="progress-bar bg-success" aria-valuenow="${achievementList[0]+achievementList[1]}" aria-valuemin="0" aria-valuemax="10" id="paperAchievementWidth">${(achievementList[0]+achievementList[1])*10}%</div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -256,10 +277,10 @@
                                                                 <div class="row m-0">
                                                                     <div class="col-3 text-center align-self-center"><img class="img-fluid" src="assets/img/achievements/002-medal-46.png"></div>
                                                                     <div class="col-9 align-self-center">
-                                                                        <h2>Heading</h2>
-                                                                        <p>Paragraph</p>
+                                                                        <h2>유리 수집가</h2>
+                                                                        <p>유리 제품을 기기에 인식하여 업적을 채워보세요!</p>
                                                                         <div class="progress">
-                                                                            <div class="progress-bar bg-success" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">60%</div>
+                                                                            <div class="progress-bar bg-success" aria-valuenow="${achievementList[2]}" aria-valuemin="0" aria-valuemax="10" id="glassAchievementWidth">${achievementList[2]*10}%</div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -270,10 +291,10 @@
                                                                 <div class="row m-0">
                                                                     <div class="col-3 text-center align-self-center"><img class="img-fluid" src="assets/img/achievements/003-medal-45.png"></div>
                                                                     <div class="col-9 align-self-center">
-                                                                        <h2>Heading</h2>
-                                                                        <p>Paragraph</p>
+                                                                        <h2>철 수집가</h2>
+                                                                        <p>철 제품을 기기에 인식하여 업적을 채워보세요!</p>
                                                                         <div class="progress">
-                                                                            <div class="progress-bar bg-success" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">20%</div>
+                                                                            <div class="progress-bar bg-success" aria-valuenow="${achievementList[3]}" aria-valuemin="0" aria-valuemax="10" id="metalAchievementWidth">${achievementList[3]*10}%</div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -284,10 +305,10 @@
                                                                 <div class="row m-0">
                                                                     <div class="col-3 text-center align-self-center"><img class="img-fluid" src="assets/img/achievements/004-trophy-21.png"></div>
                                                                     <div class="col-9 align-self-center">
-                                                                        <h2>Heading</h2>
-                                                                        <p>Paragraph</p>
+                                                                        <h2>플라스틱 수집가</h2>
+                                                                        <p>플라스틱 제품을 기기에 인식하여 업적을 채워보세요!</p>
                                                                         <div class="progress">
-                                                                            <div class="progress-bar bg-success" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">100%</div>
+                                                                            <div class="progress-bar bg-success" aria-valuenow="${achievementList[4]}" aria-valuemin="0" aria-valuemax="10" id="plasticAchievementWidth">${achievementList[4]*10}%</div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -296,26 +317,12 @@
                                                         <tr>
                                                             <td>
                                                                 <div class="row m-0">
-                                                                    <div class="col-3 text-center align-self-center"><img class="img-fluid" src="assets/img/achievements/005-trophy-20.png"></div>
+                                                                    <div class="col-3 text-center align-self-center"><img class="img-fluid" src="assets/img/achievements/023-crown-1.png"></div>
                                                                     <div class="col-9 align-self-center">
-                                                                        <h2>Heading</h2>
-                                                                        <p>Paragraph</p>
+                                                                        <h2>인식 불가..</h2>
+                                                                        <p>아직 인식되지 않는 제품입니다...</p>
                                                                         <div class="progress">
-                                                                            <div class="progress-bar bg-success" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">80%</div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <div class="row m-0">
-                                                                    <div class="col-3 text-center align-self-center"><img class="img-fluid" src="assets/img/achievements/006-medal-44.png"></div>
-                                                                    <div class="col-9 align-self-center">
-                                                                        <h2>Heading</h2>
-                                                                        <p>Paragraph</p>
-                                                                        <div class="progress">
-                                                                            <div class="progress-bar bg-success" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: 15%;">15%</div>
+                                                                            <div class="progress-bar bg-success" aria-valuenow="${achievementList[5]}" aria-valuemin="0" aria-valuemax="10" id="trashAchievementWidth">${achievementList[5]*10}%</div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
