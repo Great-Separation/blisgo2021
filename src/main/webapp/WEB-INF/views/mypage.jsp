@@ -220,31 +220,33 @@
                     <td class="col-1" scope="row">
                         <div class="row m-0">
                             <div class="col-auto text-start align-self-center"><span>${rank.getRankNum()}<br /></span></div>
-                            <div class="col-auto flex-fill align-self-center p-0"><img class="rounded-circle img-fluid leaderboard-user-img" src="https://i.pravatar.cc/200?img=4" width="40px" height="40px" alt="프로필이미지" /><span>${rank.getNickname()}<br /></span></div>
+                            <div class="col-auto flex-fill align-self-center p-0"><img class="rounded-circle img-fluid leaderboard-user-img" src="https://i.pravatar.cc/200?img=${rank.getRankNum()+1}" width="40px" height="40px" alt="프로필이미지" /><span>${rank.getNickname()}<br /></span></div>
                             <div class="col-auto text-end align-self-center ms-auto"><span>${rank.getMemPoint()}<br /></span></div>
                         </div>
                     </td>
                 </tr>
             </tbody>
+            </c:forEach>
             <tfoot>
                 <tr class="table-light">
                     <td class="col-1" scope="row">
+                    <c:forEach items="${rankList}" var="rank" begin="0" end="49">
                         <c:if test="${rank.getNickname() == mem.getNickname()}">
                             <div class="row m-0">   
                                 <div class="col-auto text-end align-self-center"><span>${rank.getRankNum()}</span>
                                 </div>
                                 <div class="col-auto flex-fill align-self-center p-0">
-                                    <img class="rounded-circle img-fluid leaderboard-user-img" src="https://i.pravatar.cc/200" width="40px" height="40px" alt="프로필이미지"><span>${mem.getNickname()}</span>
+                                    <img class="rounded-circle img-fluid leaderboard-user-img" src="${mem.getProfile_image()}" width="40px" height="40px" alt="프로필이미지"><span>${mem.getNickname()}</span>
                                 </div>                       
                                 <div class="col-auto text-end align-self-center ms-auto">
                                     <span><i class="fas fa-coins user-points-coin"></i>${mem.getMemPoint()}</span>
                                 </div>
                             </div>
-                        </c:if>  
+                        </c:if>
+                    </c:forEach>  
                     </td>
                 </tr>
-            </tfoot>
-        </c:forEach>
+            </tfoot>   
     </table>
 </div></div>
                                     </div>

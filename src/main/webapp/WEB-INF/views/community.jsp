@@ -77,7 +77,7 @@
                         <a class="text-end d-block text-decoration-none text-reset" href="/content?bd_no=${article.getBd_no()}">${article.getBd_writer()}</a>
                     </td>
                     <td class="d-none d-lg-table-cell">
-                        <a class="text-end d-block text-decoration-none text-black-50" href="/content?bd_no=${article.getBd_no()}">${article.getBd_title()}<br></a>
+                        <a class="text-end d-block text-decoration-none text-black-50" href="/content?bd_no=${article.getBd_no()}">${article.getBd_date()}<br></a>
                     </td>
                 </tr>
             </c:forEach>

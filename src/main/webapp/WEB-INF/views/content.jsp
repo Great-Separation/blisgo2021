@@ -86,6 +86,7 @@
             </button>
         </c:when>
     </c:choose>
+    <a class="btn btn-secondary" role="button" data-bs-toggle="tooltip" data-bss-tooltip="" href="/community" title="글 목록으로 이동합니다"><i class="fas fa-align-justify"></i></a>
 </div></div>
                         </div>
                         <div class="card-body pt-2 p-1">
