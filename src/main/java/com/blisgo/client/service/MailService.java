@@ -34,7 +34,7 @@ public class MailService {
 		Content content = new Content("text/plain", "여기에 글을 작성하세요. html를 전송하려면 text/html 로 변경 후 파일제어로 html 삽입하세요");
 		Mail mail = new Mail(from, subject, to, content);
 
-		SendGrid sg = new SendGrid("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");
+		SendGrid sg = new SendGrid("");
 		Request request = new Request();
 		try {
 			request.setMethod(Method.POST);
@@ -65,8 +65,8 @@ public class MailService {
 		personalization.addDynamicTemplateData("email", receiver);
 
 		mail.addPersonalization(personalization);
-		mail.setTemplateId("d-2d054ad4b2b84eb5aa1026eb5a62a7b9");
-		SendGrid sg = new SendGrid("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");
+		mail.setTemplateId("");
+		SendGrid sg = new SendGrid("");
 		Request request = new Request();
 
 		try {
